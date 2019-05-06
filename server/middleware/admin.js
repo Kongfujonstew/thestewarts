@@ -1,0 +1,5 @@
+import { admin } from '../../db';
+
+export default ( req, res, next) => {
+  next();
+}
