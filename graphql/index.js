@@ -5,7 +5,7 @@ import resolvers from './resolvers';
 export default graphqlHTTP(async(req, res) => ({
   schema: schema,
   rootValue: resolvers,
-  graphiql: process.env.NODE_ENV !== 'production',
+  graphiql: !process.env.PRODUCTION,
   context: { req, res },
   pretty: true
 }));

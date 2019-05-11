@@ -1,12 +1,10 @@
-const webpack = require('webpack');
-const nodeExternals = require('webpack-node-externals');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 import js from './webpack/js';
 import scss from './webpack/scss';
-const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
-const clientConfig = {
+// Outputs all the css, which is being watched for changes
+const devConfig = {
   mode: 'development',
   target: 'web',
   entry: {
@@ -21,12 +19,6 @@ const clientConfig = {
   module: {
     rules: [js, scss]
   },
-  // TODO Optimize and add splitting
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all'
-  //   }
-  // },
   plugins: [ new MiniCssExtractPlugin() ],
   output: {
     path: path.resolve(__dirname),
@@ -34,24 +26,4 @@ const clientConfig = {
   }
 };
 
-const serverConfig = {
-  mode: 'production',
-  target: 'node',
-  node: {
-    __dirname: false
-  },
-  externals: [nodeExternals()],
-  entry: {
-    'index.prod.js': path.resolve('index.js')
-  },
-  module: {
-    rules: [js]
-  },
-  output: {
-    path: path.resolve(__dirname),
-    filename: '[name]'
-  }
-};
-
-
-module.exports = [clientConfig, serverConfig];
+module.exports = devConfig;

@@ -2,11 +2,12 @@ import express from 'express';
 import graphql from '../../graphql';
 import path from 'path';
 import { publicMW, privateMW, adminMW, graphqlMW } from '../middleware';
+import { gzip } from '../middleware/utils/headers';
 import { renderPublic, renderPrivate, renderAdmin } from '../../client/ssrentry';
 const router = express.Router();
-const publicDir = process.env.NODE_ENV === 'production' ? './public' : '../../public';
+const publicDir = process.env.PRODUCTION ? './public' : '../../public';
 
-router.use('/public', express.static(path.resolve(__dirname, publicDir)));
+router.use('/public', gzip, express.static(path.resolve(__dirname, publicDir)));
 router.get('/private', ...privateMW, renderPrivate);
 router.get('/admin', ...adminMW, renderAdmin);
 router.use('/graphql', ...graphqlMW, graphql);

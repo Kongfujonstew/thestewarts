@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../styles/js';
+const gz = process.env.PRODUCTION ? '.gz' : '';
 
 export default (html, data, css, page) => `
   <!doctype html>
@@ -16,7 +17,7 @@ export default (html, data, css, page) => `
     </head>
     <body>
       <div id="root">${html}</div>
-      <script src="/public/js/${page}.js"></script>
+      <script src="/public/js/${page}.js${gz}"></script>
     </body>
   </html>
 `;

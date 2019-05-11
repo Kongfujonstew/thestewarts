@@ -18,8 +18,9 @@ const dev = [
     }
   }
 ];
-const prod = [process.env.DATABASE_CLOUD];
-const config = process.NODE_ENV === 'production' ? prod : dev;
+const prod = [ process.env.DATABASE_CLOUD ];
+const config = dev;
+// const config = process.env.PRODUCTION ? prod : dev;
 const db = new Sequelize(...config);
 
 export const anyone = lock(anyoneQueries, anyoneOk, db);
