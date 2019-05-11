@@ -27,10 +27,12 @@
     "express-graphql": "^0.8.0",
     "gmail-send": "^1.2.14",
     "graphql": "^14.2.1",
+    "jss": "^9.8.7",
     "morgan": "^1.9.1",
     "pg": "^7.10.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-jss": "^8.6.1",
     "react-router-dom": "^5.0.0",
     "sequelize": "^5.7.6"
   },
