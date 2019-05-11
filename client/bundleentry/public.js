@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import MUIBundleWrapper from './mui/wrapper';
-import Public from '../pages/Public';
+import Public from '../apps/Public';
 
 ReactDOM.hydrate(
   <MUIBundleWrapper>

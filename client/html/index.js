@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles/js';
 const gz = process.env.PRODUCTION ? '.gz' : '';
 
-export default (html, data, css, page) => `
+export default (html, data, css, app) => `
   <!doctype html>
     <html>
     <head>
@@ -12,12 +12,12 @@ export default (html, data, css, page) => `
       <script>window.__INITIAL__DATA__ = ${JSON.stringify(data)}</script>
       <style id="jss-server-side">${css}</style>
       <style>${styles.common}</style>
-      <style>${styles[page]}</style>
+      <style>${styles[app]}</style>
       <style>#testOctopus{color:yellow;}</style>
     </head>
     <body>
       <div id="root">${html}</div>
-      <script src="/public/js/${page}.js${gz}"></script>
+      <script src="/public/js/${app}.js${gz}"></script>
     </body>
   </html>
 `;

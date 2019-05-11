@@ -4,9 +4,9 @@ import { SheetsRegistry } from 'jss';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { MuiThemeProvider, createGenerateClassName } from '@material-ui/core/styles';
 import { StaticRouter as Router } from 'react-router-dom';
-import Public from '../../client/pages/Public';
-import Private from '../../client/pages/Private';
-import Admin from '../../client/pages/Admin';
+import Public from '../../client/apps/Public';
+import Private from '../../client/apps/Private';
+import Admin from '../../client/apps/Admin';
 import makeHTML from '../../client/html';
 import theme from '../styles/mui/theme';
 
@@ -14,7 +14,7 @@ import theme from '../styles/mui/theme';
 const fakeData = { name: 'JOE'};
 const data = fakeData;
 
-export const renderComponent = (C, page) => {
+export const renderComponent = (C, app) => {
   return (req, res) => {
     const context = {};
     const generateClassName = createGenerateClassName();
@@ -30,7 +30,7 @@ export const renderComponent = (C, page) => {
       </JssProvider>
     );
     const css = sheetsRegistry.toString();
-    const html = makeHTML(componentHTML, data, css, page);
+    const html = makeHTML(componentHTML, data, css, app);
     res.send(html);
   }
 };
