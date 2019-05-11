@@ -34,7 +34,8 @@
     "react-dom": "^16.8.6",
     "react-jss": "^8.6.1",
     "react-router-dom": "^5.0.0",
-    "sequelize": "^5.7.6"
+    "sequelize": "^5.7.6",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

@@ -1,7 +1,7 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
-import SnackBar from '@material-ui/core/SnackBar';
+import { Route } from 'react-router-dom';
+import Home from '../pages/Home';
+import Login from '../pages/Login';
 
 class Public extends React.Component {
   componentDidMount() {
@@ -11,11 +11,8 @@ class Public extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <SnackBar />
-        <h1 id="#testOctopus">Hello!!!!!! {this.props.name}!</h1>
-        <Button variant="contained" color="primary" onClick={() => console.log('hi')}>
-          Hello World
-        </Button>
+        <Route path="/login" component={Login} />
+        <Route exact path="/" component={Home}/>
       </React.Fragment>
     )
   }
