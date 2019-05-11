@@ -1,4 +1,7 @@
-export default (html, data) => `
+import React from 'react';
+import styles from '../styles/js';
+
+export default (html, data, page) => `
   <!doctype html>
     <html>
     <head>
@@ -6,10 +9,13 @@ export default (html, data) => `
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
       <script>window.__INITIAL__DATA__ = ${JSON.stringify(data)}</script>
+      <style>${styles.common}</style>
+      <style>${styles[page]}</style>
+      <style>#testOctopus{color:yellow;}</style>
     </head>
     <body>
       <div id="root">${html}</div>
-      <script src="/public/js/home.js"></script>
+      <script src="/public/js/${page}.js"></script>
     </body>
   </html>
 `;

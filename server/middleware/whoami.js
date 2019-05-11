@@ -1,4 +1,4 @@
-import { open } from '../../db/'
+import { security } from '../../db/'
 
 export default ( req, res, next) => {
   console.log('whoami!!!!!!!!!!!!!!')

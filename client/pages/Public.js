@@ -2,7 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 
-class Home extends React.Component {
+class Public extends React.Component {
   componentDidMount() {
     console.log('cdm Home')
   }
@@ -10,9 +10,8 @@ class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Hello!!!!!! {this.props.name}!</h1>
-        <a href="/with-react-router">with React Router</a>
-        <Button variant="contained" color="primary">
+        <h1 id="#testOctopus">Hello!!!!!! {this.props.name}!</h1>
+        <Button variant="contained" color="primary" onClick={() => console.log('hi')}>
           Hello World
         </Button>
       </React.Fragment>
@@ -20,4 +19,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Public;

@@ -1,17 +1,41 @@
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+import js from './webpack/js';
+import scss from './webpack/scss';
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
-const js = {
-  test: /\.js$/,
-  exclude: /node_modules/,
-  use: {
-    loader: 'babel-loader'
+
+const clientConfig = {
+  mode: 'development',
+  target: 'web',
+  entry: {
+    'public/js/public.js': path.resolve(__dirname, 'client/bundleentry/public.js'),
+    'public/js/private.js': path.resolve(__dirname, 'client/bundleentry/private.js'),
+    'public/js/admin.js': path.resolve(__dirname, 'client/bundleentry/admin.js'),
+    'client/styles/css/common': path.resolve(__dirname, 'client/styles/scss/common.scss'),
+    'client/styles/css/public': path.resolve(__dirname, 'client/styles/scss/public.scss'),
+    'client/styles/css/private': path.resolve(__dirname, 'client/styles/scss/private.scss'),
+    'client/styles/css/admin': path.resolve(__dirname, 'client/styles/scss/admin.scss')
+  },
+  module: {
+    rules: [js, scss]
+  },
+  // TODO Optimize and add splitting
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all'
+  //   }
+  // },
+  plugins: [ new MiniCssExtractPlugin() ],
+  output: {
+    path: path.resolve(__dirname),
+    filename: '[name]'
   }
-}
+};
 
 const serverConfig = {
-  mode: mode,
+  mode: 'production',
   target: 'node',
   node: {
     __dirname: false
@@ -27,29 +51,7 @@ const serverConfig = {
     path: path.resolve(__dirname),
     filename: '[name]'
   }
-}
+};
 
-const clientConfig = {
-  mode: mode,
-  target: 'web',
-  entry: {
-    'public.js': path.resolve(__dirname, 'client/pages/bundleentry/public.js'),
-    'private.js': path.resolve(__dirname, 'client/pages/bundleentry/private.js'),
-    'admin.js': path.resolve(__dirname, 'client/pages/bundleentry/admin.js')
-  },
-  module: {
-    rules: [js]
-  },
-  // TODO Optimize and add splitting
-  // optimization: {
-  //   splitChunks: {
-  //     chunks: 'all'
-  //   }
-  // },
-  output: {
-    path: path.resolve(__dirname, 'public/js'),
-    filename: '[name]'
-  }
-}
 
-module.exports = [serverConfig, clientConfig];
+module.exports = [clientConfig, serverConfig];
