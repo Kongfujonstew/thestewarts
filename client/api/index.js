@@ -1,10 +1,18 @@
-import { fetch } from 'whatwg-fetch';
+import 'whatwg-fetch';
 
-export default (path, body, headers) => {
+const api = (path, body, headers) => {
   const url = window.location.origin + path;
-  fetch(url, {
+  console.log('body: ', body)
+  return fetch(url, {
     method: 'POST',
-    headers: headers || {},
-    body: JSON.stringify(body);
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
   });
+};
+
+export const auth = (email, password) => {
+  return api('/auth', { email, password })
+    .then(resp => resp.json()
+      .then(json => json.token)
+    );
 };
