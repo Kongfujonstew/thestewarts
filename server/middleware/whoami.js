@@ -2,12 +2,16 @@ import { security } from '../../db/'
 
 export default async(req, res, next) => {
   console.log('whoami req.cookies.token: ', req.cookies.token);
+  let whoami = { role: 'rando' };
   const { token } = req.cookies;
-  // req.whoami = { role: 'admin' };
+  // look for Auth Bearer header on req
   if (token) {
-    req.whoami = await security.whoAmI({ token });
-  } else {
-    req.whoami = { role: 'rando' };
-  }
+    const [[ person ]]  = await security.whoAmI({ token });
+    if (person && person.role) {
+      whoami = person;
+    }
+  };
+  req.whoami = whoami;
+  console.log('whoami: ', JSON.stringify(whoami))
   next();
 };

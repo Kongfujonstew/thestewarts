@@ -4,7 +4,7 @@ export default {
   updateAddressById: ({ id, address }) => `UPDATE address SET ${makeSet(address)} WHERE id=${id} RETURNING *;`,
   associateAddressToPerson: ({ id, personId }) => `UPDATE person SET address_id=(SELECT id FROM address WHERE id=${id}) WHERE id=${personId} RETURNING *;`,
   deleteAddressById: ({ id }) => `DELETE FROM address WHERE id=${id} RETURNING *;`,
-  getPersonById: ({ id }) => `SELECT id, email, firstname, lastname, phone, address_id, food, notes, preferences, settings FROM person WHERE id=${id};`,
+  // getPersonById: ({ id }) => `SELECT id, email, firstname, lastname, phone, address_id, food, notes, preferences, settings FROM person WHERE id=${id};`,
   getAllPeople: () => `SELECT p.id, p.email, p.firstname, p.lastname, p.phone, p.address_id, p.food, p.notes, p.preferences, p.settings, ad.address1, ad.address2, ad.city, ad.state, ad.zip, ad.country FROM person p JOIN address ad ON p.address_id=ad.id;`,
   updatePersonById: ({ id, person }) => `UPDATE person SET ${makeSet(person)} WHERE id=${id} RETURNING *;`,
   deletePersonById: ({ id }) => `DELETE FROM person WHERE id=${id} RETURNING *;`,

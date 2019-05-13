@@ -17,7 +17,7 @@ export default {
   },
 
   createPerson: async(...args) => {
-    const [[ person ]] = await anyone.createPerson(...args);
+    const [[ person ]]  = await anyone.createPerson(...args);
     return person || 'forcegraphqlerror';
   },
 
@@ -68,7 +68,7 @@ export default {
     return {
       songs: songs || [],
       blogs: blogs || [],
-      quotes: quotes || [],
+      quotes: quotes || []
     }
   },
 
@@ -105,6 +105,11 @@ export default {
     return address || 'forcegraphqlerror';
   },
 
+  getPersonById: async(...args) => {
+    console.log('get person by id')
+    const [[ personData ]] = await person.getPersonById(...args);
+    return personData || 'forcegraphqlerror';
+  },
   // ie RSVP and other things
   updateAttendanceToEventByPersonId: async(...args) => {
     const [[ event ]] = await person.updateAttendanceToEventByPersonId(...args);
@@ -234,10 +239,6 @@ export default {
     return address || 'forcegraphqlerror';
   },
 
-  getPersonById: async(...args) => {
-    const [[ personData ]] = await admin.getPersonById(...args);
-    return personData || 'forcegraphqlerror';
-  },
 
   getAllPeople: async(...args) => {
     const [ people ] = await admin.getAllPeople(...args);

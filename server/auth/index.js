@@ -9,9 +9,11 @@ const handleTokenAuthFail = (req, res) => {
   res.redirect('/login');
 };
 
-const handlePasswordAuthSuccess = (req, res, token) => {
-  res.cookie('token', token);
-  res.send({ token });
+const handlePasswordAuthSuccess = (req, res, response) => {
+  // response: { token, role }
+  console.log('sending response after password login: ', response)
+  res.cookie('token', response.token);
+  res.send(JSON.stringify(response));
 };
 
 const handlePasswordAuthFail = (req, res) => {
@@ -30,9 +32,11 @@ export const tokenAuth = async (req, res, next) => {
 
 export const passwordAuth = async (req, res, next) => {
   const { email, password } = req.body;
-  const token = await security.isPasswordCorrect({ email, password });
-  if (token) {
-    handlePasswordAuthSuccess(req, res, token);
+  // response: { token, role }
+  const [[ response ]] = await security.isPasswordCorrect({ email, password });
+  console.log('passwordAuth response: ', response)
+  if (response) {
+    handlePasswordAuthSuccess(req, res, response);
   } else {
     handlePasswordAuthFail(req, res);
   }

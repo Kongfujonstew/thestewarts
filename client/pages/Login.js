@@ -26,16 +26,21 @@ class Login extends React.Component {
     if (name === 'password' && e.key === 'Enter') this.attemptLogin();
   }
 
-  handleLoginSuccess = token => {
-    window.location.replace('/private');
-    // TODO add token to localStorage?
+  handleLoginSuccess = response => {
+    const { role, token } = response;
+    const location = role === 'admin' ? '/admin' : '/private';
+    window.location.replace(location);
+    if (localStorage) {
+      localStorage.setItem('token', token);
+    }
   }
 
   attemptLogin = async() => {
     const { email, password } = this.state;
-    const token = await auth(email, password);
-    if (token) {
-      this.handleLoginSuccess(token);
+    const response = await auth(email, password);
+    console.log('attemptLogin response: ', response)
+    if (response) {
+      this.handleLoginSuccess(response);
     } else {
       this.setState({ error: true });
     }

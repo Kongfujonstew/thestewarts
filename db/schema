@@ -35,13 +35,13 @@ CREATE TABLE IF NOT EXISTS address (
 );
 
 CREATE TABLE IF NOT EXISTS person(
-  id BIGINT NOT NULL DEFAULT public.id_generator() PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   createdat TIMESTAMP NOT NULL DEFAULT NOW(),
   email VARCHAR(255) NOT NULL UNIQUE,
   firstname VARCHAR(255),
   lastname VARCHAR(255),
   phone VARCHAR(255),
-  address_id INTEGER NOT NULL DEFAULT 0,
+  address_id INTEGER DEFAULT NULL,
   password VARCHAR(255),
   token VARCHAR(255),
   role VARCHAR(255) DEFAULT 'person' NOT NULL,
@@ -51,6 +51,10 @@ CREATE TABLE IF NOT EXISTS person(
   settings JSON NOT NULL DEFAULT '{}',
   FOREIGN KEY (address_id) REFERENCES address (id)
 );
+
+ALTER SEQUENCE person_id_seq RESTART 1000;
+
+SELECT setval('person_id_seq', 1000);
 
 CREATE TABLE IF NOT EXISTS event(
   id SERIAL PRIMARY KEY,

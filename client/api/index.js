@@ -13,6 +13,13 @@ const api = (path, body, headers) => {
 export const auth = (email, password) => {
   return api('/auth', { email, password })
     .then(resp => resp.json()
-      .then(json => json.token)
+      .then(json => json)
+    );
+};
+
+export const graphql = query => {
+  return api('/graphql', query)
+    .then(resp => resp.json()
+      .then(json => json)
     );
 };

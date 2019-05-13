@@ -3,7 +3,7 @@ import { makeValues, makeColumns, makeSet } from './helpers';
 export default {
   getAddressById: ({ id }) => `SELECT * FROM address WHERE id=${id};`,
   getAddressByPersonId: ({ id }) => `SELECT * FROM address WHERE id=(SELECT address_id FROM person WHERE id=${id});`,
-  createPerson: ({ group }) => `INSERT INTO person (${makeColumns(group)}) VALUES (${makeValues(group)}) RETURNING *;`,
+  // createPerson: ( person ) => `INSERT INTO person (role, ${makeColumns(person)}) VALUES ('person', ${makeValues(person)}) RETURNING *;`,
   getPersonById: ({ id }) => `SELECT id, email, firstname, lastname, phone, food, notes, preferences, settings FROM person WHERE id=${id}`,
   associateAddressToPerson: ({ id, personId }) => `UPDATE person SET address_id=(SELECT id FROM address WHERE id=${id}) WHERE id=${personId} RETURNING *;`,
   updateAttendanceToEventByPersonId: ({ id, personId, attendance }) => `UPDATE attendance SET ${makeColumns(attendance)} WHERE event_id=${id} AND person_id=${personId}`,
