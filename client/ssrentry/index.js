@@ -3,6 +3,7 @@ import ReactDOMServer from 'react-dom/server';
 import { SheetsRegistry } from 'jss';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { MuiThemeProvider, createGenerateClassName } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { StaticRouter as Router } from 'react-router-dom';
 import Public from '../../client/apps/Public';
 import Private from '../../client/apps/Private';
@@ -23,6 +24,7 @@ export const renderComponent = (C, app) => {
     const componentHTML = ReactDOMServer.renderToString(
       <JssProvider registry={sheetsRegistry} generateClassName={generateClassName}>
         <MuiThemeProvider theme={theme} sheetsManager={sheetsManager}>
+          <CssBaseline />
           <Router location={req.url} context={context}>
             <C name={data.name} />
           </Router>
