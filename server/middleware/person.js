@@ -1,6 +1,7 @@
-import { person } from '../../db/'
+import { loadPersonDataById } from '../../db/data';
 
-export default (req, res, next) => {
-  console.log('get person data here')
+export default async(req, res, next) => {
+  const { id } = req.whoami;
+  req.data = await loadPersonDataById({ id }, { req, res });
   next();
-}
+};

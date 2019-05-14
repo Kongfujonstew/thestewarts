@@ -10,6 +10,7 @@ const api = (path, body, headers) => {
   });
 };
 
+// dep
 export const auth = (email, password) => {
   return api('/auth', { email, password })
     .then(resp => resp.json()
@@ -18,8 +19,12 @@ export const auth = (email, password) => {
 };
 
 export const graphql = query => {
-  return api('/graphql', query)
+  return api('/graphql', { query })
     .then(resp => resp.json()
-      .then(json => json)
+      .then(json => {
+        const { data, errors } = json;
+        if (errors || !data) return null;
+        return data[Object.keys(data)[0]];
+      })
     );
 };

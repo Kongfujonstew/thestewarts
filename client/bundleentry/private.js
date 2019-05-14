@@ -9,7 +9,7 @@ ReactDOM.hydrate(
   <MUIBundleWrapper>
     <CssBaseline />
     <Router>
-      <Private name={window.__INITIAL__DATA__.name} />
+      <Private {...window.__INITIAL__DATA__} />
     </Router>
   </MUIBundleWrapper>,
   document.getElementById('root')

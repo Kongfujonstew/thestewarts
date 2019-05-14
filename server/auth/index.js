@@ -1,4 +1,4 @@
-import { security } from '../../db';
+import { anyone } from '../../db';
 
 const handleTokenAuthSuccess = (req, res, token) => {
   res.cookie('token', token);
@@ -22,7 +22,7 @@ const handlePasswordAuthFail = (req, res) => {
 
 export const tokenAuth = async (req, res, next) => {
   const { token } = req.params;
-  const success = await security.isTokenValid({ token });
+  const success = await anyone.isTokenValid({ token }, {req, res});
   if (success) {
     handleTokenAuthSuccess(req, res, token)
   } else {
@@ -33,7 +33,7 @@ export const tokenAuth = async (req, res, next) => {
 export const passwordAuth = async (req, res, next) => {
   const { email, password } = req.body;
   // response: { token, role }
-  const [[ response ]] = await security.isPasswordCorrect({ email, password });
+  const [[ response ]] = await anyone.isPasswordCorrect({ email, password }, { req, res });
   console.log('passwordAuth response: ', response)
   if (response) {
     handlePasswordAuthSuccess(req, res, response);

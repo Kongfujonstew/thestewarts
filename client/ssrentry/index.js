@@ -12,11 +12,12 @@ import makeHTML from '../../client/html';
 import theme from '../styles/mui/theme';
 
 //TODO replace with req.data
-const fakeData = { name: 'JOE'};
-const data = fakeData;
+// const fakeData = { name: 'JOE'};
+// const data = fakeData;
 
 export const renderComponent = (C, app) => {
   return (req, res) => {
+    const { data } = req;
     const context = {};
     const generateClassName = createGenerateClassName();
     const sheetsRegistry = new SheetsRegistry();
@@ -26,7 +27,7 @@ export const renderComponent = (C, app) => {
         <MuiThemeProvider theme={theme} sheetsManager={sheetsManager}>
           <CssBaseline />
           <Router location={req.url} context={context}>
-            <C name={data.name} />
+            <C data={data} />
           </Router>
         </MuiThemeProvider>
       </JssProvider>

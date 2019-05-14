@@ -1,4 +1,4 @@
-import { security } from '../../db/'
+import { anyone } from '../../db/'
 
 export default async(req, res, next) => {
   console.log('whoami req.cookies.token: ', req.cookies.token);
@@ -6,7 +6,7 @@ export default async(req, res, next) => {
   const { token } = req.cookies;
   // look for Auth Bearer header on req
   if (token) {
-    const [[ person ]]  = await security.whoAmI({ token });
+    const [[ person ]]  = await anyone.whoAmI({ token }, { req, res });
     if (person && person.role) {
       whoami = person;
     }

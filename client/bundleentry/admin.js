@@ -9,7 +9,7 @@ ReactDOM.hydrate(
   <MUIBundleWrapper>
     <CssBaseline />
     <Router>
-      <Admin name={window.__INITIAL__DATA__.name} />
+      <Admin {...window.__INITIAL__DATA__} />
     </Router>
   </MUIBundleWrapper>,
   document.getElementById('root')

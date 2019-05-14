@@ -15,12 +15,11 @@ class Login extends React.Component {
   componentDidMount = () => {
     // This makes the Grow component 'grow' in
     this.setState({ grow: true });
-    window.TEST = this.props.history.go;
   }
 
   handleChange = name => e => {
     this.setState({ [name]: e.target.value });
-  };
+  }
 
   handleKeyPress = name => e => {
     if (name === 'password' && e.key === 'Enter') this.attemptLogin();
@@ -28,6 +27,7 @@ class Login extends React.Component {
 
   handleLoginSuccess = response => {
     const { role, token } = response;
+    // { token, role, id }
     const location = role === 'admin' ? '/admin' : '/private';
     window.location.replace(location);
     if (localStorage) {
