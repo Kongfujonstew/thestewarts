@@ -1,12 +1,6 @@
-import { makeValues, makeColumns } from './helpers';
+import { makeValues, makeColumns } from '../helpers/querystring';
 
 export default {
-  whoAmI: ({ token }) => `SELECT token, role, id FROM person WHERE token='${token}';`,
-  isTokenValid:  ({ token }) => `SELECT token, role, id FROM person WHERE token='${token}';`,
-  isPasswordCorrect: ({ email, password} ) => `SELECT token, role, id FROM person WHERE email='${email}' AND password='${password}';`,
-
-
-
   createPerson: ({ person }) => `INSERT INTO person (role, ${makeColumns(person)}) VALUES ('person', ${makeValues(person)}) RETURNING *;`,
   createAddress: ({ address }) => `INSERT INTO address (${makeColumns(address)}) VALUES (${makeValues(address)}) RETURNING *;`,
   getLocationById: ({ id }) => `SELECT * FROM location WHERE id=${id};`,

@@ -1,6 +1,6 @@
 // This is literally where the magic happens
 // Pass the lock itself as lockPermits param
-export const lock = (queriesObj, lockPermits, db) => {
+export const lock = (queriesObj, permission, db) => {
   const queries = Object.keys(queriesObj);
   return queries.reduce((accum, query) => {
     const func = (obj, args, context, info) => {
@@ -9,7 +9,7 @@ export const lock = (queriesObj, lockPermits, db) => {
 
       console.log('query name:', query);
       console.log('full query:', queriesObj[query](obj))
-      if (lockPermits(req, res)) {
+      if (permission(req, res)) {
         console.log('lock permits, returning query')
         return db.query(queriesObj[query](obj));
       } else {
@@ -20,6 +20,7 @@ export const lock = (queriesObj, lockPermits, db) => {
   }, {});
 };
 
+// No permissions - only for 'security' queries on server/ no graphql interface
 export const direct = (queriesObj, db) => {
   const queries = Object.keys(queriesObj);
   return queries.reduce((accum, query) => {
@@ -28,4 +29,4 @@ export const direct = (queriesObj, db) => {
     }
     return Object.assign(accum, {[query]: func});
   }, {});
-}
+};

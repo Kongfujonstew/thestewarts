@@ -1,4 +1,4 @@
-import { makeValues, makeColumns, makeSet } from './helpers';
+import { makeValues, makeColumns, makeSet } from '../helpers/querystring';
 
 export default {
   getAddressById: ({ id }) => `SELECT * FROM address WHERE id=${id};`,

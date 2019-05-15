@@ -2,7 +2,7 @@ import whoami from './whoami';
 import loadPublicData from './public';
 import loadPersonData from './person';
 import loadAdminData from './admin';
-import { anyoneOk, noRandos, adminOnly } from '../auth/locks';
+import { anyoneOk, noRandos, adminOnly } from '../auth/permissions';
 
 export const publicMW = [ whoami, anyoneOk, loadPublicData ];
 export const privateMW = [ whoami, noRandos, loadPersonData ];

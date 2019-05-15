@@ -3,8 +3,9 @@ import Sequelize from 'sequelize';
 import anyoneQueries from './queries/anyone';
 import personQueries from './queries/person';
 import adminQueries from './queries/admin';
-import { anyoneOk, noRandos, adminOnly } from '../server/auth/locks';
-import { direct, lock } from './lock';
+import securityQueries from './queries/security';
+import { anyoneOk, noRandos, adminOnly } from '../server/auth/permissions';
+import { direct, lock } from './helpers/lock';
 
 const dev = [
   process.env.DATABASE_LOCAL,
@@ -27,3 +28,4 @@ const db = new Sequelize(...config);
 export const anyone = lock(anyoneQueries, anyoneOk, db);
 export const person = lock(personQueries, noRandos, db);
 export const admin = lock(adminQueries, adminOnly, db);
+export const security = direct(securityQueries, db);

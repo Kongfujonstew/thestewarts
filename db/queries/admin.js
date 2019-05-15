@@ -1,4 +1,4 @@
-import { makeValues, makeColumns, makeSet } from './helpers';
+import { makeValues, makeColumns, makeSet } from '../helpers/querystring';
 
 export default {
   updateAddressById: ({ id, address }) => `UPDATE address SET ${makeSet(address)} WHERE id=${id} RETURNING *;`,
