@@ -3,6 +3,7 @@ import 'whatwg-fetch';
 const api = (path, body, headers) => {
   const url = window.location.origin + path;
   console.log('body: ', body)
+  window.query = body.query;
   return fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -23,6 +24,9 @@ export const graphql = query => {
     .then(resp => resp.json()
       .then(json => {
         const { data, errors } = json;
+        console.log('raw data json: ', data)
+        window.errors = errors;
+        console.log('raw errors: ', errors)
         if (errors || !data) return null;
         return data[Object.keys(data)[0]];
       })

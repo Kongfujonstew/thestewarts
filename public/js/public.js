@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.graphql = exports.auth = undefined;\n\n__webpack_require__(/*! whatwg-fetch */ \"./node_modules/whatwg-fetch/fetch.js\");\n\nvar api = function api(path, body, headers) {\n  var url = window.location.origin + path;\n  console.log('body: ', body);\n  return fetch(url, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify(body)\n  });\n};\n\n// dep\nvar auth = exports.auth = function auth(email, password) {\n  return api('/auth', { email: email, password: password }).then(function (resp) {\n    return resp.json().then(function (json) {\n      return json;\n    });\n  });\n};\n\nvar graphql = exports.graphql = function graphql(query) {\n  return api('/graphql', { query: query }).then(function (resp) {\n    return resp.json().then(function (json) {\n      var data = json.data,\n          errors = json.errors;\n\n      if (errors || !data) return null;\n      return data[Object.keys(data)[0]];\n    });\n  });\n};\n\n//# sourceURL=webpack:///./client/api/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.graphql = exports.auth = undefined;\n\n__webpack_require__(/*! whatwg-fetch */ \"./node_modules/whatwg-fetch/fetch.js\");\n\nvar api = function api(path, body, headers) {\n  var url = window.location.origin + path;\n  console.log('body: ', body);\n  window.query = body.query;\n  return fetch(url, {\n    method: 'POST',\n    headers: { 'Content-Type': 'application/json' },\n    body: JSON.stringify(body)\n  });\n};\n\n// dep\nvar auth = exports.auth = function auth(email, password) {\n  return api('/auth', { email: email, password: password }).then(function (resp) {\n    return resp.json().then(function (json) {\n      return json;\n    });\n  });\n};\n\nvar graphql = exports.graphql = function graphql(query) {\n  return api('/graphql', { query: query }).then(function (resp) {\n    return resp.json().then(function (json) {\n      var data = json.data,\n          errors = json.errors;\n\n      console.log('raw data json: ', data);\n      window.errors = errors;\n      console.log('raw errors: ', errors);\n      if (errors || !data) return null;\n      return data[Object.keys(data)[0]];\n    });\n  });\n};\n\n//# sourceURL=webpack:///./client/api/index.js?");
 
 /***/ }),
 
@@ -2910,7 +2910,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

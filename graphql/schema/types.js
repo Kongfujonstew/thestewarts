@@ -7,6 +7,7 @@ export default `
     createdat: String,
     address1: String!,
     address2: String,
+    city: String,
     state: String!,
     zip: String!,
     country: String!,
@@ -33,13 +34,13 @@ export default `
     name: String!,
     time: String,
     address_id: Int,
-    address1: String!,
+    address1: String,
     address2: String,
-    state: String!,
-    zip: String!,
-    country: String!,
+    city: String,
+    state: String,
+    zip: String,
+    country: String,
     send_invitations: Boolean,
-    auto_invite: Boolean,
     notes: String,
     preferences: PreferencesObject,
     settings: SettingsObject,
@@ -76,8 +77,8 @@ export default `
   type Location {
     id: Int,
     createdat: String,
-    name: String!,
-    address_id: Int!,
+    name: String,
+    address_id: Int,
     notes: String,
     settings: SettingsObject
   },
@@ -87,22 +88,24 @@ export default `
     text: String,
     author: String,
     members: [Person],
+    notes: String,
     settings: SettingsObject
   },
   type Blog {
     id: Int,
     createdat: String,
-    date: String!,
-    title: String!,
-    text: String!,
+    date: String,
+    title: String,
+    text: String,
+    notes: String,
     settings: SettingsObject
   },
   type Song {
     id: Int,
     createdat: String,
-    artist: String!,
-    title: String!,
-    url: String!,
+    artist: String,
+    title: String,
+    url: String,
     notes: String,
     html: String,
     settings: SettingsObject
@@ -117,14 +120,16 @@ export default `
   type PublicData {
     quotes: [Quote],
     blogs: [Blog],
-    songs: [Song]
+    songs: [Song],
+    locations: [Location]
   },
   type PersonData {
     address: Address,
     person: Person!,
-    events: [Attendance],
+    events: [Event],
     groups: [Groupo],
     quotes: [Quote],
+    songs: [Song],
     lists: [List]
   },
   type AdminData {

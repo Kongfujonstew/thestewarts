@@ -22,13 +22,13 @@ router.get('/auth/:token', tokenAuth);
 router.use('/graphql', ...graphqlMW, graphql);
 
 //the private app (more pages coming), locked - person and admin role only
-router.get('/private$', ...privateMW, renderPrivate);
+router.get('/private', ...privateMW, renderPrivate);
 
 //admin app, locked - admin only
 router.get('/admin(/email)?$', ...adminMW, renderAdmin);
 
-//public app
-router.get('/(/login)?$', ...publicMW, renderPublic);
+//public app - home or login?
+router.get(/\/(login)?/, ...publicMW, renderPublic);
 
 //Worst case/ 404
 router.get('*', (req, res) => {res.status(404).send(`<body style="background-color: #3c3c3c;"><h1>404 - Not Found</h1></body>`)});

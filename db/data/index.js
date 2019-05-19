@@ -4,10 +4,12 @@ export const loadPublicData = async(...args) => {
   const [ quotes ] = await anyone.getAllQuotes(...args);
   const [ blogs ] = await anyone.getAllBlogs(...args);
   const [ songs ] = await anyone.getAllSongs(...args);
+  const [ locations ] = await anyone.getAllLocations(...args);
   return {
     songs: songs || [],
     blogs: blogs || [],
-    quotes: quotes || []
+    quotes: quotes || [],
+    locations: locations || []
   }
 };
 
@@ -27,17 +29,18 @@ export const loadPersonDataById = async(...args) => {
     })
   })).then(() => console.log('getting members complete'))
   const [ quotes ] = await person.getQuotesByPersonId(...args);
+  const [ songs ] = await anyone.getAllSongs(...args);
   const [ lists ] = await person.getListsByPersonId(...args);
-  const result = {
+
+  return {
     address: address || [],
     person: personData,
     events: eventsWithAttendance || [],
-    groups: groups,
-    lists: lists,
-    quotes: quotes
+    groups: groups || [],
+    lists: lists || [],
+    quotes: quotes || [],
+    songs: songs || []
   };
-
-  return result;
 };
 
 export const loadAdminData = async(...args) => {

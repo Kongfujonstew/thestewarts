@@ -1,0 +1,27 @@
+// const person = {
+//   preferences: { language: 'EN' }
+// }
+// Timestamp: used for events
+// (new Date('10-04-2020').getTime()/10000).toString()
+
+// Blog date field is a date string
+// const blog = {
+//   date: '2020-10-04',
+//   title: `Heres a blogtoo!`,
+//   text: `And heres the text!`
+// }
+// const location = {
+//   address_id: 5,
+//   settings: {
+//     settings1: 'this string could be coordinates'
+//   }
+// }
+
+// const song = {
+//   artist: 'Collective Soul',
+//   title: `HInst and alleg`,
+//   url: 'http://youtube.com',
+//   settings: {
+//     settings1: 'dontplayitnow'
+//   }
+// }

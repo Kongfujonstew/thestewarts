@@ -3,8 +3,9 @@ import preferences from './preferences';
 
 export default `
   input AddressInput {
-    address1: String!,
+    address1: String,
     address2: String,
+    city: String,
     state: String!,
     zip: String!,
     country: String!,
@@ -12,7 +13,7 @@ export default `
     settings: SettingsInput
   },
   input PersonInput {
-    email: String!,
+    email: String,
     firstname: String,
     lastname: String,
     phone: String,
@@ -23,17 +24,17 @@ export default `
     settings: SettingsInput
   }
   input EventInput {
-    name: String!,
+    name: String,
     time: String,
     address_id: Int,
     send_invitations: Boolean,
-    auto_invite: Boolean,
+    auto_rsvp_w_wedding: Boolean,
     notes: String,
     settings: SettingsInput,
   },
   input AttendanceInput {
-    person_id: String!,
-    event_id: String!,
+    person_id: Int!,
+    event_id: Int!,
     notes: String,
     invitation_sent: Boolean,
     rsvpd: Boolean,
@@ -49,7 +50,7 @@ export default `
     settings: SettingsInput
   },
   input LocationInput {
-    address_id: Int!,
+    address_id: Int,
     name: String!,
     notes: String,
     settings: SettingsInput,

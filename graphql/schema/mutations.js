@@ -1,10 +1,10 @@
 export default `
   type Mutation {
     createAddress(address:AddressInput): Address,
-    createAndAssociateAddressToPerson(address:AddressInput, personId:Int): Address,
-    updateOrChangeAddressByPersonId(address:AddressInput, personId:Int): Address,
+    createAndAssociateAddressToPerson(address:AddressInput, personId:Int): Int,
+    updateOrChangeAddressByPersonId(address:AddressInput, personId:Int): Int,
     updateAddressById(id:Int, address:AddressInput): Address,
-    associateAddressToPerson(id:Int, personId:Int): Person,
+    associateAddressToPerson(id:Int, personId:Int): Int,
     deleteAddressById(id:Int): Address,
     createPerson(person:PersonInput): Person,
     updatePersonById(id:Int, person:PersonInput): Person,
@@ -13,10 +13,10 @@ export default `
     updateEventById(id:Int, event:EventInput): Event,
     deleteEventById(id:Int): Event,
     createAttendance(attendance:AttendanceInput): Attendance,
-    updateAttendanceToEventByPersonId(id:Int, personId:Int, attendance:AttendanceInput): Attendance,
+    updateAttendance(attendance:AttendanceInput): Attendance,
     createGroup(group:GroupoInput): Groupo,
-    addToGroupByPersonId(id:Int, personId:Int): SuccessOrError,
-    removeFromGroupByPersonId(id:Int, personId:Int): SuccessOrError,
+    addToGroupByPersonId(id:Int, personId:Int): Int,
+    removeFromGroupByPersonId(id:Int, personId:Int): Int,
     updateGroupById(id:Int, group:GroupoInput): Groupo,
     deleteGroupById(id:Int): Groupo,
     createLocation(location:LocationInput): Location,
@@ -25,7 +25,7 @@ export default `
     createQuote(quote:QuoteInput): Quote,
     updateQuoteById(id:Int, quote:QuoteInput): Quote,
     deleteQuoteById(id:Int): Quote,
-    addToQuoteByPersonId(id:Int, personId:Int): Quote
+    addToQuoteByPersonId(id:Int, personId:Int): Int,
     createBlog(blog:BlogInput): Blog,
     updateBlogById(id:Int, blog:BlogInput): Blog,
     deleteBlogById(id:Int): Blog,
@@ -35,6 +35,6 @@ export default `
     createList(list:ListInput): List,
     updateListById(id:Int, list:ListInput): List,
     deleteListById(id:Int): List,
-    addToListByPersonId(id:Int, personId:Int): List
+    addToListByPersonId(id:Int, personId:Int): Int
   },
 `;

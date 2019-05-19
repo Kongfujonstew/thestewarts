@@ -1,4 +1,4 @@
-CREATE SEQUENCE public.global_id_sequence;
+/* CREATE SEQUENCE public.global_id_sequence;
 
 CREATE OR REPLACE FUNCTION public.id_generator(OUT result bigint) AS $$
 DECLARE
@@ -18,12 +18,12 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
-select public.id_generator();
+select public.id_generator(); */
 
 
 CREATE TABLE IF NOT EXISTS address (
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   address1 VARCHAR(255) NOT NULL,
   address2 VARCHAR(255),
   city VARCHAR(255),
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS address (
 
 CREATE TABLE IF NOT EXISTS person(
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   email VARCHAR(255) NOT NULL UNIQUE,
   firstname VARCHAR(255),
   lastname VARCHAR(255),
@@ -58,12 +58,12 @@ SELECT setval('person_id_seq', 1000);
 
 CREATE TABLE IF NOT EXISTS event(
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   name VARCHAR(255) NOT NULL UNIQUE,
   time TIMESTAMP NOT NULL,
   address_id INTEGER,
   public BOOLEAN NOT NULL DEFAULT FALSE,
-  send_invitations BOOLEAN NOT NULL,
+  send_invitations BOOLEAN NOT NULL DEFAULT FALSE,
   auto_rsvp_w_wedding BOOLEAN NOT NULL DEFAULT FALSE,
   notes VARCHAR(5000),
   settings JSON NOT NULL DEFAULT '{}',
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS event(
 
 CREATE TABLE IF NOT EXISTS attendance(
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   person_id BIGINT NOT NULL,
   event_id INTEGER NOT NULL,
   notes VARCHAR(5000),
@@ -81,14 +81,14 @@ CREATE TABLE IF NOT EXISTS attendance(
   rsvpyes BOOLEAN DEFAULT FALSE,
   preferences JSON NOT NULL DEFAULT '{}',
   settings JSON NOT NULL DEFAULT '{}',
-  FOREIGN KEY (event_id) REFERENCES event (id),
-  FOREIGN KEY (person_id) REFERENCES person (id),
+  FOREIGN KEY (event_id) REFERENCES event (id) ON DELETE CASCADE,
+  FOREIGN KEY (person_id) REFERENCES person (id) ON DELETE CASCADE,
   CONSTRAINT uniq_person_id_event_id UNIQUE(person_id, event_id)
 );
 
 CREATE TABLE IF NOT EXISTS groupo(
  id SERIAL PRIMARY KEY,
- createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+ createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
  name VARCHAR(255) NOT NULL UNIQUE,
  parent_id INTEGER,
  notes VARCHAR(5000),
@@ -99,17 +99,17 @@ CREATE TABLE IF NOT EXISTS groupo(
 
 CREATE TABLE IF NOT EXISTS groupomember(
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   person_id BIGINT,
   groupo_id INTEGER,
-  FOREIGN KEY (person_id) REFERENCES person (id),
-  FOREIGN KEY (groupo_id) REFERENCES groupo (id),
+  FOREIGN KEY (person_id) REFERENCES person (id) ON DELETE CASCADE,
+  FOREIGN KEY (groupo_id) REFERENCES groupo (id) ON DELETE CASCADE,
   CONSTRAINT uniq_person_id_groupo_id UNIQUE(person_id, groupo_id)
 );
 
 CREATE TABLE IF NOT EXISTS location(
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   name VARCHAR(255) NOT NULL UNIQUE,
   address_id INTEGER,
   notes VARCHAR(5000),
@@ -119,34 +119,36 @@ CREATE TABLE IF NOT EXISTS location(
 
 CREATE TABLE IF NOT EXISTS quote(
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   text VARCHAR(5000),
   author VARCHAR(255),
+  notes VARCHAR(5000),
   settings JSON NOT NULL DEFAULT '{}'
 );
 
 CREATE TABLE IF NOT EXISTS quotemember(
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   person_id BIGINT,
   quote_id INT,
-  FOREIGN KEY (person_id) REFERENCES person (id),
-  FOREIGN KEY (quote_id) REFERENCES quote (id),
+  FOREIGN KEY (person_id) REFERENCES person (id) ON DELETE CASCADE,
+  FOREIGN KEY (quote_id) REFERENCES quote (id) ON DELETE CASCADE,
   CONSTRAINT uniq_person_id_quote_id UNIQUE(person_id, quote_id)
 );
 
 CREATE TABLE IF NOT EXISTS blog(
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   date DATE NOT NULL,
   title VARCHAR(50000) NOT NULL,
   text VARCHAR(50000) NOT NULL,
+  notes VARCHAR(5000),
   settings JSON NOT NULL DEFAULT '{}'
 );
 
 CREATE TABLE IF NOT EXISTS song(
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   artist VARCHAR(255) NOT NULL,
   title VARCHAR(255) NOT NULL,
   url VARCHAR(255) NOT NULL,
@@ -157,29 +159,18 @@ CREATE TABLE IF NOT EXISTS song(
 
 CREATE TABLE IF NOT EXISTS list(
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
   name VARCHAR(255) NOT NULL UNIQUE,
   settings TEXT NOT NULL DEFAULT '{}'
 );
 
 CREATE TABLE IF NOT EXISTS listmember(
   id SERIAL PRIMARY KEY,
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
-  person_id BIGINT UNIQUE,
+  createdAt TIMESTAMP NOT NULL DEFAULT NOW(),
+  person_id INT,
   list_id INT,
   settings TEXT NOT NULL DEFAULT '{}',
-  FOREIGN KEY (list_id) REFERENCES list (id),
-  FOREIGN KEY (person_id) REFERENCES person (id),
+  FOREIGN KEY (list_id) REFERENCES list (id) ON DELETE CASCADE,
+  FOREIGN KEY (person_id) REFERENCES person (id) ON DELETE CASCADE,
   CONSTRAINT uniq_person_id_list_id UNIQUE(person_id, list_id)
 );
-
-=====================
-/*
-CREATE TABLE IF NOT EXISTS session(
-  id BIGINT NOT NULL DEFAULT public.id_generator(),
-  createdat TIMESTAMP NOT NULL DEFAULT NOW(),
-  person_id BIGINT,
-  start_time TIME NOT NULL,
-  admin BOOLEAN,
-  FOREIGN KEY (person_id) REFERENCES person (id)
-); */

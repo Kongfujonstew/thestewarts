@@ -4,16 +4,15 @@ export default {
   updateAddressById: ({ id, address }) => `UPDATE address SET ${makeSet(address)} WHERE id=${id} RETURNING *;`,
   associateAddressToPerson: ({ id, personId }) => `UPDATE person SET address_id=(SELECT id FROM address WHERE id=${id}) WHERE id=${personId} RETURNING *;`,
   deleteAddressById: ({ id }) => `DELETE FROM address WHERE id=${id} RETURNING *;`,
-  // getPersonById: ({ id }) => `SELECT id, email, firstname, lastname, phone, address_id, food, notes, preferences, settings FROM person WHERE id=${id};`,
-  getAllPeople: () => `SELECT p.id, p.email, p.firstname, p.lastname, p.phone, p.address_id, p.food, p.notes, p.preferences, p.settings, ad.address1, ad.address2, ad.city, ad.state, ad.zip, ad.country FROM person p JOIN address ad ON p.address_id=ad.id;`,
+  getAllPeople: () => `SELECT p.id, p.email, p.firstname, p.lastname, p.phone, p.address_id, p.food, p.notes, p.preferences, p.settings, ad.address1, ad.address2, ad.city, ad.state, ad.zip, ad.country FROM person p LEFT OUTER JOIN address ad ON p.address_id=ad.id;`,
   updatePersonById: ({ id, person }) => `UPDATE person SET ${makeSet(person)} WHERE id=${id} RETURNING *;`,
   deletePersonById: ({ id }) => `DELETE FROM person WHERE id=${id} RETURNING *;`,
-  createEvent: ({ location }) => `INSERT INTO event (${makeColumns(event)}) VALUES (${makeValues(event)}) RETURNING *;`,
-  getEventById: ({ id }) => `SELECT id, name, time, address_id, send_invitations, auto_invite, notes, settings FROM event WHERE id=${id};`,
+  createEvent: ({ event }) => `INSERT INTO event (${makeColumns(event)}) VALUES (${makeValues(event)}) RETURNING *;`,
+  getEventById: ({ id }) => `SELECT id, name, time, address_id, send_invitations, notes, settings FROM event WHERE id=${id};`,
   updateEventById: ({ id, event }) => `UPDATE event SET ${makeSet(event)} WHERE id=${id} RETURNING *;`,
   deleteEventById: ({ id }) => `DELETE FROM event WHERE id=${id} RETURNING *;`,
-  createAttendance: ({ attendance }) => `INSERT INTO attendance (${makeColumns(attendance)}) VALUES (${makeValues(attendance)});`,
-  deleteGroupById: ({ id }) => `DELETE FROM group WHERE id=${id} RETURNING *;`,
+  createAttendance: ({ attendance }) => `INSERT INTO attendance (${makeColumns(attendance)}) VALUES (${makeValues(attendance)}) RETURNING *;`,
+  deleteGroupById: ({ id }) => `DELETE FROM groupo WHERE id=${id} RETURNING *;`,
   createLocation: ({ location }) => `INSERT INTO location (${makeColumns(location)}) VALUES (${makeValues(location)}) RETURNING *;`,
   updateLocationById: ({ id, location }) => `UPDATE location SET ${makeSet(location)} WHERE id=${id} RETURNING *;`,
   deleteLocationById: ({ id }) => `DELETE FROM location WHERE id=${id} RETURNING *;`,
@@ -31,5 +30,5 @@ export default {
   getListById: ({ id }) => `SELECT id, name, settings FROM list WHERE id=${id};`,
   getAllLists: () => `SELECT id, name, settings FROM list;`,
   getListMembersByListId: ({ id }) => `SELECT p.id, p.email, p.firstname, p.lastname, p.phone, p.food, p.preferences, p.notes, p.settings FROM person p JOIN listmember m ON p.id=m.person_id WHERE m.list_id=${id};`,
-  addToListByPersonId: ({ id, personId }) => `INSERT INTO listMember (id, person_id) VALUES (${id}, ${personId}) RETURNING *;`
+  addToListByPersonId: ({ id, personId }) => `INSERT INTO listmember (id, person_id) VALUES (${id}, ${personId}) RETURNING *;`
 };

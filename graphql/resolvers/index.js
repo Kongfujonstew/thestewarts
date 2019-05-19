@@ -8,7 +8,6 @@ export default {
 
   //Sanity test
   hello: async() => {
-    // const [[a]] = await anyone.query(`SELECT * FROM songs`);
     return 'Hello!';
   },
 
@@ -48,17 +47,17 @@ export default {
   },
 
   getAllBlogs: async(...args) => {
-    const [ blogs ] = await anyone.getAllQuotes(...args);
+    const [ blogs ] = await anyone.getAllBlogs(...args);
     return blogs || 'forcegraphqlerror';
   },
 
   getSongById: async(...args) => {
-    const [[ song ]] = await anyone.getBlogById(...args);
+    const [[ song ]] = await anyone.getSongById(...args);
     return song || 'forcegraphqlerror';
   },
 
   getAllSongs: async(...args) => {
-    const [ songs ] = await anyone.getAllQuotes(...args);
+    const [ songs ] = await anyone.getAllSongs(...args);
     return songs || 'forcegraphqlerror';
   },
 
@@ -78,33 +77,34 @@ export default {
 
   associateAddressToPerson: async(...args) => {
     const [[ updatedPerson ]] = await person.associateAddressToPerson(...args);
-    return updatedPerson || 'forcegraphqlerror';
+    return updatedPerson.id || 'forcegraphqlerror';
   },
 
   //Duplicates ^
   // Address are not changed, they are switched
   createAndAssociateAddressToPerson: async(obj, context) => {
-    const [[ { id } ]] = await anyone.createAddress(object, context);
+    const [[ { id } ]] = await anyone.createAddress(obj, context);
     const assocObj = Object.assign({}, obj, { id });
-    const [[ address ]] = await person.associateAddressToPerson(assocObj, context);
-    return address || 'forcegraphqlerror';
+    const [[ updatedPerson ]] = await person.associateAddressToPerson(assocObj, context);
+    return updatedPerson.id || 'forcegraphqlerror';
   },
 
-  updateOrChangeAddressByPersonId: async(...args) => {
-    const [[ { id } ]] = await anyone.createAddress(object, context);
+  updateOrChangeAddressByPersonId: async(obj, context) => {
+    const [[ { id } ]] = await anyone.createAddress(obj, context);
     const assocObj = Object.assign({}, obj, { id });
-    const [[ address ]] = await person.associateAddressToPerson(...args);
-    return address || 'forcegraphqlerror';
+    const [[ updatedPerson ]] = await person.associateAddressToPerson(assocObj, context);
+    return updatedPerson.id || 'forcegraphqlerror';
   },
 
   getPersonById: async(...args) => {
     console.log('get person by id')
     const [[ personData ]] = await person.getPersonById(...args);
+    console.log('personData: ', personData)
     return personData || 'forcegraphqlerror';
   },
   // ie RSVP and other things
-  updateAttendanceToEventByPersonId: async(...args) => {
-    const [[ event ]] = await person.updateAttendanceToEventByPersonId(...args);
+  updateAttendance: async(...args) => {
+    const [[ event ]] = await person.updateAttendance(...args);
     return event || 'forcegraphqlerror';
   },
 
@@ -117,11 +117,6 @@ export default {
   getAttendanceByPersonId: async(...args) => {
     const [ attendances ] = await person.getAttendanceByPersonId(...args);
     return attendances || 'forcegraphqlerror';
-  },
-
-  getListMembershipByPersonId: async(...args) => {
-    const [ lists ] = await person.getListMembershipByPersonId(...args);
-    return lists || 'forcegraphqlerror';
   },
 
   loadPersonDataById: loadPersonDataById,
@@ -148,12 +143,13 @@ export default {
 
   addToGroupByPersonId: async(...args) => {
     const [[ group ]] = await person.addToGroupByPersonId(...args);
-    return { success: !!result };
+    return group.id || 'forcegraphqlerror';
   },
 
   removeFromGroupByPersonId: async(...args) => {
-    const [[ result ]] = await person.removeFromGroupByPersonId(...args);
-    return { success: !!result };
+    const [[ groupMember ]] = await person.removeFromGroupByPersonId(...args);
+    console.log('groupMember: ', groupMember)
+    return groupMember.groupo_id || 'forcegraphqlerror';
   },
 
   updateGroupById: async(...args) => {
@@ -162,7 +158,7 @@ export default {
   },
 
   getAllEvents: async(...args) => {
-    const [ events ] = await admin.getAllEvents(...args);
+    const [ events ] = await person.getAllEvents(...args);
     return events || 'forcegraphqlerror';
   },
 
@@ -171,18 +167,23 @@ export default {
     return quote || 'forcegraphqlerror';
   },
 
+  getQuotesByPersonId: async(...args) => {
+    const [ quotes ] = await person.getQuotesByPersonId(...args);
+    return quotes || 'forcegraphqlerror';
+  },
+
   getQuoteMembersByQuoteId: async(...args) => {
     const [ members ] = await person.getQuoteMembersByQuoteId(...args);
     return members || 'forcegraphqlerror';
   },
 
   addToQuoteByPersonId: async(...args) => {
-    const [[ quote ]] = person.addToQuoteByPersonId(...args);
-    return quote || 'forcegraphqlerror';
+    const [[ quoteMember ]] = await person.addToQuoteByPersonId(...args);
+    return quoteMember.person_id || 'forcegraphqlerror';
   },
 
   getListsByPersonId: async(...args) => {
-    const [ lists] = await me.getListsByPersonId(...args);
+    const [ lists] = await person.getListsByPersonId(...args);
     return lists || 'forcegraphqlerror';
   },
 
@@ -194,16 +195,10 @@ export default {
     return address || 'forcegraphqlerror';
   },
 
-  associateAddressToPerson: async(...args) => {
-    const [[ updatedPerson ]] = await admin.associateAddressToPerson(...args);
-    return updatedPerson || 'forcegraphqlerror';
-  },
-
   deleteAddressById: async(...args) => {
     const [[ address ]] = await admin.deleteAddressById(...args);
     return address || 'forcegraphqlerror';
   },
-
 
   getAllPeople: async(...args) => {
     const [ people ] = await admin.getAllPeople(...args);
@@ -216,7 +211,7 @@ export default {
   },
 
   deletePersonById: async(...args) => {
-    const [[ deletedPerson ]] = await admin.deleteAddressById(...args);
+    const [[ deletedPerson ]] = await admin.deletePersonById(...args);
     return deletedPerson || 'forcegraphqlerror';
   },
 
@@ -226,7 +221,9 @@ export default {
   },
 
   createEvent: async(...args) => {
-    const [ [ event ]] = await admin.createEvent(...args);
+    console.log('args[0].event: ', args[0].event)
+    const [[ event ]] = await admin.createEvent(...args);
+    console.log('event: ', event)
     return event || 'forcegraphqlerror';
   },
 
@@ -310,7 +307,7 @@ export default {
     return list || 'forcegraphqlerror';
   },
 
-  getAllLists: async() => {
+  getAllLists: async(...args) => {
     const [ lists ] = await admin.getAllLists(...args);
     return lists || 'forcegraphqlerror';
   },
@@ -332,7 +329,7 @@ export default {
 
   addToListByPersonId: async(...args) => {
     const [[ listMember ]] = await admin.addToListByPersonId(...args);
-    return { success: !!result };
+    return listMember.person_id || 'forcegraphqlerror';
   },
 
   getListMembersByListId: async(...args) => {
