@@ -24,8 +24,8 @@ router.use('/graphql', ...graphqlMW, graphql);
 //the private app (more pages coming), locked - person and admin role only
 router.get('/private', ...privateMW, renderPrivate);
 
-//admin app, locked - admin only
-router.get('/admin(/email)?$', ...adminMW, renderAdmin);
+//admin app, locked to admin only
+router.get('/admin(/email)?(/blog)?$', ...adminMW, renderAdmin);
 
 //public app - home or login?
 router.get(/\/(login)?/, ...publicMW, renderPublic);

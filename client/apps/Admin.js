@@ -1,50 +1,26 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import AdminMain from '../pages/AdminMain';
-import AdminEmail from '../pages/AdminEmail';
 import AppMenu from '../components/AppMenu';
-import { loadAdminData } from '../queries';
-import { getListMembersByListId } from '../queries';
+import { SnackbarProvider, withSnackbar } from 'notistack';
+import { adminPages } from '../pages';
 
-class Admin extends React.Component {
+class App extends React.Component {
   componentDidMount() {
-    console.log('Admin');
-    this.loadData();
-  }
-
-  loadData = async() => {
-    // const person = {
-    //   preferences: { language: 'EN' }
-    // }
-    // (new Date('10-04-2020').getTime()/10000).toString()
-    const list = {
-      name: 'listtwoagain',
-      settings: {
-        settings1: 'dontplayitnow'
-      }
-    }
-
-    const data = await getListMembersByListId(5);
-    // const location = {
-    //   address_id: 5,
-    //   settings: {
-    //     settings1: 'this string could be coordinates'
-    //   }
-    // }
-    // const data = await updateLocationById(2, location);
-    window.data = data;
-    console.log('data: ', data);
+    console.log('this.props: ', this.props)
+    console.log('admin app mount')
+    // this.props.enqueueSnackbar('This is a warning message!', { variant: 'warning' })
   }
 
   render() {
     return (
-      <React.Fragment>
-        <AppMenu />
-        <Route exact path="/admin/email" component={AdminEmail}/>
-        <Route exact path="/admin" component={AdminMain} />
-      </React.Fragment>
+      <AppMenu pages={adminPages}>
+        {adminPages.map(page => <Route key={page.path} exact path={page.path} render={() => <page.Component {...this.props} />} />)}
+      </AppMenu>
     )
   }
-}
+};
 
-export default Admin;
+const MyApp = withSnackbar(App);
+const IntegrationNotistack = props => <SnackbarProvider maxSnack={3}><MyApp {...props} /></SnackbarProvider>
+
+export default IntegrationNotistack;

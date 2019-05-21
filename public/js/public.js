@@ -158,6 +158,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
+/***/ "./client/styles/mui/overrides.js":
+/*!****************************************!*\
+  !*** ./client/styles/mui/overrides.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = {\n  MuiIconButton: {\n    text: {\n      color: 'white'\n    }\n  }\n  // MuiSvgIcon: {\n  //   fontSize: '32px'\n  // }\n};\n\n//# sourceURL=webpack:///./client/styles/mui/overrides.js?");
+
+/***/ }),
+
 /***/ "./client/styles/mui/theme.js":
 /*!************************************!*\
   !*** ./client/styles/mui/theme.js ***!
@@ -166,7 +178,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _styles = __webpack_require__(/*! @material-ui/core/styles */ \"./node_modules/@material-ui/core/styles/index.js\");\n\nvar _green = __webpack_require__(/*! @material-ui/core/colors/green */ \"./node_modules/@material-ui/core/colors/green.js\");\n\nvar _green2 = _interopRequireDefault(_green);\n\nvar _red = __webpack_require__(/*! @material-ui/core/colors/red */ \"./node_modules/@material-ui/core/colors/red.js\");\n\nvar _red2 = _interopRequireDefault(_red);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = (0, _styles.createMuiTheme)({\n  palette: {\n    primary: _green2.default,\n    accent: _red2.default,\n    type: 'light'\n  }\n});\n\n//# sourceURL=webpack:///./client/styles/mui/theme.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _styles = __webpack_require__(/*! @material-ui/core/styles */ \"./node_modules/@material-ui/core/styles/index.js\");\n\nvar _green = __webpack_require__(/*! @material-ui/core/colors/green */ \"./node_modules/@material-ui/core/colors/green.js\");\n\nvar _green2 = _interopRequireDefault(_green);\n\nvar _red = __webpack_require__(/*! @material-ui/core/colors/red */ \"./node_modules/@material-ui/core/colors/red.js\");\n\nvar _red2 = _interopRequireDefault(_red);\n\nvar _overrides = __webpack_require__(/*! ./overrides */ \"./client/styles/mui/overrides.js\");\n\nvar _overrides2 = _interopRequireDefault(_overrides);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = (0, _styles.createMuiTheme)({\n  overrides: _overrides2.default,\n  palette: {\n    primary: _green2.default,\n    accent: _red2.default,\n    type: 'light'\n  }\n});\n\n//# sourceURL=webpack:///./client/styles/mui/theme.js?");
 
 /***/ }),
 
@@ -2910,7 +2922,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
