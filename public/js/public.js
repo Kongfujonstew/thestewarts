@@ -166,7 +166,19 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = {\n  MuiIconButton: {\n    text: {\n      color: 'white'\n    }\n  }\n  // MuiSvgIcon: {\n  //   fontSize: '32px'\n  // }\n};\n\n//# sourceURL=webpack:///./client/styles/mui/overrides.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = {};\n\n//# sourceURL=webpack:///./client/styles/mui/overrides.js?");
+
+/***/ }),
+
+/***/ "./client/styles/mui/palette.js":
+/*!**************************************!*\
+  !*** ./client/styles/mui/palette.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _blue = __webpack_require__(/*! @material-ui/core/colors/blue */ \"./node_modules/@material-ui/core/colors/blue.js\");\n\nvar _blue2 = _interopRequireDefault(_blue);\n\nvar _grey = __webpack_require__(/*! @material-ui/core/colors/grey */ \"./node_modules/@material-ui/core/colors/grey.js\");\n\nvar _grey2 = _interopRequireDefault(_grey);\n\nvar _bluegrey = __webpack_require__(/*! @material-ui/core/colors/bluegrey */ \"./node_modules/@material-ui/core/colors/bluegrey.js\");\n\nvar _bluegrey2 = _interopRequireDefault(_bluegrey);\n\nvar _brown = __webpack_require__(/*! @material-ui/core/colors/brown */ \"./node_modules/@material-ui/core/colors/brown.js\");\n\nvar _brown2 = _interopRequireDefault(_brown);\n\nvar _red = __webpack_require__(/*! @material-ui/core/colors/red */ \"./node_modules/@material-ui/core/colors/red.js\");\n\nvar _red2 = _interopRequireDefault(_red);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = {\n  primary: _extends({}, _grey2.default, {\n    main: '#726442', //matches gradient on AppMenu\n    dark: _grey2.default[800],\n    contrastText: '#fff'\n  }),\n  secondary: _blue2.default,\n  accent: _red2.default,\n  background: {\n    default: '#f9f9f9'\n    // type: 'light'\n  } };\n\n//# sourceURL=webpack:///./client/styles/mui/palette.js?");
 
 /***/ }),
 
@@ -178,7 +190,19 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _styles = __webpack_require__(/*! @material-ui/core/styles */ \"./node_modules/@material-ui/core/styles/index.js\");\n\nvar _green = __webpack_require__(/*! @material-ui/core/colors/green */ \"./node_modules/@material-ui/core/colors/green.js\");\n\nvar _green2 = _interopRequireDefault(_green);\n\nvar _red = __webpack_require__(/*! @material-ui/core/colors/red */ \"./node_modules/@material-ui/core/colors/red.js\");\n\nvar _red2 = _interopRequireDefault(_red);\n\nvar _overrides = __webpack_require__(/*! ./overrides */ \"./client/styles/mui/overrides.js\");\n\nvar _overrides2 = _interopRequireDefault(_overrides);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = (0, _styles.createMuiTheme)({\n  overrides: _overrides2.default,\n  palette: {\n    primary: _green2.default,\n    accent: _red2.default,\n    type: 'light'\n  }\n});\n\n//# sourceURL=webpack:///./client/styles/mui/theme.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _styles = __webpack_require__(/*! @material-ui/core/styles */ \"./node_modules/@material-ui/core/styles/index.js\");\n\nvar _typography = __webpack_require__(/*! ./typography */ \"./client/styles/mui/typography.js\");\n\nvar _typography2 = _interopRequireDefault(_typography);\n\nvar _palette = __webpack_require__(/*! ./palette */ \"./client/styles/mui/palette.js\");\n\nvar _palette2 = _interopRequireDefault(_palette);\n\nvar _overrides = __webpack_require__(/*! ./overrides */ \"./client/styles/mui/overrides.js\");\n\nvar _overrides2 = _interopRequireDefault(_overrides);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = (0, _styles.createMuiTheme)(_extends({\n  typography: _typography2.default\n}, _overrides2.default, {\n  palette: _palette2.default\n}));\n\n//# sourceURL=webpack:///./client/styles/mui/theme.js?");
+
+/***/ }),
+
+/***/ "./client/styles/mui/typography.js":
+/*!*****************************************!*\
+  !*** ./client/styles/mui/typography.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = {\n  useNextVariants: true,\n  // Use the system font instead of the default Roboto font.\n  fontFamily: ['-apple-system', 'BlinkMacSystemFont', '\"Segoe UI\"', 'Roboto', '\"Helvetica Neue\"', 'Arial', 'sans-serif', '\"Apple Color Emoji\"', '\"Segoe UI Emoji\"', '\"Segoe UI Symbol\"'].join(',')\n};\n\n//# sourceURL=webpack:///./client/styles/mui/typography.js?");
 
 /***/ }),
 
@@ -1243,6 +1267,42 @@ eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/he
 
 /***/ }),
 
+/***/ "./node_modules/@material-ui/core/colors/blue.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@material-ui/core/colors/blue.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar blue = {\n  50: '#e3f2fd',\n  100: '#bbdefb',\n  200: '#90caf9',\n  300: '#64b5f6',\n  400: '#42a5f5',\n  500: '#2196f3',\n  600: '#1e88e5',\n  700: '#1976d2',\n  800: '#1565c0',\n  900: '#0d47a1',\n  A100: '#82b1ff',\n  A200: '#448aff',\n  A400: '#2979ff',\n  A700: '#2962ff'\n};\nvar _default = blue;\nexports.default = _default;\n\n//# sourceURL=webpack:///./node_modules/@material-ui/core/colors/blue.js?");
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/colors/bluegrey.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@material-ui/core/colors/bluegrey.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar blueGrey = {\n  50: '#eceff1',\n  100: '#cfd8dc',\n  200: '#b0bec5',\n  300: '#90a4ae',\n  400: '#78909c',\n  500: '#607d8b',\n  600: '#546e7a',\n  700: '#455a64',\n  800: '#37474f',\n  900: '#263238',\n  A100: '#cfd8dc',\n  A200: '#b0bec5',\n  A400: '#78909c',\n  A700: '#455a64'\n};\nvar _default = blueGrey;\nexports.default = _default;\n\n//# sourceURL=webpack:///./node_modules/@material-ui/core/colors/bluegrey.js?");
+
+/***/ }),
+
+/***/ "./node_modules/@material-ui/core/colors/brown.js":
+/*!********************************************************!*\
+  !*** ./node_modules/@material-ui/core/colors/brown.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar brown = {\n  50: '#efebe9',\n  100: '#d7ccc8',\n  200: '#bcaaa4',\n  300: '#a1887f',\n  400: '#8d6e63',\n  500: '#795548',\n  600: '#6d4c41',\n  700: '#5d4037',\n  800: '#4e342e',\n  900: '#3e2723',\n  A100: '#d7ccc8',\n  A200: '#bcaaa4',\n  A400: '#8d6e63',\n  A700: '#5d4037'\n};\nvar _default = brown;\nexports.default = _default;\n\n//# sourceURL=webpack:///./node_modules/@material-ui/core/colors/brown.js?");
+
+/***/ }),
+
 /***/ "./node_modules/@material-ui/core/colors/common.js":
 /*!*********************************************************!*\
   !*** ./node_modules/@material-ui/core/colors/common.js ***!
@@ -1252,18 +1312,6 @@ eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/he
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar common = {\n  black: '#000',\n  white: '#fff'\n};\nvar _default = common;\nexports.default = _default;\n\n//# sourceURL=webpack:///./node_modules/@material-ui/core/colors/common.js?");
-
-/***/ }),
-
-/***/ "./node_modules/@material-ui/core/colors/green.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@material-ui/core/colors/green.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\nvar green = {\n  50: '#e8f5e9',\n  100: '#c8e6c9',\n  200: '#a5d6a7',\n  300: '#81c784',\n  400: '#66bb6a',\n  500: '#4caf50',\n  600: '#43a047',\n  700: '#388e3c',\n  800: '#2e7d32',\n  900: '#1b5e20',\n  A100: '#b9f6ca',\n  A200: '#69f0ae',\n  A400: '#00e676',\n  A700: '#00c853'\n};\nvar _default = green;\nexports.default = _default;\n\n//# sourceURL=webpack:///./node_modules/@material-ui/core/colors/green.js?");
 
 /***/ }),
 

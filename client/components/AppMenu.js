@@ -1,6 +1,7 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import AppBar from '@material-ui/core/AppBar';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Button from '@material-ui/core/Button';
@@ -31,18 +32,34 @@ const styles = theme => ({
       width: drawerWidth,
       flexShrink: 0,
     },
+    transition: theme.transitions.create(['width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen
+    })
+  },
+  appBarShift: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen
+    }),
   },
   appBar: {
     marginLeft: drawerWidth,
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
     },
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    })
   },
   menuButton: {
     marginRight: 20,
-    [theme.breakpoints.up('sm')]: {
-      display: 'none',
-    },
+    // [theme.breakpoints.up('sm')]: {
+    //   display: 'none',
+    // },
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
@@ -52,42 +69,107 @@ const styles = theme => ({
     flexGrow: 1,
     padding: theme.spacing.unit * 3,
   },
+  gradient: {
+    background: 'linear-gradient(135deg, #726442, #564e3b)'
+  },
+  toolbarStyles: {
+    display: 'flex',
+    backgroundColor: 'black',
+    width: '100vw'
+  },
+  makeMeGrow: {
+    flex: 1
+  },
   svgIcon: {
     color: 'white',
-    fontSize: '32px'
-  }
+    fontSize: '32px',
+    marginLeft: '10px'
+  },
+  video: {
+    position: 'absolute',
+    zIndex: 2000,
+    top: '60px',
+    // filter: 'invert(1)',
+    width: 'calc(100% - 1px)',
+    width: '100%',
+    maxWidth: '275px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    left: 0,
+    right: 0
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
+  },
 });
 
 class ResponsiveDrawer extends React.Component {
   state = {
     mobileOpen: false,
+    wideOpen: false
   };
 
-  handleDrawerToggle = () => {
+  componentDidMount = () => {
+    document.body.onresize = () => {
+      const width = document.body.clientWidth;
+      if (this.state.wideOpen && width < 600) {
+        this.setState({ wideOpen: false });
+      } else if (this.state.mobileOpen && width >= 600) {
+        this.setState({ mobileOpen: false });
+      }
+    };
+  }
+
+  componentWillUnMount = () => {
+    document.body.onresize = null;
+  }
+
+  handleMobileToggle = () => {
+    console.log('click hDT')
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
+  };
+
+  handleWideToggle = () => {
+    this.setState({ wideOpen: !this.state.wideOpen });
   };
 
   handleLogout = () => {
     logout();
   }
 
+  renderMenuButton = onClick => (
+    <IconButton
+      color="inherit"
+      aria-label="Open drawer"
+      onClick={onClick}
+      className={this.props.classes.menuButton}
+    >
+      <MenuIcon className={this.props.classes.svgIcon}/>
+    </IconButton>
+  )
+
   // handleClick only closes drawer at xs width
-  renderDrawerItems = handleClick => (
-    <div>
-      <div className={this.props.classes.toolbar + ' background-color'}>
+  renderDrawerItems = onClick => (
+    <div style={{ position: 'relative' }}>
+      <div className={this.props.classes.toolbar + ' ' + this.props.classes.toolbarStyles}>
         <Hidden smUp implementation="css">
-          <IconButton onClick={this.handleDrawerToggle}>
+          <IconButton style={{ marginRight: '-64px' }} onClick={this.handleMobileToggle}>
             <ArrowBackIcon className={this.props.classes.svgIcon} />
           </IconButton>
         </Hidden>
+        <Typography variant="h5" style={{margin: 'auto', color: 'white' }} gutterBottom>The Stewarts</Typography>
       </div>
-      <Divider />
-      <List>
+      <video loop autoPlay muted className={ this.props.classes.video }  src="/public/videos/earth.mp4" />
+      <List style={{ paddingTop: '160px' }} >
         {this.props.pages.map((page, index) => (
           <Link key={page.text} to={page.path}>
-            <ListItem button onClick={handleClick}>
-              <ListItemIcon>{<page.Icon />}</ListItemIcon>
-              <ListItemText primary={page.text} />
+            <ListItem button onClick={onClick}>
+              <ListItemIcon style={{ color: 'white', margin: '0 4px 0 4px' }}>{<page.Icon />}</ListItemIcon>
+              <ListItemText style={{ color: 'white', margin: '0 4px 0 4px' }} primary={page.text} />
             </ListItem>
           </Link>
         ))}
@@ -97,51 +179,66 @@ class ResponsiveDrawer extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-
+    console.log('this.state: ', this.state)
     return (
-      <div className={classes.root}>
-        <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar >
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerToggle}
-              className={classes.menuButton}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography style={{ flex: 1 }} variant="h6" color="inherit" noWrap>
+      <div id="menu" className={classes.root}>
+        <AppBar
+          position="fixed"
+          className={classNames(classes.appBar, {
+            [classes.appBarShift]: this.state.wideOpen
+          })}
+          style={this.state.wideOpen ? {} : { width: '100%', marginLeft: 0 }}
+        >
+          <Toolbar className={classes.gradient}>
+            <Hidden smUp implementation="css">
+              { this.renderMenuButton(this.handleMobileToggle)}
+            </Hidden>
+            <Hidden xsDown implementation="css">
+              { !this.state.wideOpen && this.renderMenuButton(this.handleWideToggle)}
+            </Hidden>
+
+            <Typography className={classes.makeMeGrow} variant="h6" color="inherit" noWrap>
               Title
             </Typography>
-            <Button color="secondary" onClick={this.handleLogout}>
+            <Button style={{ color: 'white' }} onClick={this.handleLogout}>
               Log out
             </Button>
           </Toolbar>
         </AppBar>
-        <nav className={classes.drawer}>
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-          <Hidden smUp implementation="css">
-            <Drawer
-              container={this.props.container}
-              variant="temporary"
-              anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-              open={this.state.mobileOpen}
-              onClose={this.handleDrawerToggle}
-              classes={{ paper: classes.drawerPaper }}
-            >
-              {this.renderDrawerItems(() => this.handleDrawerToggle())}
-            </Drawer>
-          </Hidden>
-          <Hidden xsDown implementation="css">
-            <Drawer
-              classes={{ paper: classes.drawerPaper }}
-              variant="permanent"
-              open
-            >
-              {this.renderDrawerItems(() => {})}
-            </Drawer>
-          </Hidden>
-        </nav>
+          <nav style={{ width: this.state.wideOpen ? '240px' : 0 }} className={classes.drawer}>
+            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
+            <Hidden smUp implementation="css">
+              <Drawer
+                container={this.props.container}
+                variant="temporary"
+                anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                open={this.state.mobileOpen}
+                onClose={this.handleMobileToggle}
+                style={{ position: 'relative' }}
+                classes={{ paper: classes.drawerPaperSM }}
+              >
+                {this.renderDrawerItems(() => this.handleMobileToggle())}
+              </Drawer>
+            </Hidden>
+            <Hidden xsDown implementation="css">
+              { this.state.wideOpen ? <Drawer
+                  className={classes.drawer}
+                  classes={{ paper: classes.drawerPaper }}
+                  variant="persistent"
+                  open={this.state.wideOpen}
+                >
+                  <div className={classes.drawerHeader}>
+                    <IconButton onClick={this.handleWideToggle}>
+                      {theme.direction === 'ltr' ? <ArrowBackIcon /> : <ArrowBackIcon />}
+                    </IconButton>
+                  </div>
+                  {this.renderDrawerItems(() => {})}
+                </Drawer> :
+                null
+              }
+            </Hidden>
+          </nav>
+
         <main className={classes.content}>
           <div className={classes.toolbar} />
           {this.props.children}

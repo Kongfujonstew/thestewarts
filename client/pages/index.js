@@ -30,6 +30,4 @@ const adminBlogPage = {
   Icon: WeekendIcon
 };
 
-
-
 export const adminPages = [ adminMainPage, adminEmailPage, adminBlogPage ];

@@ -9,10 +9,9 @@ export default (html, data, css, app) => `
       <link rel="shortcut icon" type="image/x-icon" href="/public/images/favicon.ico" />
 
 
-      
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
 
-
+      <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker|Sacramento|Shadows+Into+Light|Stylish&display=swap" rel="stylesheet">
 
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
