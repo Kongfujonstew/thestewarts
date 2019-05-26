@@ -9,15 +9,14 @@ a {
 //Watch out!!
 
 #menu, .MuiModal-root-162 {
-  div[class^="MuiPaper-root"], .MuiPaper-root-24 {
-    background-color: black !important;
-    span {
-      color: white;
-    }
-    ul {
-      margin: 0 8px;
-    }
-  }
+  // div[class^="MuiPaper-root"], .MuiPaper-root-24 {
+  //   span {
+  //     color: white;
+  //   }
+  //   ul {
+  //     margin: 0 8px;
+  //   }
+  // }
 
   a > div {
     border-bottom: 1px solid #726442;
@@ -43,7 +42,6 @@ a {
       width: 100% !important;
     }
   }
-
 
   //left and right column box shadows
   nav div[class*="ResponsiveDrawer-toolbar"] {

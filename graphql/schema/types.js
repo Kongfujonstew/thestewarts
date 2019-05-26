@@ -133,6 +133,7 @@ export default `
     lists: [List]
   },
   type AdminData {
+    addresses: [Address],
     people: [Person]!,
     events: [Event],
     groups: [Groupo],

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class Main extends React.Component {
+class Landing extends React.Component {
   componentDidMount() {
     console.log('cdm Hello')
   }
@@ -9,11 +9,11 @@ class Main extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Main</h1>
+        <h1>Landing Page</h1>
 
       </React.Fragment>
     )
   }
 }
 
-export default Main;
+export default Landing;

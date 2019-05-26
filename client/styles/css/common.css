@@ -1,13 +1,6 @@
 a {
   text-decoration: none; }
 
-#menu div[class^="MuiPaper-root"], #menu .MuiPaper-root-24, .MuiModal-root-162 div[class^="MuiPaper-root"], .MuiModal-root-162 .MuiPaper-root-24 {
-  background-color: black !important; }
-  #menu div[class^="MuiPaper-root"] span, #menu .MuiPaper-root-24 span, .MuiModal-root-162 div[class^="MuiPaper-root"] span, .MuiModal-root-162 .MuiPaper-root-24 span {
-    color: white; }
-  #menu div[class^="MuiPaper-root"] ul, #menu .MuiPaper-root-24 ul, .MuiModal-root-162 div[class^="MuiPaper-root"] ul, .MuiModal-root-162 .MuiPaper-root-24 ul {
-    margin: 0 8px; }
-
 #menu a > div, .MuiModal-root-162 a > div {
   border-bottom: 1px solid #726442; }
 

@@ -1,10 +1,11 @@
 import { graphql } from '../api';
-import { makeObjString } from '../helpers/queriestring';
+import { makeObjString } from './helpers/queriestring';
 
 // Note: Generally preferences and settings are not included
 
 // Queries
 export const getAddressById = id => graphql(`{ getAddressById(id:${id}) { id address1 address2 city state zip country } }`);
+export const getAllAddresses = () => graphql(`{ getAllAddresses { id address1 address2 city state zip country } }`);
 export const getAddressByPersonId = id => graphql(`{ getAddressByPersonId(id:${id}) { id address1 address2 city state zip country } }`);
 export const getPersonById = id => graphql(`{ getPersonById(id:${id}) { id firstname lastname email phone address_id food notes preferences { language } } }`);
 export const getAllPeople = () => graphql(`{ getAllPeople { id firstname lastname email phone address_id food notes preferences { language } } }`);
@@ -72,4 +73,4 @@ export const deleteListById = id => graphql(`mutation { deleteListById(id: ${id}
 export const addToListByPersonId = (id, personId) => graphql(`mutation { addToListByPersonId(id: ${id}, personId: ${personId}) }`);
 export const loadPublicData = () => graphql(`{ loadPublicData { locations { id name address_id notes } quotes { id text author notes } blogs { id date title text notes } songs { id artist title url notes html } } }`);
 export const loadPersonDataById = id => graphql(`{ loadPersonDataById(id: ${id}) { address { id address1 address2 city state zip country } person { id firstname lastname email phone address_id food notes preferences { language } } events { id name time address1 address2 city state zip country send_invitations notes } groups { id parent_id name notes } quotes { id text author notes } songs { id artist title url notes html } lists { id name } } }`);
-export const loadAdminData = () => graphql(`{ loadAdminData { people { id firstname lastname email phone address_id food notes preferences { language } } events { id name time address1 address2 city state zip country send_invitations notes } groups { id parent_id name notes members { id firstname lastname email phone address_id food notes preferences { language } } } locations { id name address_id notes } quotes { id text author members { id firstname lastname email phone address_id food notes preferences { language } } notes } blogs { id date title text notes } songs { id artist title url notes html } lists { id name members { id firstname lastname email phone address_id food notes preferences { language } } } } }`);
+export const loadAdminData = () => graphql(`{ loadAdminData { addresses { id address1 address2 city state zip country } people { id firstname lastname email phone address_id food notes preferences { language } } events { id name time address1 address2 city state zip country send_invitations notes } groups { id parent_id name notes members { id firstname lastname email phone address_id food notes preferences { language } } } locations { id name address_id notes } quotes { id text author members { id firstname lastname email phone address_id food notes preferences { language } } notes } blogs { id date title text notes } songs { id artist title url notes html } lists { id name members { id firstname lastname email phone address_id food notes preferences { language } } } } }`);

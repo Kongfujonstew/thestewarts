@@ -1,6 +1,7 @@
 export default `
   type Query {
     hello: String,
+    getAllAddresses: [Address],
     getAddressById(id:Int!): Address,
     getAddressByPersonId(id:Int!): Address,
     getPersonById(id:Int!): Person,

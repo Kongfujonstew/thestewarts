@@ -166,10 +166,10 @@ class ResponsiveDrawer extends React.Component {
       <video loop autoPlay muted className={ this.props.classes.video }  src="/public/videos/earth.mp4" />
       <List style={{ paddingTop: '160px' }} >
         {this.props.pages.map((page, index) => (
-          <Link key={page.text} to={page.path}>
+          <Link key={page.name} to={page.path}>
             <ListItem button onClick={onClick}>
-              <ListItemIcon style={{ color: 'white', margin: '0 4px 0 4px' }}>{<page.Icon />}</ListItemIcon>
-              <ListItemText style={{ color: 'white', margin: '0 4px 0 4px' }} primary={page.text} />
+              <ListItemIcon style={{ color: 'white', margin: '0 4px 0 4px' }}>{<page.icon />}</ListItemIcon>
+              <ListItemText style={{ color: 'white', margin: '0 4px 0 4px' }} primary={page.name} />
             </ListItem>
           </Link>
         ))}
@@ -179,7 +179,12 @@ class ResponsiveDrawer extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    console.log('this.state: ', this.state)
+    const dontShowAppMenu = this.props.pages.some(page => !page.name);
+
+    if (dontShowAppMenu) {
+      return this.props.children;
+    };
+
     return (
       <div id="menu" className={classes.root}>
         <AppBar

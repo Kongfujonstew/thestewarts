@@ -190,13 +190,22 @@ export default {
   //admin
 
   //TODO use me as model for success check
+
+  getAllAddresses: async(...args) => {
+    const [ addresses ] = await admin.getAllAddresses(...args);
+    return addresses || 'forcegraphqlerror';
+  },
+
   updateAddressById: async(...args) => {
     const [[ address ]] = await admin.updateAddressById(...args);
     return address || 'forcegraphqlerror';
   },
 
   deleteAddressById: async(...args) => {
+    console.log('deleteAddressById')
+    // const [[ address ]] = await admin.deleteAddressById(...args);
     const [[ address ]] = await admin.deleteAddressById(...args);
+    console.log('deleteAddressById address: ', address)
     return address || 'forcegraphqlerror';
   },
 

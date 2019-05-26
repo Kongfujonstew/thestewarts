@@ -5,15 +5,11 @@ import JssProvider from 'react-jss/lib/JssProvider';
 import { MuiThemeProvider, createGenerateClassName } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { StaticRouter as Router } from 'react-router-dom';
-import Public from '../../client/apps/Public';
-import Private from '../../client/apps/Private';
-import Admin from '../../client/apps/Admin';
+import { Public } from '../../client/apps';
+import { Private } from '../../client/apps';
+import { Admin } from '../../client/apps';
 import makeHTML from '../../client/html';
 import theme from '../styles/mui/theme';
-
-//TODO replace with req.data
-// const fakeData = { name: 'JOE'};
-// const data = fakeData;
 
 export const renderComponent = (C, app) => {
   return (req, res) => {

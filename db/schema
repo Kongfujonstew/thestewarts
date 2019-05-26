@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS person(
   notes VARCHAR(5000),
   preferences JSON NOT NULL DEFAULT '{"language": "EN"}',
   settings JSON NOT NULL DEFAULT '{}',
-  FOREIGN KEY (address_id) REFERENCES address (id)
+  FOREIGN KEY (address_id) REFERENCES address (id) ON DELETE CASCADE
 );
 
 ALTER SEQUENCE person_id_seq RESTART 1000;
