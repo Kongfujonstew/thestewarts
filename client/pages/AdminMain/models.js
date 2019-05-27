@@ -2,6 +2,15 @@ import {
   createAddress,
   updateAddressById,
   deleteAddressById,
+  createPerson,
+  updatePersonById,
+  deletePersonById,
+  createGroup,
+  updateGroupById,
+  deleteGroupById,
+  createEvent,
+  updateEventById,
+  deleteEventById,
   createList,
   updateListById,
   deleteListById,
@@ -18,15 +27,40 @@ import {
 
 const addresses = {
   name: 'addresses',
-  fields: ['address1', 'address2', 'city', 'state', 'zip', 'country'],
+  fields: [ 'address1', 'address2', 'city', 'state', 'zip', 'country', 'settings' ],
   create: createAddress,
   updateById: updateAddressById,
   deleteById: deleteAddressById
 };
 
+const people = {
+  name: 'people',
+  singular: 'person',
+  fields: [ 'firstname', 'lastname', 'email', 'phone', 'address_id', 'food', 'notes', 'preferences' ],
+  create: createPerson,
+  updateById: updatePersonById,
+  deleteById: deletePersonById
+};
+
+const groups = {
+  name: 'groups',
+  fields: [ 'name', 'settings' ],
+  create: createGroup,
+  updateById: updateGroupById,
+  deleteById: deleteGroupById
+};
+
+const events = {
+  name: 'events',
+  fields: [ 'name', 'time', 'address_id', 'send_invitations', 'notes', 'settings' ],
+  create: createEvent,
+  updateById: updateEventById,
+  deleteById: deleteEventById
+};
+
 const lists = {
   name: 'lists',
-  fields: ['name'],
+  fields: [ 'name', 'settings' ],
   create: createList,
   updateById: updateListById,
   deleteById: deleteListById
@@ -34,7 +68,7 @@ const lists = {
 
 const locations = {
   name: 'locations',
-  fields: ['name', 'address_id'],
+  fields: ['name', 'address_id', 'notes', 'settings'],
   create: createLocation,
   updateById: updateLocationById,
   deleteById: deleteLocationById
@@ -42,7 +76,8 @@ const locations = {
 
 const quotes =  {
   name: 'quotes',
-  fields: ['author', 'text'],
+  singular: 'quote',
+  fields: ['author', 'text', 'settings'],
   create: createQuote,
   updateById: updateQuoteById,
   deleteById: deleteQuoteById
@@ -50,10 +85,10 @@ const quotes =  {
 
 const songs = {
   name: 'songs',
-  fields: ['artist', 'html', 'title', 'url'],
+  fields: ['artist', 'html', 'title', 'url', 'settings'],
   create: createSong,
   updateById: updateSongById,
   deleteById: deleteSongById
 };
 
-export const simple = [ lists, locations, quotes, songs, addresses ];
+export const simple = [ addresses, people, groups, events, locations, lists, quotes, songs ];

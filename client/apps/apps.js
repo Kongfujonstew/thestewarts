@@ -48,7 +48,7 @@ export const adminApp = {
     instance.componentDidMount = () => { console.log('Admin cdm') };
     instance.reload = async() => {
       const data = await loadAdminData();
-      data && console.log('setting state via spread: ', data)
+      // BAD MUST USE ORIGINAL here
       data && instance.setState({...data});
     };
 

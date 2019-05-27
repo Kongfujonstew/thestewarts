@@ -54,11 +54,11 @@ class SimpleModel extends React.Component {
     } else {
       reload();
       this.setState({ ...this.emptyState });
+      enqueueSnackbar('create success!', { variant: 'success' });
     }
   }
 
   handleKeyPress = e => {
-    console.log('handle key press')
     if (e.key === 'Enter') this.handleCreate();
   }
 
@@ -101,17 +101,21 @@ class SimpleModel extends React.Component {
     }
   }
 
-  renderCreateField = field => (
-    <TextField
-      key={field}
-      style={{ margin: '0 4px 4px 0' }}
-      variant="outlined"
-      label={field.charAt(0).toUpperCase() + field.slice(1)}
-      value={typeof this.state[field] === 'object' ? JSON.stringify(this.state[field]) : this.state[field]}
-      onChange={this.handleFieldInput(field)}
-      onKeyPress={this.handleKeyPress}
-    />
-  )
+  // Used for create and reused in update modal
+  renderField = (field, dontShowCreateFieldValues) => {
+    const value = typeof this.state[field] === 'object' ? JSON.stringify(this.state[field]) : this.state[field];
+    return (
+      <TextField
+        key={field}
+        style={{ margin: '0 4px 4px 0' }}
+        variant="outlined"
+        label={field.charAt(0).toUpperCase() + field.slice(1)}
+        value={dontShowCreateFieldValues ? '' : value}
+        onChange={this.handleFieldInput(field)}
+        onKeyPress={this.handleKeyPress}
+      />
+    );
+  }
 
   renderExistingItem = item => {
     const { fields } = this.props.model;
@@ -123,7 +127,7 @@ class SimpleModel extends React.Component {
         <Button style={buttonStyles('blue')} onClick={this.handleClickOpenUpdate(item)}>{'Update'}</Button>
         <Button style={buttonStyles('red')} onClick={this.handleClickOpenDelete(item)}>{'Delete'}</Button>
       </div>
-    )
+    );
   }
 
   deleteDialog = item => {
@@ -150,7 +154,7 @@ class SimpleModel extends React.Component {
     return (
       <Dialog open={isOpen} style={{ padding: '16px' }}>
         <DialogTitle id="simple-dialog-title">Update {this.removeSs(name)} id: {item.id}</DialogTitle>
-        { fields.map(field => this.renderCreateField(field))}
+        { fields.map(field => this.renderField(field))}
         <Button style={buttonStyles('red')} onClick={cancel}>Cancel</Button>
         <Button style={buttonStyles('red')} onClick={this.handleUpdate(item.id)}>Update</Button>
       </Dialog>
@@ -158,23 +162,22 @@ class SimpleModel extends React.Component {
   }
 
   render() {
-    const { model: { fields, name }, items } = this.props;
+    const { model: { fields, name, singular }, items } = this.props;
     const { itemToUpdate, itemToDelete } = this.state;
-    // console.log('rendering ', name);
-    // console.log('items: ', items)
+    const dontShowCreateFieldValues = Boolean(itemToDelete || itemToUpdate);
 
     return (
       <Paper style={{ backgroundColor: 'unset !important', padding: '16px', marginBottom: '32px' }}>
         <Typography variant="h4" style={{ marginBottom: '16px' }} align="center">{name[0].toUpperCase() + name.slice(1)}</Typography>
-        {items.map(item => this.renderExistingItem(item))}
+        {items.sort((a, b) => a.id - b.id).map(item => this.renderExistingItem(item))}
         {items.length ? <Divider /> : null}
         <Typography variant="h5" style={{ margin: '16px 0' }}>Create</Typography>
-        {fields.map(field => this.renderCreateField(field))}
-        <Button style={{...buttonStyles('blue'), display: 'block' }} onClick={this.handleCreate}>{'Create ' + this.removeSs(name)}</Button>
+        {fields.map(field => this.renderField(field, dontShowCreateFieldValues))}
+        <Button style={{...buttonStyles('blue'), display: 'block' }} onClick={this.handleCreate}>{'Create ' + `${singular || this.removeSs(name)}`}</Button>
         { itemToUpdate && this.updateDialog({...itemToUpdate}) }
         { itemToDelete && this.deleteDialog({...itemToDelete}) }
       </Paper>
-    )
+    );
   }
 }
 
