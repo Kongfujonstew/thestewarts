@@ -27,7 +27,7 @@ import {
 
 const addresses = {
   name: 'addresses',
-  fields: [ 'address1', 'address2', 'city', 'state', 'zip', 'country', 'settings' ],
+  fields: [ 'address1', 'address2', 'city', 'state', 'zip', 'country', 'notes', 'settings' ],
   create: createAddress,
   updateById: updateAddressById,
   deleteById: deleteAddressById
@@ -39,7 +39,13 @@ const people = {
   fields: [ 'firstname', 'lastname', 'email', 'phone', 'address_id', 'food', 'notes', 'preferences' ],
   create: createPerson,
   updateById: updatePersonById,
-  deleteById: deletePersonById
+  deleteById: deletePersonById,
+  breakdowns: [
+    (person, props) => ({
+      name: 'address',
+      items: props.addresses.filter(address => address.id === person.address_id)
+    })
+  ]
 };
 
 const groups = {
@@ -47,7 +53,10 @@ const groups = {
   fields: [ 'name', 'settings' ],
   create: createGroup,
   updateById: updateGroupById,
-  deleteById: deleteGroupById
+  deleteById: deleteGroupById,
+  breakdowns: [
+
+  ]
 };
 
 const events = {
