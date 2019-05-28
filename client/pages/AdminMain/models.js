@@ -52,7 +52,7 @@ const groups = {
 
 const events = {
   name: 'events',
-  fields: [ 'name', 'time', 'address_id', 'send_invitations', 'notes', 'settings' ],
+  fields: [ 'name', 'time', 'address_id', 'send_invitations', 'notes', 'img', 'settings' ],
   create: createEvent,
   updateById: updateEventById,
   deleteById: deleteEventById

@@ -32,6 +32,7 @@ export default `
     id: Int,
     createdat: String,
     name: String!,
+    img: String,
     time: String,
     address_id: Int,
     address1: String,

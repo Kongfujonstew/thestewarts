@@ -14,7 +14,7 @@ export default {
   updateAttendance: ({ attendance }) => `UPDATE attendance SET ${makeSet(attendance)} WHERE event_id=${attendance.event_id} AND person_id=${attendance.person_id} RETURNING *;`,
   getAttendanceByPersonId: ({ id }) => `SELECT a.event_id, a.invitation_sent, a.rsvpd, a.rsvpyes, a.preferences, e.settings, e.notes, e.id, e.name, e.time, e.send_invitations, d.address1, d.address2, d.city, d.state, d.zip, d.country, a.id person_id FROM attendance a JOIN event e ON (e.id=a.event_id AND a.person_id=${id}) JOIN address d ON (e.address_id = d.id);`,
   getAttendanceByEventId: ({ id }) => `SELECT a.event_id, a.person_id, p.id, p.email, p.firstname, p.lastname, a.notes, a.invitation_sent, a.rsvpd, a.preferences, a.settings FROM attendance a JOIN person p ON a.person_id=p.id WHERE a.event_id=${id};`,
-  getAllEvents: () => `SELECT id, name, time, address_id, send_invitations, notes, settings FROM event;`,
+  getAllEvents: () => `SELECT id, name, img, time, address_id, send_invitations, notes, settings FROM event;`,
   createEvent: ({ event }) => `INSERT INTO event (${makeColumns(event)}) VALUES (${makeValues(event)}) RETURNING *;`,
   createQuote: ({ quote }) => `INSERT INTO quote (${makeColumns(quote)}) VALUES (${makeValues(quote)}) RETURNING *;`,
   getQuotesByPersonId: ({ id }) => `SELECT q.id, q.text, q.author FROM quote q JOIN quotemember m ON q.id=m.quote_id WHERE m.person_id=${id};`,

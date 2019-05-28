@@ -30,6 +30,7 @@ export default `
     send_invitations: Boolean,
     auto_rsvp_w_wedding: Boolean,
     notes: String,
+    img: String,
     settings: SettingsInput,
   },
   input AttendanceInput {
