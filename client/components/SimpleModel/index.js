@@ -38,7 +38,6 @@ class SimpleModel extends React.Component {
     }
   }
 
-
   handleCreate = async() => {
     const { enqueueSnackbar, reload, model: { create, fields } } = this.props;
     const newItem = fields.reduce((accum, field) => ({...accum, [field]: this.typeCoerceIfNumber(this.state[field])}), {});
@@ -55,6 +54,7 @@ class SimpleModel extends React.Component {
   handleUpdate = id => async() => {
     const { enqueueSnackbar, reload, model: { updateById, name, fields } } = this.props;
     const gqlName = this.removeSs(name);
+    // update state with only fields for update
     const updatedItem = fields.reduce((accum, field) => ({...accum, [field]: this.typeCoerceIfNumber(this.state[field])}), {});
 
     const success = await updateById(id, updatedItem);
@@ -74,12 +74,12 @@ class SimpleModel extends React.Component {
       enqueueSnackbar('deleteFail!', { variant: 'warning' });
     } else {
       reload();
-      this.setState({...this.emptyState, itemToDelete: null});
+      this.setState({ ...this.emptyState, itemToDelete: null});
       enqueueSnackbar('Delete success!', { variant: 'success' });
     }
   }
 
-  //used for both create and update (uses model-defined fields to render lines/fields)
+  // used for both create and update (uses model-defined fields to render lines/fields)
   handleFieldInput= field => e => {
     const { value } = e.target;
     const isNumber = !isNaN(Number(value));
@@ -93,24 +93,21 @@ class SimpleModel extends React.Component {
   }
 
   handleClickOpenBreakdown = breakdown => () => {
-    //breakdown is created by calling the breakdownFunc from the model
+    // breakdown is created by calling the breakdownFunc from the model
     this.setState({ breakdown });
   }
 
   handleClickOpenUpdate = item => () => {
-    console.log('click open update');
     const { model: { fields }, items } = this.props;
-    const updateItemState = fields.reduce((accum, field) => ({...accum, [field]: item[field]}), {});
+    const updateItemState = fields.reduce((accum, field) => ({ ...accum, [field]: item[field]}), {});
     this.setState({ ...updateItemState, itemToUpdate: item });
   }
 
   handleClickOpenDelete = item => () => {
-    console.log('click open delete, ', item);
     this.setState({ itemToDelete: item });
   }
 
-  renderLine = (item, field) =>
-    <Typography key={field}>{field}: {JSON.stringify(item[field])}</Typography>
+  renderLine = (item, field) => <Typography key={field}>{field}: {JSON.stringify(item[field])}</Typography>
 
   // Used for create and reused in update modal
   renderField = (field, dontShowCreateFieldValues) => {
@@ -131,6 +128,8 @@ class SimpleModel extends React.Component {
   renderExistingItem = item => {
     const { fields, breakdowns=[] } = this.props.model;
     const showFields = ['id'].concat(fields);
+    const { props } = this;
+    console.log('props: ', props)
 
     return (
       <div key={JSON.stringify(item)} style={{ marginBottom: '16px' }}>
@@ -138,12 +137,16 @@ class SimpleModel extends React.Component {
         <Button style={buttonStyles('blue')} onClick={this.handleClickOpenUpdate(item)}>{'Update'}</Button>
         <Button style={buttonStyles('red')} onClick={this.handleClickOpenDelete(item)}>{'Delete'}</Button>
         {breakdowns.map(breakdownFunc => {
-          const breakdown = breakdownFunc(item, this.props);
+          const breakdown = breakdownFunc(item, props);
+          if (!breakdown.items || !breakdown.items.length) {
+            // Don't show the breakdown button if there are no items
+            return null;
+          }
 
           return (
             <Button
               key={'open-breakdown-btn-' + breakdown.name}
-              style={{...buttonStyles('blue'), display: 'block' }}
+              style={{ ...buttonStyles('blue'), display: 'block' }}
               onClick={this.handleClickOpenBreakdown(breakdown)}
             >{breakdown.name}</Button>
           );
@@ -154,14 +157,22 @@ class SimpleModel extends React.Component {
 
   breakdownDialog = breakdown => {
     const isOpen = !!breakdown;
-    // name and items are required
-    const { name, items } = breakdown;
     const cancel = () => this.setState({ breakdown: null });
+    const { name='Breakdown', items=[], fields } = breakdown;
 
     return (
       <Dialog open={isOpen}>
-        <DialogTitle>{ name }</DialogTitle>
-        {items.map(item => Object.keys(item).map(field => this.renderLine(item, field)))}
+        <DialogTitle>{name}</DialogTitle>
+        {items.map(item => {
+          // set fields shown from model, or show all fields
+          const showFields = fields || Object.keys(item);
+          return (
+            <React.Fragment key={`${name}-${item.id}`}>
+              {showFields.map(field => this.renderLine(item, field))}
+              <Divider />
+            </React.Fragment>
+          )
+        })}
         <Button style={buttonStyles('red')} onClick={cancel}>Close</Button>
       </Dialog>
     )
@@ -171,8 +182,7 @@ class SimpleModel extends React.Component {
     const isOpen = !!this.state.itemToDelete;
     const cancel = () => this.setState({ itemToDelete: null });
     const { fields } = this.props.model;
-    const showFields = ['id'].concat(fields);
-    // { showFields.map(field => <Typography key={field}>{field}: {JSON.stringify(item[field])}</Typography> ) }
+    const showFields = [ 'id' ].concat(fields);
 
     return (
       <Dialog open={isOpen}>
@@ -186,7 +196,7 @@ class SimpleModel extends React.Component {
   updateDialog = item => {
     const { model: { fields, name } } = this.props;
     const isOpen = !!this.state.itemToUpdate;
-    const cancel = () => this.setState({...this.emptyState, itemToUpdate: null });
+    const cancel = () => this.setState({ ...this.emptyState, itemToUpdate: null });
 
     return (
       <Dialog open={isOpen}>
@@ -201,6 +211,7 @@ class SimpleModel extends React.Component {
   render() {
     const { model: { fields, name, singular }, items } = this.props;
     const { breakdown, itemToUpdate, itemToDelete } = this.state;
+    // Keep these fields empty IF delete or update modal is open
     const dontShowCreateFieldValues = Boolean(itemToDelete || itemToUpdate);
 
     return (
@@ -211,9 +222,9 @@ class SimpleModel extends React.Component {
         <Typography variant="h5" style={{ margin: '16px 0' }}>Create</Typography>
         {fields.map(field => this.renderField(field, dontShowCreateFieldValues))}
         <Button style={{...buttonStyles('blue'), display: 'block' }} onClick={this.handleCreate}>{'Create ' + `${singular || this.removeSs(name)}`}</Button>
-        { breakdown && this.breakdownDialog(breakdown) }
-        { itemToUpdate && this.updateDialog({...itemToUpdate}) }
-        { itemToDelete && this.deleteDialog({...itemToDelete}) }
+        {breakdown && this.breakdownDialog(breakdown)}
+        {itemToUpdate && this.updateDialog({...itemToUpdate})}
+        {itemToDelete && this.deleteDialog({...itemToDelete})}
       </Paper>
     );
   }

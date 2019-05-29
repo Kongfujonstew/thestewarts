@@ -53,8 +53,8 @@ export default `
   type Attendance {
     id: Int,
     createdat: String,
-    person_id: String!,
-    event_id: String!,
+    person_id: Int,
+    event_id: Int,
     notes: String,
     invitation_sent: Boolean,
     rsvpd: Boolean,

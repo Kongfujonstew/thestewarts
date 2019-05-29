@@ -196,14 +196,14 @@ class ResponsiveDrawer extends React.Component {
         >
           <Toolbar className={classes.gradient}>
             <Hidden smUp implementation="css">
-              { this.renderMenuButton(this.handleMobileToggle)}
+              {this.renderMenuButton(this.handleMobileToggle)}
             </Hidden>
             <Hidden xsDown implementation="css">
-              { !this.state.wideOpen && this.renderMenuButton(this.handleWideToggle)}
+              {!this.state.wideOpen && this.renderMenuButton(this.handleWideToggle)}
             </Hidden>
 
             <Typography className={classes.makeMeGrow} variant="h6" color="inherit" noWrap>
-              Title
+              {this.props.title}
             </Typography>
             <Button style={{ color: 'white' }} onClick={this.handleLogout}>
               Log out
@@ -226,7 +226,7 @@ class ResponsiveDrawer extends React.Component {
               </Drawer>
             </Hidden>
             <Hidden xsDown implementation="css">
-              { this.state.wideOpen ? <Drawer
+              {this.state.wideOpen ? <Drawer
                   className={classes.drawer}
                   classes={{ paper: classes.drawerPaper }}
                   variant="persistent"

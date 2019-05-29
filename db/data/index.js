@@ -83,6 +83,7 @@ export const loadAdminData = async(...args) => {
   })).then(() => console.log('getting quote members complete'));
 
   const [ addresses ] = await admin.getAllAddresses(...args);
+  const [ attendances ] = await admin.getAllAttendances(...args);
   const [ songs ] = await anyone.getAllSongs(...args);
   const [ blogs ] = await anyone.getAllBlogs(...args);
   const [ alllists ] = await admin.getAllLists(...args);
@@ -101,6 +102,7 @@ export const loadAdminData = async(...args) => {
     addresses,
     people,
     events,
+    attendances,
     groups,
     locations,
     quotes,

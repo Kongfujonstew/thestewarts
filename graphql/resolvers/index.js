@@ -251,6 +251,11 @@ export default {
     return attendance || 'forcegraphqlerror';
   },
 
+  getAllAttendances: async(...args) => {
+    const [ attendances ] = await admin.getAllAttendances(...args);
+    return attendances || 'forcegraphqlerror';
+  },
+
   deleteGroupById: async(...args) => {
     const [[ group ]] = await admin.deleteGroupById(...args);
     return group || 'forcegraphqlerror';

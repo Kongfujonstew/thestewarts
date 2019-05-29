@@ -11,6 +11,9 @@ export const getPersonById = id => graphql(`{ getPersonById(id:${id}) { id first
 export const getAllPeople = () => graphql(`{ getAllPeople { id firstname lastname email phone address_id food notes preferences { language } } }`);
 export const getEventById = id => graphql(`{ getEventById(id:${id}) { id name time img address1 address2 city state zip country send_invitations notes } }`);
 export const getAllEvents = () => graphql(`{ getAllEvents { id name time img address1 address2 city state zip country send_invitations notes } }`);
+
+
+export const getAllAttendances = () => graphql(`{ getAllAttendance { id person_id event_id notes invitation_sent rsvpd rsvpyes preferences settings } }`);
 export const getAttendanceByPersonId = id => graphql(`{ getAttendanceByPersonId(id:${id}) { person_id event_id notes invitation_sent rsvpd rsvpyes firstname lastname email } }`);
 export const getAttendanceByEventId = id => graphql(`{ getAttendanceByEventId(id:${id}) { person_id event_id notes invitation_sent rsvpd rsvpyes firstname lastname email } }`);
 export const getGroupsByPersonId = id => graphql(`{ getGroupsByPersonId(id:${id}) { id parent_id name notes } }`);

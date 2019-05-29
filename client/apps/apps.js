@@ -17,7 +17,7 @@ export const publicApp = {
       closeSnackbar: props.closeSnackbar,
       enqueueSnackbar: props.enqueueSnackbar,
       reload: instance.reload,
-      setState: instance.setState
+      setAppState: instance.setState
     }
   }
 };
@@ -36,7 +36,7 @@ export const privateApp = {
       closeSnackbar: props.closeSnackbar,
       enqueueSnackbar: props.enqueueSnackbar,
       reload: instance.reload,
-      setState: instance.setState
+      setAppState: instance.setState
     }
   }
 };
@@ -56,7 +56,7 @@ export const adminApp = {
       closeSnackbar: props.closeSnackbar,
       enqueueSnackbar: props.enqueueSnackbar,
       reload: instance.reload,
-      setState: instance.setState
+      setAppState: instance.setState
     }
   }
 };

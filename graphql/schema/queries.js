@@ -13,6 +13,7 @@ export default `
     getGroupsByPersonId(id:Int!): [Groupo],
     getGroupMembersByGroupId(id:Int!): [Person],
     getAllGroups: [Groupo],
+    getAllAttendances: [Attendance],
     getLocationById(id:Int!): Location,
     getAllLocations: [Location],
     getQuoteById(id:Int!): Quote,

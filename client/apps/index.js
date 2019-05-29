@@ -14,8 +14,6 @@ const makeApp = (app, pages) => {
     }
 
     render() {
-      console.log('render app, this.state: ', this.state);
-
       return (
         <AppMenu title={app.title} pages={pages}>
           {pages.map(page => (

@@ -13,6 +13,7 @@ export default {
   updateEventById: ({ id, event }) => `UPDATE event SET ${makeSet(event)} WHERE id=${id} RETURNING *;`,
   deleteEventById: ({ id }) => `DELETE FROM event WHERE id=${id} RETURNING *;`,
   createAttendance: ({ attendance }) => `INSERT INTO attendance (${makeColumns(attendance)}) VALUES (${makeValues(attendance)}) RETURNING *;`,
+  getAllAttendances: () => `SELECT * FROM attendance;`,
   deleteGroupById: ({ id }) => `DELETE FROM groupo WHERE id=${id} RETURNING *;`,
   createLocation: ({ location }) => `INSERT INTO location (${makeColumns(location)}) VALUES (${makeValues(location)}) RETURNING *;`,
   updateLocationById: ({ id, location }) => `UPDATE location SET ${makeSet(location)} WHERE id=${id} RETURNING *;`,
