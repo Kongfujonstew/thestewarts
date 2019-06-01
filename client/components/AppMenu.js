@@ -50,6 +50,7 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
     },
+    boxShadow: '-3px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -61,7 +62,10 @@ const styles = theme => ({
     //   display: 'none',
     // },
   },
-  toolbar: theme.mixins.toolbar,
+  toolbar: {
+    ...theme.mixins.toolbar,
+    boxShadow: '12px 2px 5px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)'
+  },
   drawerPaper: {
     width: drawerWidth,
   },
@@ -75,7 +79,13 @@ const styles = theme => ({
   toolbarStyles: {
     display: 'flex',
     backgroundColor: 'black',
-    width: '100vw'
+    width: '100vw',
+    [theme.breakpoints.up('sm')]: {
+      width: drawerWidth,
+      flexShrink: 0,
+      width: '100% !important',
+      display: 'block !important'
+    }
   },
   makeMeGrow: {
     flex: 1

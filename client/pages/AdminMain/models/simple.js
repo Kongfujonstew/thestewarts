@@ -23,7 +23,7 @@ import {
   createSong,
   updateSongById,
   deleteSongById
-} from '../../queries';
+} from '../../../queries';
 
 const addresses = {
   name: 'addresses',
@@ -191,4 +191,4 @@ const songs = {
   deleteById: deleteSongById
 };
 
-export const simple = [ addresses, people, groups, events, locations, lists, quotes, songs ];
+export default [ addresses, people, groups, events, locations, lists, quotes, songs ];
