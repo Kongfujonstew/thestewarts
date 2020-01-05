@@ -29,9 +29,9 @@ const clientConfig = {
     __dirname: false
   },
   entry: {
-    'public/js/public.js': path.resolve(__dirname, 'client/bundleentry/public.js'),
-    'public/js/private.js': path.resolve(__dirname, 'client/bundleentry/private.js'),
-    'public/js/admin.js': path.resolve(__dirname, 'client/bundleentry/admin.js')
+    'public/js/public.js': path.resolve(__dirname, 'client/bundleentry/public.js')
+    // 'public/js/private.js': path.resolve(__dirname, 'client/bundleentry/private.js'),
+    // 'public/js/admin.js': path.resolve(__dirname, 'client/bundleentry/admin.js')
   },
   module: {
     rules: [js]

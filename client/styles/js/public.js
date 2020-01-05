@@ -1,2 +1,4 @@
-export default `
+export default `h1 {
+  color: red; }
+
 `;

@@ -9,7 +9,7 @@ ReactDOM.hydrate(
   <MUIBundleWrapper>
     <CssBaseline />
     <Router>
-      <Public data={window.__INITIAL__DATA__} />
+      <Public />
     </Router>
   </MUIBundleWrapper>,
   document.getElementById('root')

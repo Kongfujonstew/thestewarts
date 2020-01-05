@@ -6,14 +6,15 @@ import { MuiThemeProvider, createGenerateClassName } from '@material-ui/core/sty
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { StaticRouter as Router } from 'react-router-dom';
 import { Public } from '../../client/apps';
-import { Private } from '../../client/apps';
-import { Admin } from '../../client/apps';
+// Other pages we're not using now
+// import { Private } from '../../client/apps';
+// import { Admin } from '../../client/apps';
 import makeHTML from '../../client/html';
 import theme from '../styles/mui/theme';
 
 export const renderComponent = (C, app) => {
   return (req, res) => {
-    const { data } = req;
+    // const { data } = req;
     const context = {};
     const generateClassName = createGenerateClassName();
     const sheetsRegistry = new SheetsRegistry();
@@ -23,17 +24,17 @@ export const renderComponent = (C, app) => {
         <MuiThemeProvider theme={theme} sheetsManager={sheetsManager}>
           <CssBaseline />
           <Router location={req.url} context={context}>
-            <C data={data} />
+            <C/>
           </Router>
         </MuiThemeProvider>
       </JssProvider>
     );
     const css = sheetsRegistry.toString();
-    const html = makeHTML(componentHTML, data, css, app);
+    const html = makeHTML(componentHTML, null, css, app);
     res.send(html);
   }
 };
 
 export const renderPublic = renderComponent(Public, 'public');
-export const renderPrivate = renderComponent(Private, 'private');
-export const renderAdmin = renderComponent(Admin, 'admin');
+// export const renderPrivate = renderComponent(Private, 'private');
+// export const renderAdmin = renderComponent(Admin, 'admin');

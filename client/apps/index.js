@@ -2,8 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import AppMenu from '../components/AppMenu';
 import { SnackbarProvider, withSnackbar } from 'notistack';
-import { publicApp, privateApp, adminApp } from './apps';
-import { publicPages, privatePages, adminPages } from '../pages';
+import { publicApp /*, privateApp, adminApp */ } from './apps';
+import { publicPages /*, privatePages, adminPages */ } from '../pages';
 
 const makeApp = (app, pages) => {
   class App extends React.Component {
@@ -21,11 +21,11 @@ const makeApp = (app, pages) => {
               key={page.path}
               exact
               path={page.path}
-              render={() => <page.component {...this.state} {...this.app} />}
+              render={() => <page.component {...this.app} />}
             />
           ))}
         </AppMenu>
-      )
+      );
     }
   };
 
@@ -35,5 +35,5 @@ const makeApp = (app, pages) => {
 };
 
 export const Public = makeApp(publicApp, publicPages);
-export const Private = makeApp(privateApp, privatePages);
-export const Admin = makeApp(adminApp, adminPages);
+// export const Private = makeApp(privateApp, privatePages);
+// export const Admin = makeApp(adminApp, adminPages);
