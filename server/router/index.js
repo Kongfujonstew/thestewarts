@@ -1,6 +1,7 @@
 import path from 'path';
 import express from 'express';
 // import graphql from '../../graphql';
+import handleRSVPEmail from '../../email';
 import bodyParser from 'body-parser';
 // import { passwordAuth, tokenAuth } from '../auth/authenticate';
 // import { publicMW, privateMW, adminMW, graphqlMW } from '../middleware';
@@ -27,8 +28,11 @@ router.use('/public', gzip, express.static(path.resolve(__dirname, publicDir)));
 //admin app, locked to admin only
 // router.get('/admin(/email)?(/blog)?$', ...adminMW, renderAdmin);
 
+// TODO delete this GET
+router.get('/email', bodyParser.json(), handleRSVPEmail);
+router.post('/email', bodyParser.json(), handleRSVPEmail);
+
 //public app - everything goes to wedding?
-router.post('/email', bodyParser.json(), () => console.log('EMAIL POST RECEIVED!'));
 router.get('/wedding', renderPublic);
 router.get('/', renderPublic);
 

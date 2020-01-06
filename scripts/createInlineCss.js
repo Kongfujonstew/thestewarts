@@ -3,9 +3,9 @@ const path = require('path');
 
 const files = [
   'common',
-  'public',
-  'private',
-  'admin'
+  'public'
+  // 'private',
+  // 'admin'
 ];
 
 //next: watch files and use fs.unlink to remove the bs wp output

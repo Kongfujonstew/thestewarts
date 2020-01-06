@@ -1,35 +1,33 @@
-export default function() {
+export default function(req, res, next) {
 
-  console.log('* [example 1.1] sending test email');
+  console.log('* [example 1.1] sending test email, user: ', process.env.US_EM_A);
+  console.log('* [example 1.1] sending test email, pass: ', process.env.US_EM_P);
 
   // Require'ing module and setting default options
 
   var send = require('gmail-send')({
   //var send = require('../index.js')({
-    user: process.env.US_EM_A,
+    user: 'us@thestewarts.family',
     // user: credentials.user,                  // Your GMail account used to send emails
-    pass: process.env.US_EM_P,
+    pass: 'Bigstewartsswissarmy1',
     // pass: credentials.pass,                  // Application-specific password
-    to:   'someemail@asldjflkasjdflas.com',
+    to:   'jonstew@gmail.com',
     // to:   credentials.user,                  // Send to yourself
                                              // you also may set array of recipients:
                                              // [ 'user1@gmail.com', 'user2@gmail.com' ]
     // from:    credentials.user,            // from: by default equals to user
     // replyTo: credentials.user,            // replyTo: by default undefined
     // bcc: 'some-user@mail.com',            // almost any option of `nodemailer` will be passed to it
-    subject: 'test subject 2',
-    text:    'gmail-send example 2',         // Plain text
+    subject: `It's an RSVP!`,
+    text:    `It's an RSVP!`,         // Plain text
     //html:    '<b>html text</b>'            // HTML
   });
-
-
-  // Override any default option and send email
 
   console.log('* [example 1.1] sending test email');
 
 
-  send(function (err, res) {
-    console.log('* [example 1.1] send() callback returned: err:', err, '; res:', res);
+  send({ text: `It's an RSVP! 2` }, function (sendError, sendResponse) {
+    console.log('* [example 1.1] send() callback returned: err:', sendError, '; res:', sendResponse);
   });
 }
 

@@ -9,7 +9,7 @@ const serverConfig = {
   node: {
     __dirname: false
   },
-  externals: [nodeExternals()],
+  // externals: [nodeExternals()],
   entry: {
     'index.prod.js': path.resolve('index.js')
   },
