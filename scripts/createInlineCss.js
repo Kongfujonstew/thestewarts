@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const files = [
-  'common',
+  // 'common',
   'public'
   // 'private',
   // 'admin'

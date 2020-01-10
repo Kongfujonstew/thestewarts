@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+// the landing page goes to Wedding now
 class Landing extends React.Component {
   componentDidMount() {
     console.log('cdm Hello')

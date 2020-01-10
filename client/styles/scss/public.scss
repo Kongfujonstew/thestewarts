@@ -1,3 +1,42 @@
-h1 {
-  color: red;
+// FONTS are in html/index.js
+// MrsEavesRoman and MrsEavesItalic (You are cordially invited, address)
+// Baskervville (dates - this is from Google)
+
+// Notes on Wedding:
+// styles for the height and color of the main boxes
+// are inlined in Wedding.js
+
+// VARIABLES
+$welcomeBackgroundHeight: 1500px;
+$lotusPNGGrey: #ececec;
+$buddhaBlue:  #002b80;
+$wheat: #e3d1b5;
+
+// BACKGROUND / Lotus
+#background-container {
+  height: $welcomeBackgroundHeight;
+  width: 100%;
+  position: fixed;
+  z-index: -1000;
+
+  // same color as lotus:
+  background-color: $lotusPNGGrey;
+  #background {
+    // the lotus image gets loaded as a Base64 inline style
+    // see client/html/images.js -> client/html/index.js
+    height: $welcomeBackgroundHeight;
+    width: 100%;
+    max-width: 2000px;
+    margin: auto;
+    background-position-x: center;
+    background-position-y: -200px;
+  }
+}
+
+//test fonts
+#welcome {
+  font-family: MrsEavesRoman;
+  font-size: 36px;
+  color: $buddhaBlue;
+  background-color: #b8b894;
 }
