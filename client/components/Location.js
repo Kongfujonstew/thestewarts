@@ -5,6 +5,13 @@ class Location extends React.Component {
     // do the resize stuff here
   }
 
+  // Location // Enamel or title
+
+  // The Swedenborgian Church
+  // Click here to learn about the church (https://sfswedenborgian.org/)
+
+  // 2107 Lyon St, San Francisco, CA 94115
+
   render() {
     return (
       <div>

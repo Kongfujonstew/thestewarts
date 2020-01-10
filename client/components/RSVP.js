@@ -5,6 +5,16 @@ class RSVP extends React.Component {
     super(props);
   }
 
+  // RSVP  // Enamel or 'title'
+
+  // Name
+  // I'm coming!
+  // I'm not coming
+  // Guest One:
+  // Add Guest
+  // Food preferences
+  // Notes
+
   render() {
     return (
       <div>
