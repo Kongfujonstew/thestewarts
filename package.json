@@ -30,6 +30,7 @@
     "express-graphql": "^0.8.0",
     "gmail-send": "^1.2.14",
     "graphql": "^14.2.1",
+    "helmet": "^3.21.2",
     "jss": "^9.8.7",
     "morgan": "^1.9.1",
     "pg": "^7.10.0",

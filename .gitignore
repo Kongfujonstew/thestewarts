@@ -1,0 +1,14 @@
+# Node.js dependencies:
+node_modules
+
+#secret
+.env
+
+# for working locally:
+MyFontsWebfontsKit
+MyImages
+
+# generated in the build process and/or just for production:
+public/*/*
+client/styles/css/*
+index.prod.js
