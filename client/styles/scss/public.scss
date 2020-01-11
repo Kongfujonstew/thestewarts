@@ -10,7 +10,7 @@
 $welcomeBackgroundHeight: 1500px;
 $lotusPNGGrey: #ececec;
 $buddhaBlue:  #002b80;
-$wheat: #e3d1b5;
+$camel: #c19a6b;
 
 
 // MIXINS
@@ -37,6 +37,10 @@ $desktop-width: 1024px;
   }
 }
 
+.box-shadow {
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
 
 // MAIN STACKABLE BOXES
 #root > div:not(#background-container) {
@@ -47,7 +51,6 @@ $desktop-width: 1024px;
     background: white;
     margin: auto;
     width: 100%;
-    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     @include tablet {
       max-width: 720px;
     }
@@ -81,7 +84,7 @@ $desktop-width: 1024px;
 #welcome {
   height: 500px;
   position: relative;
-  border: 4px solid $wheat;
+  border: 4px solid $camel;
 
   #skyline {
     width: 100%;

@@ -1,3 +1,6 @@
+.box-shadow {
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+
 #root > div:not(#background-container) {
   height: 812px;
   padding: 0 16px;
@@ -5,8 +8,7 @@
   #root > div:not(#background-container) > div {
     background: white;
     margin: auto;
-    width: 100%;
-    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+    width: 100%; }
     @media (min-width: 768px) {
       #root > div:not(#background-container) > div {
         max-width: 720px; } }
@@ -31,7 +33,7 @@
 #welcome {
   height: 500px;
   position: relative;
-  border: 4px solid #e3d1b5; }
+  border: 4px solid #c19a6b; }
   #welcome #skyline {
     width: 100%;
     position: absolute;

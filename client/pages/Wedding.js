@@ -21,22 +21,22 @@ class Wedding extends React.Component {
         <div id="fade-in" style={{ backgroundColor: 'transparent' }}>
           <Welcome />
         </div>
-        <div style={{ backgroundColor: 'grey' }}>
+        <div className="box-shadow" style={{ backgroundColor: 'grey' }}>
           <About />
         </div>
         <div style={{ backgroundColor: 'transparent' }}>
           <ThePlan />
         </div>
-        <div style={{ backgroundColor: '#e3d1b5' }}>
+        <div className="box-shadow" style={{ backgroundColor: '#e3d1b5' }}>
           <Location />
         </div>
-        <div style={{ backgroundColor: '#002b80' }}>
+        <div className="box-shadow" style={{ backgroundColor: '#002b80' }}>
           <Rsvp />
         </div>
-        <div style={{ backgroundColor: 'grey' }}>
+        <div className="box-shadow" style={{ backgroundColor: 'grey' }}>
           <Faq />
         </div>
-        <div style={{ backgroundColor: 'white' }}>
+        <div style={{ backgroundColor: 'transparent' }}>
           <Footer />
         </div>
       </React.Fragment>
