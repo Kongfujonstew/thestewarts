@@ -47,6 +47,7 @@ $desktop-width: 1024px;
     background: white;
     margin: auto;
     width: 100%;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     @include tablet {
       max-width: 720px;
     }
