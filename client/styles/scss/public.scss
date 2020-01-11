@@ -95,6 +95,14 @@ $desktop-width: 1024px;
 }
 
 
+#rsvp-container {
+  background: rgb(112,136,186);
+  background: radial-gradient(circle, rgba(112,136,186,1) 38%, rgba(10,59,157,1) 96%);
+}
+
+
+
+// EFFECTS
 @keyframes fadeIn {
   0% {
     opacity: 0;

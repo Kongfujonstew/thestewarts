@@ -30,11 +30,11 @@ class Wedding extends React.Component {
         <div className="box-shadow" style={{ backgroundColor: '#e3d1b5' }}>
           <Location />
         </div>
-        <div className="box-shadow" style={{ backgroundColor: '#002b80' }}>
-          <Rsvp />
-        </div>
-        <div className="box-shadow" style={{ backgroundColor: 'grey' }}>
+        <div style={{ backgroundColor: 'transparent' }}>
           <Faq />
+        </div>
+        <div id="rsvp-container" className="box-shadow" style={{ /* gradient defined in css */ }}>
+          <Rsvp />
         </div>
         <div style={{ backgroundColor: 'transparent' }}>
           <Footer />

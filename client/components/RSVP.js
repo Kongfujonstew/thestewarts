@@ -17,7 +17,7 @@ class RSVP extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="rsvp">
         RSVP put inputs here
       </div>
     )

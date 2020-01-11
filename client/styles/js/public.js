@@ -40,6 +40,10 @@ export default `.box-shadow {
     left: 0;
     bottom: 0; }
 
+#rsvp-container {
+  background: #7088ba;
+  background: radial-gradient(circle, #7088ba 38%, #0a3b9d 96%); }
+
 @keyframes fadeIn {
   0% {
     opacity: 0; }
