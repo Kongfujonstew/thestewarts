@@ -12,6 +12,47 @@ $lotusPNGGrey: #ececec;
 $buddhaBlue:  #002b80;
 $wheat: #e3d1b5;
 
+
+// MIXINS
+$phone-width: 480px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+// shouldn't need this one (phone)
+@mixin phone {
+  @media (max-width: #{$phone-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+
+// MAIN STACKABLE BOXES
+#root > div:not(#background-container) {
+  height: 812px;
+  padding: 0 16px;
+  padding-top: 150px;
+  > div {
+    background: white;
+    margin: auto;
+    width: 100%;
+    @include tablet {
+      max-width: 720px;
+    }
+  }
+}
+
 // BACKGROUND / Lotus
 #background-container {
   height: $welcomeBackgroundHeight;
@@ -30,13 +71,37 @@ $wheat: #e3d1b5;
     margin: auto;
     background-position-x: center;
     background-position-y: -200px;
+    @include tablet {
+      background-position: right -700px top 0;
+    }
   }
 }
 
-//test fonts
 #welcome {
-  font-family: MrsEavesRoman;
-  font-size: 36px;
-  color: $buddhaBlue;
-  background-color: #b8b894;
+  height: 500px;
+  position: relative;
+  border: 4px solid $wheat;
+
+  #skyline {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#fade-in {
+  opacity: 0;
+  animation: 2s ease-out 1s 1 fadeIn;
+  animation-fill-mode: forwards;
 }

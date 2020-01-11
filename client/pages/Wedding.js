@@ -10,35 +10,33 @@ import Welcome from '../components/Welcome';
 
 class Wedding extends React.Component {
   componentDidMount() {
-    console.log('cdm Hello')
+    console.log('wedding cdm Hello')
   }
 
   render() {
-    const boxHeight = '880px';
-    const welcomeBackgroundHeight = '1500px';
 
     return (
       <React.Fragment>
         <Background />
-        <div id="welcome" style={{ height: welcomeBackgroundHeight, backgroundColor: 'transparent' }}>
+        <div id="fade-in" style={{ backgroundColor: 'transparent' }}>
           <Welcome />
         </div>
-        <div id="about" style={{ height: boxHeight, backgroundColor: 'grey' }}>
+        <div style={{ backgroundColor: 'grey' }}>
           <About />
         </div>
-        <div id="theplan" style={{ height: boxHeight, backgroundColor: 'transparent' }}>
+        <div style={{ backgroundColor: 'transparent' }}>
           <ThePlan />
         </div>
-        <div id="location" style={{ height: boxHeight, backgroundColor: '#e3d1b5' }}>
+        <div style={{ backgroundColor: '#e3d1b5' }}>
           <Location />
         </div>
-        <div id="rsvp" style={{ height: boxHeight, backgroundColor: '#002b80' }}>
+        <div style={{ backgroundColor: '#002b80' }}>
           <Rsvp />
         </div>
-        <div id="faq" style={{ height: boxHeight, backgroundColor: 'grey' }}>
+        <div style={{ backgroundColor: 'grey' }}>
           <Faq />
         </div>
-        <div id="footer" style={{ height: boxHeight, backgroundColor: 'white' }}>
+        <div style={{ backgroundColor: 'white' }}>
           <Footer />
         </div>
       </React.Fragment>

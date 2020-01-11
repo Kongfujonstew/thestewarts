@@ -13,8 +13,28 @@ class Welcome extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="welcome">
         content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        content testing from welcome . . .
+        <img id="skyline" src="public/images/skyline.png" />
       </div>
     )
   }

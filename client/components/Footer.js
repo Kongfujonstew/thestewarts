@@ -13,7 +13,7 @@ class Footer extends React.Component {
   render() {
     return (
       <div>
-        content testing from faq . . .
+        content testing from footer . . .
       </div>
     )
   }
