@@ -2,7 +2,8 @@ import React from 'react';
 import styles from '../styles/js';
 // Base64 js images - eg 'public'/'wedding' lotus png for background image
 import images from './images';
-const gz = process.env.PRODUCTION ? '.gz' : '';
+const gz = '';
+// const gz = process.env.PRODUCTION ? '.gz' : '';
 
 // <script>window.__INITIAL__DATA__ = ${JSON.stringify(data)}</script>
 export default (html, data, css, app) => `

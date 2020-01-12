@@ -36,7 +36,7 @@ const clientConfig = {
   module: {
     rules: [js]
   },
-  plugins: [ new CompressionPlugin() ],
+  // plugins: [ new CompressionPlugin() ],
   output: {
     path: path.resolve(__dirname),
     filename: '[name]'
