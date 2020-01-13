@@ -24,7 +24,7 @@ class Wedding extends React.Component {
           <Welcome />
           <NavButton nextId="about-container" />
         </div>
-        <div id="about-container" className="box-shadow" style={{ backgroundColor: 'grey' }}>
+        <div id="about-container" className="box-shadow">
           <h1>OUR STORY</h1>
           <About />
           <NavButton nextId="theplan-container" />

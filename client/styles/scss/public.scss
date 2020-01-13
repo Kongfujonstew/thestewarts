@@ -67,7 +67,7 @@ $desktop-width: 1024px;
   width: 80px !important;
   margin-top: 3vh !important;
   border-radius: 50%;
-  background: rgba(255,255,255,0.5) !important;
+  background: rgba(192,192,192,0.2) !important;
   text-align: center;
   padding-top: 20px;
   box-shadow: $boxShadow;
@@ -133,6 +133,12 @@ $desktop-width: 1024px;
 #rsvp-container {
   background: rgb(112,136,186);
   background: radial-gradient(circle, rgba(112,136,186,1) 38%, rgba(10,59,157,1) 96%);
+}
+
+
+#about-container {
+  background-image: repeating-linear-gradient(45deg, #eee 10px, #eee 12px, transparent 12px, transparent 20px);
+  background-color: white;
 }
 
 

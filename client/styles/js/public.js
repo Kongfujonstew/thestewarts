@@ -18,7 +18,7 @@ export default `.box-shadow {
   width: 80px !important;
   margin-top: 3vh !important;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5) !important;
+  background: rgba(192, 192, 192, 0.2) !important;
   text-align: center;
   padding-top: 20px;
   box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -56,7 +56,7 @@ export default `.box-shadow {
 #welcome {
   height: 500px;
   position: relative;
-  border: 4px solid #c19a6b;
+  border: 8px solid #c19a6b;
   background: white;
   background: linear-gradient(white 0%, white 32%, #e7e6e4 50%); }
   #welcome #skyline {
@@ -69,6 +69,10 @@ export default `.box-shadow {
 #rsvp-container {
   background: #7088ba;
   background: radial-gradient(circle, #7088ba 38%, #0a3b9d 96%); }
+
+#about-container {
+  background-image: repeating-linear-gradient(45deg, #eee 10px, #eee 12px, transparent 12px, transparent 20px);
+  background-color: white; }
 
 #footer {
   background: transparent;
@@ -83,8 +87,8 @@ export default `.box-shadow {
     border-radius: 50%; }
 
 h1 {
-  margin-bottom: 5vh;
   margin-top: 3vh;
+  margin-bottom: 5vh;
   font-family: Enamel;
   font-size: 56px;
   text-align: center;
