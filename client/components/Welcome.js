@@ -14,15 +14,11 @@ class Welcome extends React.Component {
   render() {
     return (
       <div id="welcome" className="box-shadow">
-        <h1>Herman</h1>
-        <h4>and Jon</h4>
-        <h1>Jon</h1>
-        <h4>are</h4>
-        <h3>Getting Married</h3>
-        content testing from welcome . . .
-        content testing from welcome . . .
-        content testing from welcome . . .
-
+          <h1>Herman</h1>
+          <h4>and</h4>
+          <h1>Jon</h1>
+          <h4>are</h4>
+          <h3>Getting Married</h3>
         <img id="skyline" src="public/images/skyline.png" />
       </div>
     )

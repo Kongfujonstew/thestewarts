@@ -12,11 +12,15 @@ class Background extends React.Component {
   }
 
   componentDidMount() {
+    this.doParallaxUpdate();
+    window.addEventListener('scroll', this.doParallaxUpdate);
+  }
+
+  doParallaxUpdate = () => {
     // this is the parallax effect
-    window.addEventListener('scroll', event => {
-      const parallaxOffset = this.cssBackgroundPositionY - this.magicNumber * (window.scrollY / (document.body.scrollHeight - this.boxHeight));
-      this.setState({ parallaxOffset });
-    });
+    console.log('doing parallax')
+    const parallaxOffset = this.cssBackgroundPositionY - this.magicNumber * (window.scrollY / (document.body.scrollHeight - this.boxHeight));
+    this.setState({ parallaxOffset });
   }
 
   render() {

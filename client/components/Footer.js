@@ -12,8 +12,9 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <div>
-        content testing from footer . . .
+      <div id="footer">
+        <div>content testing from footer . . .</div>
+        <img src="/public/images/lotus.png" />
       </div>
     )
   }

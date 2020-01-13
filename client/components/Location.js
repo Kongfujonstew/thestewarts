@@ -3,6 +3,8 @@ import React from 'react';
 class Location extends React.Component {
   componentDidMount() {
     // do the resize stuff here
+
+    // var width = document.body.clientWidth;
   }
 
   // Location // Enamel or title
