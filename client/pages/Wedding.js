@@ -46,7 +46,7 @@ class Wedding extends React.Component {
         </div>
         <div id="rsvp-container" className="box-shadow" style={{ /* gradient defined in css */ }}>
           <h1>RSVP</h1>
-          <Rsvp />
+          <Rsvp {...this.props}/>
           <NavButton nextId="footer-container" />
         </div>
         <div id="footer-container" style={{ backgroundColor: 'transparent' }}>
@@ -54,7 +54,7 @@ class Wedding extends React.Component {
           <Footer />
         </div>
       </React.Fragment>
-    )
+    );
   }
 }
 

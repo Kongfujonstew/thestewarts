@@ -3,6 +3,13 @@ export default function(req, res, next) {
   console.log('* [example 1.1] sending test email, user: ', process.env.US_EM_A);
   console.log('* [example 1.1] sending test email, pass: ', process.env.US_EM_P);
 
+  console.log('LKSJDLKFJSLKDFJ$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
+  console.log(req.body)
+  let text = '';
+  Object.keys((req.body) || {}).forEach(field => {
+    text += `${field}: ${req.body[field]}\n`;
+  });
+  console.log('text: ', text)
   // Require'ing module and setting default options
 
   var send = require('gmail-send')({
@@ -19,15 +26,20 @@ export default function(req, res, next) {
     // replyTo: credentials.user,            // replyTo: by default undefined
     // bcc: 'some-user@mail.com',            // almost any option of `nodemailer` will be passed to it
     subject: `It's an RSVP!`,
-    text:    `It's an RSVP!`,         // Plain text
+    text: text      // Plain text, see above
     //html:    '<b>html text</b>'            // HTML
   });
 
   console.log('* [example 1.1] sending test email');
 
 
-  send({ text: `It's an RSVP! 2` }, function (sendError, sendResponse) {
-    console.log('* [example 1.1] send() callback returned: err:', sendError, '; res:', sendResponse);
+  send((sendError, sendResponse) => {
+    console.log('send() callback err:', sendError, '; res:', sendResponse);
+    if (sendError) {
+      res.status(500).json({ error: sendError });
+    } else {
+      res.json({ sent: true });
+    }
   });
 }
 
