@@ -38,6 +38,7 @@
     "react-dom": "^16.8.6",
     "react-jss": "^8.6.1",
     "react-router-dom": "^5.0.0",
+    "scroll-behavior-polyfill": "^2.0.13",
     "sequelize": "^5.7.6",
     "whatwg-fetch": "^2.0.4"
   },
