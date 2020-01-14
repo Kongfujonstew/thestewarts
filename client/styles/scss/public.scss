@@ -6,10 +6,16 @@
 // styles for the height and color of the main boxes
 // are inlined in Wedding.js
 
+// RESETS - WATCH OUT VERY MINIMAL!!!
+#root {
+  position: relative;
+}
+
 // VARIABLES
 $welcomeBackgroundHeight: 1500px;
 $lotusPNGGrey: #ececec;
-$buddhaBlue:  #002b80;
+$navBlue: rgba(112,136,186,1);
+// $buddhaBlue:  #002b80;
 $camel: #c19a6b;
 $boxShadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 
@@ -51,6 +57,7 @@ $desktop-width: 1024px;
   height: 100vh;
   padding: 0 24px;
   padding-top: 5vh;
+  width: 100%;
   > div {
     margin: auto;
     width: 100%;
@@ -83,6 +90,37 @@ $desktop-width: 1024px;
     @extend .fade-in;
     background: blue;
   }
+}
+
+.menu-buttons {
+  display: flex;
+  position: absolute;
+  height: 40px !important;
+  width: unset !important;
+  cursor: pointer;
+  button {
+    color: $navBlue;
+    width: 120px;
+  }
+}
+
+.menu-buttons-1 {
+  @extend .menu-buttons;
+  width: unset;
+  top: 0;
+  right: 0;
+  padding-top: 2px !important;
+  padding-right: 2px !important;
+}
+
+.menu-buttons-2 {
+  @extend .menu-buttons;
+  height: 80px !important;
+  margin-bottom: 90px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  // right: 0;
 }
 
 // BACKGROUND / Lotus
@@ -142,8 +180,8 @@ $desktop-width: 1024px;
 
 // this is page-level
 #rsvp-container {
-  background: rgb(112,136,186);
-  background: radial-gradient(circle, rgba(112,136,186,1) 38%, rgba(10,59,157,1) 96%);
+  background: $navBlue;
+  background: radial-gradient(circle, $navBlue 38%, rgba(10,59,157,1) 96%);
 }
 
 
@@ -173,6 +211,7 @@ $desktop-width: 1024px;
 
 // Floating box titles
 h1 {
+  // this top margin is fucked
   margin-top: 0;
   margin-bottom: 0;
   font-family: Enamel;

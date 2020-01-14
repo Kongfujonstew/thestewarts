@@ -4,6 +4,7 @@ import Background from '../components/Background';
 import Faq from '../components/FAQ';
 import Footer from '../components/Footer';
 import Location from '../components/Location';
+import MenuButtons from '../components/MenuButtons';
 import NavButton from '../components/NavButton';
 import Rsvp from '../components/RSVP';
 import ThePlan from '../components/ThePlan';
@@ -19,6 +20,7 @@ class Wedding extends React.Component {
       <React.Fragment>
         <Background />
         <img id="tartan" className="fade-in" src="/public/images/tartan.jpg"/>
+        <MenuButtons thisClass="menu-buttons-1"/>
         <div id="welcome-container" style={{ backgroundColor: 'transparent' }}>
           <h1>THE STEWARTS</h1>
           <Welcome />
@@ -53,6 +55,7 @@ class Wedding extends React.Component {
           <h1>CONTACT US</h1>
           <Footer />
         </div>
+        <MenuButtons thisClass="menu-buttons-2"/>
       </React.Fragment>
     );
   }

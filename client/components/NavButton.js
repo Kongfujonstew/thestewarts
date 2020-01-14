@@ -2,10 +2,6 @@ import React from 'react';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 class NavButton extends React.Component {
-  componentDidMount() {
-    console.log('nav button cdm Hello')
-  }
-
   scroll = () => {
     const { nextId } = this.props;
     const el = document.getElementById(nextId);
