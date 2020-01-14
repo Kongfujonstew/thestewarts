@@ -27,12 +27,15 @@ export default `.box-shadow {
     font-size: 48px;
     transform: rotate(90deg);
     color: #0a3b9d; }
+  .nav-button:first-of-type {
+    background: blue; }
 
 #background-container {
   height: 100vh;
   width: 100%;
   position: fixed;
   z-index: -1000;
+  opacity: .7;
   background-color: #ececec; }
   #background-container #background {
     height: 1500px;
@@ -47,16 +50,21 @@ export default `.box-shadow {
 
 #tartan {
   position: absolute;
-  width: 300px;
+  width: 150px;
+  top: -75px;
+  left: -75px;
   transform: rotate(45deg);
-  top: -150px;
-  left: -150px;
-  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: -1; }
+  @media (min-width: 768px) {
+    #tartan {
+      width: 300px;
+      top: -150px;
+      left: -150px; } }
 
 #welcome {
   height: 500px;
   position: relative;
-  border: 8px solid #c19a6b;
   background: white;
   background: linear-gradient(white 0%, white 32%, #e7e6e4 50%); }
   #welcome #skyline {
@@ -87,12 +95,16 @@ export default `.box-shadow {
     border-radius: 50%; }
 
 h1 {
-  margin-top: 3vh;
-  margin-bottom: 5vh;
+  margin-top: 0;
+  margin-bottom: 0;
   font-family: Enamel;
   font-size: 56px;
   text-align: center;
   text-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  @media (min-width: 768px) {
+    h1 {
+      margin-top: 3vh;
+      margin-bottom: 5vh; } }
 
 @keyframes fadeIn {
   0% {
@@ -100,7 +112,7 @@ h1 {
   100% {
     opacity: 1; } }
 
-#welcome-container {
+.fade-in, .nav-button:first-of-type {
   opacity: 0;
   animation: 2s ease-out 1s 1 fadeIn;
   animation-fill-mode: forwards; }

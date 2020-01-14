@@ -13,7 +13,7 @@ class Welcome extends React.Component {
 
   render() {
     return (
-      <div id="welcome" className="box-shadow">
+      <div id="welcome" className="box-shadow fade-in">
           <h2>Herman</h2>
           <h4>and</h4>
           <h2>Jon</h2>

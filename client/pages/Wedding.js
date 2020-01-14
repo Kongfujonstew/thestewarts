@@ -18,7 +18,7 @@ class Wedding extends React.Component {
     return (
       <React.Fragment>
         <Background />
-        <img id="tartan" src="/public/images/tartan.jpg"/>
+        <img id="tartan" className="fade-in" src="/public/images/tartan.jpg"/>
         <div id="welcome-container" style={{ backgroundColor: 'transparent' }}>
           <h1>THE STEWARTS</h1>
           <Welcome />

@@ -78,6 +78,11 @@ $desktop-width: 1024px;
     transform: rotate(90deg);
     color: rgba(10,59,157,1);
   }
+
+  &:first-of-type {
+    @extend .fade-in;
+    background: blue;
+  }
 }
 
 // BACKGROUND / Lotus
@@ -86,7 +91,8 @@ $desktop-width: 1024px;
   width: 100%;
   position: fixed;
   z-index: -1000;
-
+  opacity: .7;
+  // filter: saturate(.8);
   // same color as lotus:
   background-color: $lotusPNGGrey;
   #background {
@@ -106,17 +112,22 @@ $desktop-width: 1024px;
 
 #tartan {
   position: absolute;
-  width: 300px;
+  width: 150px;
+  top: -75px;
+  left: -75px;
   transform: rotate(45deg);
-  top: -150px;
-  left: -150px;
   box-shadow: $boxShadow;
+  z-index: -1;
+  @include tablet {
+    width: 300px;
+    top: -150px;
+    left: -150px;
+  }
 }
 
 #welcome {
   height: 500px;
   position: relative;
-  border: 8px solid $camel;
   background: rgb(255,255,255);
   background: linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 32%, rgba(231,230,228,1) 50%);
 
@@ -160,13 +171,18 @@ $desktop-width: 1024px;
 
 // TYPOGRAPHY
 
+// Floating box titles
 h1 {
-  margin-top: 3vh;
-  margin-bottom: 5vh;
+  margin-top: 0;
+  margin-bottom: 0;
   font-family: Enamel;
   font-size: 56px;
   text-align: center;
   text-shadow: $boxShadow;
+  @include tablet {
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+  }
 }
 
 // EFFECTS
@@ -179,7 +195,7 @@ h1 {
   }
 }
 
-#welcome-container {
+.fade-in {
   opacity: 0;
   animation: 2s ease-out 1s 1 fadeIn;
   animation-fill-mode: forwards;

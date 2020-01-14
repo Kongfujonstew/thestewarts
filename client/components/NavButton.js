@@ -14,7 +14,7 @@ class NavButton extends React.Component {
 
   render() {
     return (
-      <div onClick={this.scroll} className="nav-button">
+      <div onClick={this.scroll} className="nav-button fade-in">
         <ArrowForwardIosIcon />
       </div>
     );
