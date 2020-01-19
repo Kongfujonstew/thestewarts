@@ -41,8 +41,14 @@
   width: unset !important;
   cursor: pointer; }
   .menu-buttons button, .menu-buttons-1 button, .menu-buttons-2 button {
-    color: #7088ba;
-    width: 120px; }
+    color: #0a3b9d;
+    width: 100px; }
+  @media (min-width: 768px) {
+    .menu-buttons, .menu-buttons-1, .menu-buttons-2 {
+      height: 60px !important; }
+      .menu-buttons button, .menu-buttons-1 button, .menu-buttons-2 button {
+        color: #0a3b9d;
+        width: 120px; } }
 
 .menu-buttons-1 {
   width: unset;

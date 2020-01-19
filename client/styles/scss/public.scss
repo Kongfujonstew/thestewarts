@@ -15,6 +15,7 @@
 $welcomeBackgroundHeight: 1500px;
 $lotusPNGGrey: #ececec;
 $navBlue: rgba(112,136,186,1);
+$navDarkBlue: rgba(10,59,157,1);
 // $buddhaBlue:  #002b80;
 $camel: #c19a6b;
 $boxShadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
@@ -95,13 +96,23 @@ $desktop-width: 1024px;
 .menu-buttons {
   display: flex;
   position: absolute;
+  // these importants are just because this selector (above) includes these divs:
+  // #root > div:not(#background-container)
   height: 40px !important;
+  button {
+    color: $navDarkBlue;
+    width: 100px;
+  }
+  @include tablet {
+    height: 60px !important;
+    button {
+      color: $navDarkBlue;
+      width: 120px;
+    }
+  }
+
   width: unset !important;
   cursor: pointer;
-  button {
-    color: $navBlue;
-    width: 120px;
-  }
 }
 
 .menu-buttons-1 {
@@ -181,7 +192,7 @@ $desktop-width: 1024px;
 // this is page-level
 #rsvp-container {
   background: $navBlue;
-  background: radial-gradient(circle, $navBlue 38%, rgba(10,59,157,1) 96%);
+  background: radial-gradient(circle, $navBlue 38%, $navDarkBlue 96%);
 }
 
 
@@ -197,7 +208,7 @@ $desktop-width: 1024px;
   position: relative;
   //this is the small version lotus
   img {
-    background: rgba(112,136,186,1);
+    background: $navBlue;
     width: 250px;
     position: absolute;
     bottom: 0;
