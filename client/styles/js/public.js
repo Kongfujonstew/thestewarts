@@ -69,7 +69,7 @@ export default `#root {
   width: 100%;
   position: fixed;
   z-index: -1000;
-  opacity: .7;
+  opacity: .5;
   background-color: #ececec; }
   #background-container #background {
     height: 1500px;
@@ -164,7 +164,7 @@ p {
 
 h1 {
   margin-top: 1vh;
-  margin-bottom: 0;
+  margin-bottom: 1vh;
   font-family: Enamel;
   font-size: 56px;
   text-align: center;
@@ -184,7 +184,10 @@ h3 {
 
 h4 {
   font-family: Baskervville;
-  font-size: 18px; }
+  font-size: 14px; }
+  @media (min-width: 768px) {
+    h4 {
+      font-size: 18px; } }
 
 @keyframes fadeIn {
   0% {
