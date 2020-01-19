@@ -99,14 +99,42 @@
 #welcome {
   height: 500px;
   position: relative;
+  max-width: 500px !important;
   background: white;
-  background: linear-gradient(white 0%, white 32%, #e7e6e4 50%); }
+  background: linear-gradient(white 0%, white 22%, #e7e6e4 55%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  color: #726442; }
+  #welcome h1 {
+    margin-top: 0;
+    margin-bottom: 4px;
+    font-size: 42px; }
+    @media (min-width: 768px) {
+      #welcome h1 {
+        margin-top: 18px; } }
+  #welcome h2 {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 24px; }
+  #welcome h4 {
+    margin-top: 0; }
+  #welcome p {
+    margin-top: 0; }
+  #welcome button {
+    width: 80px;
+    border-radius: 0;
+    background: #e7e6e4; }
   #welcome #skyline {
     margin-left: 1px;
     width: calc(100% - 1px);
     position: absolute;
     left: 0;
-    bottom: 0; }
+    bottom: 0;
+    z-index: -100; }
 
 #rsvp-container {
   background: #7088ba;
@@ -128,8 +156,14 @@
     box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 50%; }
 
+span {
+  font-family: MrsEavesRoman; }
+
+p {
+  font-family: MrsEavesItalic; }
+
 h1 {
-  margin-top: 0;
+  margin-top: 1vh;
   margin-bottom: 0;
   font-family: Enamel;
   font-size: 56px;
@@ -139,6 +173,18 @@ h1 {
     h1 {
       margin-top: 3vh;
       margin-bottom: 5vh; } }
+
+h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px; }
+
+h3 {
+  font-family: Enamel;
+  font-size: 36px; }
+
+h4 {
+  font-family: Baskervville;
+  font-size: 18px; }
 
 @keyframes fadeIn {
   0% {

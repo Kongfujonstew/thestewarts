@@ -16,6 +16,7 @@ export default (html, data, css, app) => `
       <style id="jss-server-side">${css}</style>
 
       <link href="https://fonts.googleapis.com/css?family=Baskervville&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
       <style id="fonts">
         @font-face {
           font-family: MrsEavesRoman;

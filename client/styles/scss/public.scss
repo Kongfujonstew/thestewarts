@@ -1,6 +1,7 @@
 // FONTS are in html/index.js
 // MrsEavesRoman and MrsEavesItalic (You are cordially invited, address)
 // Baskervville (dates - this is from Google)
+// 'Great Vibes', cursive; (cute/gushy stuff - also from Google)
 
 // Notes on Wedding:
 // styles for the height and color of the main boxes
@@ -14,10 +15,11 @@
 // VARIABLES
 $welcomeBackgroundHeight: 1500px;
 $lotusPNGGrey: #ececec;
+$skylineGrey: rgba(231,230,228,1);
 $navBlue: rgba(112,136,186,1);
 $navDarkBlue: rgba(10,59,157,1);
 // $buddhaBlue:  #002b80;
-$camel: #c19a6b;
+$camel: #726442;
 $boxShadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 
 $phone-width: 480px;
@@ -177,15 +179,56 @@ $desktop-width: 1024px;
 #welcome {
   height: 500px;
   position: relative;
+  // narrower than others below
+  max-width: 500px !important;
   background: rgb(255,255,255);
-  background: linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 32%, rgba(231,230,228,1) 50%);
+  background: linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,1) 22%, $skylineGrey 55%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  // a whole bunch of 'resets' that aren't used elsewehere???
+  padding: 24px;
+  text-align: center;
+  color: $camel;
 
+  h1 {
+    margin-top: 0;
+    margin-bottom: 4px;
+    font-size: 42px;
+    @include tablet {
+      margin-top: 18px;
+    }
+  }
+
+  h2 {
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 24px;
+  }
+
+  h4 {
+    margin-top: 0;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  button {
+    width: 80px;
+    border-radius: 0;
+    background: $skylineGrey;
+  }
+
+  // this is the image itself
   #skyline {
     margin-left: 1px;
     width: calc(100% - 1px);
     position: absolute;
     left: 0;
     bottom: 0;
+    z-index: -100;
   }
 }
 
@@ -219,11 +262,21 @@ $desktop-width: 1024px;
 }
 
 // TYPOGRAPHY
+// h1, h2, h3, h4, h5, span, p {
+//   display: inline-block;
+// }
+
+span {
+  font-family: MrsEavesRoman;
+}
+
+p {
+  font-family: MrsEavesItalic;
+}
 
 // Floating box titles
 h1 {
-  // this top margin is fucked
-  margin-top: 0;
+  margin-top: 1vh;
   margin-bottom: 0;
   font-family: Enamel;
   font-size: 56px;
@@ -234,6 +287,25 @@ h1 {
     margin-bottom: 5vh;
   }
 }
+
+// 'inner' box titles
+h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+}
+
+// smaller enamel
+h3 {
+  font-family: Enamel;
+  font-size: 36px;
+}
+
+h4 {
+  font-family: Baskervville;
+  font-size: 18px;
+}
+
+
 
 // EFFECTS
 @keyframes fadeIn {
