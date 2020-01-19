@@ -203,7 +203,7 @@ $desktop-width: 1024px;
 
   h2 {
     display: inline-block;
-    // margin-top: 0;
+    margin-top: 0;
     margin-bottom: 24px;
   }
 
@@ -253,13 +253,13 @@ $desktop-width: 1024px;
     h2 {
       margin-top: 0;
       margin-bottom: 48px;
-      font-size: 24px;
+      font-size: 28px;
       text-align: center;
       color: $camel;
     }
 
     p {
-      font-size: 12px;
+      font-size: 16px;
       font-family: MrsEavesRoman;
       position: relative;
       z-index: 100;
@@ -304,6 +304,83 @@ $desktop-width: 1024px;
   }
 }
 
+#theplan-container {
+  #theplan {
+    background: rgba(255,255,255,.5);
+    box-shadow: $boxShadow;
+    text-align: center;
+    padding: 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 400px;
+    max-width: 500px !important;
+
+    h2 {
+      color: $camel;
+      font-size: 22px;
+      margin-bottom: 0;
+    }
+    h3 {
+      font-size: 18px;
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+
+    span {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    #logo, #car {
+      position: absolute;
+      top: 32vh;
+      width: 120px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: $boxShadow;
+      // border: 3px solid $camel;
+    }
+
+    #logo {
+      right: 5px;
+    }
+
+    #car {
+      left: 5px;
+    }
+
+    @include tablet {
+      h2 {
+        color: $camel;
+        font-size: 30px;
+        margin-bottom: 0;
+      }
+      h3 {
+        font-size: 22px;
+        margin-top: 0;
+        margin-bottom: 8px;
+      }
+
+      #logo {
+        right: -30px;
+      }
+
+      #car {
+        left: -30px;
+      }
+
+      #car, #logo {
+        top: 34vh;
+        width: 150px;
+      }
+    }
+
+
+  }
+}
+
 // this is page-level
 #rsvp-container {
   background: $navBlue;
@@ -329,9 +406,6 @@ $desktop-width: 1024px;
 }
 
 // TYPOGRAPHY
-// h1, h2, h3, h4, h5, span, p {
-//   display: inline-block;
-// }
 
 span {
   font-family: MrsEavesRoman;

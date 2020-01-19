@@ -124,6 +124,8 @@
     margin-top: 0; }
   #welcome p {
     margin-top: 0; }
+  #welcome span {
+    margin-top: 0; }
   #welcome button {
     width: 80px;
     border-radius: 0;
@@ -151,11 +153,11 @@
     #about-container #about h2 {
       margin-top: 0;
       margin-bottom: 48px;
-      font-size: 24px;
+      font-size: 28px;
       text-align: center;
       color: #726442; }
     #about-container #about p {
-      font-size: 12px;
+      font-size: 16px;
       font-family: MrsEavesRoman;
       position: relative;
       z-index: 100;
@@ -180,6 +182,56 @@
         font-size: 28px; }
       #about-container #about #hermann {
         width: 200px; } }
+
+#theplan-container #theplan {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  padding: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 400px;
+  max-width: 500px !important; }
+  #theplan-container #theplan h2 {
+    color: #726442;
+    font-size: 22px;
+    margin-bottom: 0; }
+  #theplan-container #theplan h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 6px; }
+  #theplan-container #theplan span {
+    margin: 0;
+    font-size: 14px; }
+  #theplan-container #theplan #logo, #theplan-container #theplan #car {
+    position: absolute;
+    top: 32vh;
+    width: 120px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
+  #theplan-container #theplan #logo {
+    right: 5px; }
+  #theplan-container #theplan #car {
+    left: 5px; }
+  @media (min-width: 768px) {
+    #theplan-container #theplan h2 {
+      color: #726442;
+      font-size: 30px;
+      margin-bottom: 0; }
+    #theplan-container #theplan h3 {
+      font-size: 22px;
+      margin-top: 0;
+      margin-bottom: 8px; }
+    #theplan-container #theplan #logo {
+      right: -30px; }
+    #theplan-container #theplan #car {
+      left: -30px; }
+    #theplan-container #theplan #car, #theplan-container #theplan #logo {
+      top: 34vh;
+      width: 150px; } }
 
 #rsvp-container {
   background: #7088ba;
