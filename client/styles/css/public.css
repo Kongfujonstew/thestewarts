@@ -233,6 +233,22 @@
       top: 34vh;
       width: 150px; } }
 
+#location-container #location {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
+  #location-container #location .text {
+    text-align: center; }
+    #location-container #location .text span {
+      display: block; }
+  #location-container #location iframe {
+    border: 4px solid #726442 !important; }
+  @media (min-width: 768px) {
+    #location-container #location .text {
+      margin-top: -20px; }
+      #location-container #location .text span {
+        font-size: 18px; } }
+
 #rsvp-container {
   background: #7088ba;
   background: radial-gradient(circle, #7088ba 38%, #0a3b9d 96%); }

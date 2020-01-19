@@ -376,8 +376,31 @@ $desktop-width: 1024px;
         width: 150px;
       }
     }
+  }
+}
 
-
+#location-container {
+  #location {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .text {
+      span {
+        display: block;
+      }
+      text-align: center;
+    }
+    iframe {
+      border: 4px solid $camel !important;
+    }
+    @include tablet {
+      .text {
+        margin-top: -20px;
+        span {
+          font-size: 18px;
+        }
+      }
+    }
   }
 }
 
