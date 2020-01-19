@@ -203,7 +203,7 @@ $desktop-width: 1024px;
 
   h2 {
     display: inline-block;
-    margin-top: 0;
+    // margin-top: 0;
     margin-bottom: 24px;
   }
 
@@ -212,6 +212,10 @@ $desktop-width: 1024px;
   }
 
   p {
+    margin-top: 0;
+  }
+
+  span {
     margin-top: 0;
   }
 
@@ -232,17 +236,80 @@ $desktop-width: 1024px;
   }
 }
 
+#about-container {
+  background-image: repeating-linear-gradient(45deg, #eee 10px, #eee 12px, transparent 12px, transparent 20px);
+  background-color: white;
+  #about {
+    background: white;
+    padding: 24px;
+    max-width: 500px;
+    position: relative;
+    overflow: hidden;
+    max-width: 500px !important;
+    .text {
+      margin-left: 120px;
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 48px;
+      font-size: 24px;
+      text-align: center;
+      color: $camel;
+    }
+
+    p {
+      font-size: 12px;
+      font-family: MrsEavesRoman;
+      position: relative;
+      z-index: 100;
+      mix-blend-mode: difference;
+      color: white;
+    }
+
+    p:first-letter {
+      font-family: 'Great Vibes', cursive;
+      font-size: 22px;
+    }
+
+    #hermann {
+      position: absolute;
+      width: 150px;
+      top: 100px;
+      left: -24px;
+    }
+
+    @include tablet {
+      .text {
+        margin-left: 165px;
+      }
+      h2 {
+        // back to default
+        font-size: 36px;
+      }
+
+      p {
+        // this is just back to default
+        font-size: 1em;
+      }
+
+      p:first-letter {
+        font-size: 28px;
+      }
+
+      #hermann {
+        width: 200px;
+      }
+    }
+  }
+}
+
 // this is page-level
 #rsvp-container {
   background: $navBlue;
   background: radial-gradient(circle, $navBlue 38%, $navDarkBlue 96%);
 }
 
-
-#about-container {
-  background-image: repeating-linear-gradient(45deg, #eee 10px, #eee 12px, transparent 12px, transparent 20px);
-  background-color: white;
-}
 
 
 

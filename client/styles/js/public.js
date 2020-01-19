@@ -136,13 +136,54 @@ export default `#root {
     bottom: 0;
     z-index: -100; }
 
-#rsvp-container {
-  background: #7088ba;
-  background: radial-gradient(circle, #7088ba 38%, #0a3b9d 96%); }
-
 #about-container {
   background-image: repeating-linear-gradient(45deg, #eee 10px, #eee 12px, transparent 12px, transparent 20px);
   background-color: white; }
+  #about-container #about {
+    background: white;
+    padding: 24px;
+    max-width: 500px;
+    position: relative;
+    overflow: hidden;
+    max-width: 500px !important; }
+    #about-container #about .text {
+      margin-left: 120px; }
+    #about-container #about h2 {
+      margin-top: 0;
+      margin-bottom: 48px;
+      font-size: 24px;
+      text-align: center;
+      color: #726442; }
+    #about-container #about p {
+      font-size: 12px;
+      font-family: MrsEavesRoman;
+      position: relative;
+      z-index: 100;
+      mix-blend-mode: difference;
+      color: white; }
+    #about-container #about p:first-letter {
+      font-family: 'Great Vibes', cursive;
+      font-size: 22px; }
+    #about-container #about #hermann {
+      position: absolute;
+      width: 150px;
+      top: 100px;
+      left: -24px; }
+    @media (min-width: 768px) {
+      #about-container #about .text {
+        margin-left: 165px; }
+      #about-container #about h2 {
+        font-size: 36px; }
+      #about-container #about p {
+        font-size: 1em; }
+      #about-container #about p:first-letter {
+        font-size: 28px; }
+      #about-container #about #hermann {
+        width: 200px; } }
+
+#rsvp-container {
+  background: #7088ba;
+  background: radial-gradient(circle, #7088ba 38%, #0a3b9d 96%); }
 
 #footer {
   background: transparent;
