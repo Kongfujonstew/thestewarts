@@ -12,7 +12,7 @@ import Welcome from '../components/Welcome';
 
 class Wedding extends React.Component {
   componentDidMount() {
-    console.log('wedding cdm Hello')
+    console.log('Hello from Hermann and Jon')
   }
 
   render() {

@@ -5,7 +5,7 @@ class ThePlan extends React.Component {
   render() {
     return (
       <div id="theplan">
-        <span style={{ position: 'absolute', top: '-18px' }}>further details forthcoming . . .</span>
+        <span style={{ position: 'absolute', top: '6px' }}>further details forthcoming . . .</span>
         <h2 style={{ marginTop: '4px'}}>Afternoon Friday, July 24</h2>
         <h3>WELCOME BBQ</h3>
         <h2>Morning Saturday, July 25</h2>

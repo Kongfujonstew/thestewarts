@@ -36,7 +36,7 @@ fieldset {
   width: 80px !important;
   position: absolute;
   left: calc(50% - 40px);
-  bottom: 40px;
+  bottom: 60px;
   border-radius: 50%;
   background: rgba(192, 192, 192, 0.2) !important;
   text-align: center;
@@ -158,7 +158,8 @@ fieldset {
   #welcome button {
     width: 80px;
     border-radius: 0;
-    background: #e7e6e4; }
+    background: #e7e6e4;
+    font-size: 22px !important; }
   #welcome #skyline {
     margin-left: 1px;
     width: calc(100% - 1px);
@@ -217,7 +218,7 @@ fieldset {
 #theplan-container {
   overflow: hidden; }
   #theplan-container #theplan {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
     padding: 24px;
@@ -225,7 +226,7 @@ fieldset {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 460px;
+    min-height: 430px;
     max-width: 500px !important; }
     #theplan-container #theplan h2 {
       color: #726442;
@@ -288,7 +289,7 @@ fieldset {
         font-size: 18px; } }
 
 #faq-container #faq {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
   box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 24px;
   padding-top: 4px;
@@ -305,7 +306,7 @@ fieldset {
 
 #rsvp-container {
   background: #b0d0ff;
-  background: radial-gradient(circle, #b0d0ff 45%, #0a3b9d 68%); }
+  background: radial-gradient(circle, #b0d0ff 49%, #0a3b9d 68%); }
   #rsvp-container h1 {
     color: white; }
   #rsvp-container #rsvp {

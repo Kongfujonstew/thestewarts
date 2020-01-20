@@ -96,7 +96,7 @@ $desktop-width: 1024px;
   // margin-top: 3vh !important;
   position: absolute;
   left: calc(50% - 40px);
-  bottom: 40px;
+  bottom: 60px;
   border-radius: 50%;
   background: rgba(192,192,192,0.2) !important;
   text-align: center;
@@ -258,6 +258,7 @@ $desktop-width: 1024px;
     width: 80px;
     border-radius: 0;
     background: $skylineGrey;
+    font-size: 22px !important;
   }
 
   // this is the image itself
@@ -344,7 +345,7 @@ $desktop-width: 1024px;
 #theplan-container {
   overflow: hidden;
   #theplan {
-    background: rgba(255,255,255,.5);
+    background: rgba(255,255,255,.6);
     box-shadow: $boxShadow;
     text-align: center;
     padding: 24px;
@@ -352,7 +353,7 @@ $desktop-width: 1024px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 460px;
+    min-height: 430px;
     max-width: 500px !important;
 
     h2 {
@@ -449,7 +450,7 @@ $desktop-width: 1024px;
 
 #faq-container {
   #faq {
-    background: rgba(255,255,255,.5);
+    background: rgba(255,255,255,.6);
     box-shadow: $boxShadow;
     padding: 24px;
     padding-top: 4px;
@@ -474,7 +475,7 @@ $desktop-width: 1024px;
 
 #rsvp-container {
   background: $navBlue;
-  background: radial-gradient(circle, $navBlue 45%, $navDarkBlue 68%);
+  background: radial-gradient(circle, $navBlue 49%, $navDarkBlue 68%);
   h1 {
     color: white;
   }

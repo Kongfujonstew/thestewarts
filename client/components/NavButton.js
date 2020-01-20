@@ -5,13 +5,13 @@ class NavButton extends React.Component {
   scroll = () => {
     const { nextId } = this.props;
     const el = document.getElementById(nextId);
-    el && el.scrollIntoView({ behavior: 'smooth' });
+    el && el.scrollIntoView();
   }
 
   render() {
     return (
       <div onClick={this.scroll} className="nav-button fade-in">
-        <ArrowForwardIosIcon />
+        <ArrowForwardIosIcon/>
       </div>
     );
   }

@@ -103,7 +103,7 @@ class RSVP extends React.Component {
       <div id="rsvp">
         <TextField onChange={this.handleTypeText} name="name" value={name} label="name" variant="outlined" required/>
         <TextField onChange={this.handleTypeText} name="email" value={email} label="email" variant="outlined" required/>
-        <TextField onChange={this.handleTypeText} name="total" value={total} label="total # people in your group" variant="outlined" required/>
+        <TextField onChange={this.handleTypeText} name="total" value={total} type="number" label="total # people in your group" variant="outlined" required/>
         <TextField onChange={this.handleTypeText} name="food" value={food} label="food preferences" variant="outlined" />
         <TextField onChange={this.handleTypeText} name="notes" value={notes} label="other notes" variant="outlined" multiline />
         <Checkbox onClick={this.handleClickCheckbox} label="RSVP YES" checked={rsvpyes} color="primary" />

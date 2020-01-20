@@ -1,10 +1,7 @@
 export default function(req, res, next) {
 
-  console.log('* [example 1.1] sending test email, user: ', process.env.US_EM_A);
-  console.log('* [example 1.1] sending test email, pass: ', process.env.US_EM_P);
+  console.log('***** sending email, user: ', process.env.US_EM_A);
 
-  console.log('LKSJDLKFJSLKDFJ$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
-  console.log(req.body)
   let text = '';
   const reqBodyKeys = Object.keys((req.body || {}));
   const isRSVP = reqBodyKeys.includes('rsvpyes');
@@ -16,11 +13,11 @@ export default function(req, res, next) {
 
   var send = require('gmail-send')({
   //var send = require('../index.js')({
-    user: 'us@thestewarts.family',
+    user: process.env.US_EM_A,
     // user: credentials.user,                  // Your GMail account used to send emails
-    pass: 'Bigstewartsswissarmy1',
+    pass: process.env.US_EM_P,
     // pass: credentials.pass,                  // Application-specific password
-    to:   'jonstew@gmail.com',
+    to:   process.env.US_EM_A,
     // to:   credentials.user,                  // Send to yourself
                                              // you also may set array of recipients:
                                              // [ 'user1@gmail.com', 'user2@gmail.com' ]
@@ -31,9 +28,6 @@ export default function(req, res, next) {
     text: text      // Plain text, see above
     //html:    '<b>html text</b>'            // HTML
   });
-
-  console.log('* [example 1.1] sending test email');
-
 
   send((sendError, sendResponse) => {
     console.log('send() callback err:', sendError, '; res:', sendResponse);
