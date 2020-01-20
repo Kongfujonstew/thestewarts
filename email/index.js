@@ -6,7 +6,9 @@ export default function(req, res, next) {
   console.log('LKSJDLKFJSLKDFJ$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
   console.log(req.body)
   let text = '';
-  Object.keys((req.body) || {}).forEach(field => {
+  const reqBodyKeys = Object.keys((req.body || {}));
+  const isRSVP = reqBodyKeys.includes('rsvpyes');
+  reqBodyKeys.forEach(field => {
     text += `${field}: ${req.body[field]}\n`;
   });
   console.log('text: ', text)
@@ -25,7 +27,7 @@ export default function(req, res, next) {
     // from:    credentials.user,            // from: by default equals to user
     // replyTo: credentials.user,            // replyTo: by default undefined
     // bcc: 'some-user@mail.com',            // almost any option of `nodemailer` will be passed to it
-    subject: `It's an RSVP!`,
+    subject: `It's a${isRSVP ? 'n RSVP' : ' message'}!`,
     text: text      // Plain text, see above
     //html:    '<b>html text</b>'            // HTML
   });

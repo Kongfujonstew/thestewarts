@@ -54,13 +54,15 @@ fieldset {
   cursor: pointer; }
   .menu-buttons button, .menu-buttons-1 button, .menu-buttons-2 button {
     color: #0a3b9d;
-    width: 100px; }
+    width: 100px;
+    font-size: 18px !important; }
   @media (min-width: 768px) {
     .menu-buttons, .menu-buttons-1, .menu-buttons-2 {
       height: 60px !important; }
       .menu-buttons button, .menu-buttons-1 button, .menu-buttons-2 button {
         color: #0a3b9d;
-        width: 120px; } }
+        width: 120px;
+        font-size: 24px !important; } }
 
 .menu-buttons-1 {
   width: unset;
@@ -71,8 +73,8 @@ fieldset {
 
 .menu-buttons-2 {
   height: 80px !important;
-  margin-bottom: 90px;
-  bottom: 0;
+  margin-bottom: 50px;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%); }
 
@@ -297,6 +299,9 @@ fieldset {
     color: white; }
   #rsvp-container #rsvp {
     max-width: 500px !important; }
+    #rsvp-container #rsvp div {
+      font-size: 22px;
+      font-family: MrsEavesRoman !important; }
     #rsvp-container #rsvp > span {
       display: inline-block;
       font-size: 22px; }
@@ -304,25 +309,48 @@ fieldset {
       width: 100%;
       margin-bottom: 12px; }
     #rsvp-container #rsvp label, #rsvp-container #rsvp button, #rsvp-container #rsvp input {
-      font-size: 22px !important; }
+      font-size: 22px !important;
+      color: black; }
     #rsvp-container #rsvp button {
       width: 100% !important;
-      margin-bottom: 6px; }
+      margin-bottom: 6px;
+      z-index: 100; }
   @media (min-width: 768px) {
     #rsvp-container {
       background: radial-gradient(circle, #b0d0ff 28%, #0a3b9d 68%); } }
 
 #footer {
   background: transparent;
-  position: relative; }
+  position: relative;
+  max-width: 500px !important;
+  padding: 24px;
+  text-align: center; }
+  #footer div {
+    font-size: 22px;
+    font-family: MrsEavesRoman !important;
+    width: 325px;
+    z-index: 100; }
+  #footer label, #footer button, #footer input, #footer span {
+    font-size: 22px !important; }
+  #footer button {
+    width: 100%;
+    width: 325px;
+    z-index: 100 !important; }
   #footer img {
     background: #0a3b9d;
-    width: 250px;
+    width: 180px;
     position: absolute;
-    bottom: 0;
-    left: calc(50% - 125px);
+    bottom: -36px;
+    left: calc(50% - 90px);
     box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 50%; }
+  @media (min-width: 768px) {
+    #footer img {
+      width: 250px;
+      left: calc(50% - 125px);
+      bottom: -18; }
+    #footer div, #footer button {
+      width: 100%; } }
 
 span {
   font-family: MrsEavesRoman; }

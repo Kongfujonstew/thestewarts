@@ -120,12 +120,14 @@ $desktop-width: 1024px;
   button {
     color: $navDarkBlue;
     width: 100px;
+    font-size: 18px !important;
   }
   @include tablet {
     height: 60px !important;
     button {
       color: $navDarkBlue;
       width: 120px;
+      font-size: 24px !important;
     }
   }
 
@@ -145,8 +147,8 @@ $desktop-width: 1024px;
 .menu-buttons-2 {
   @extend .menu-buttons;
   height: 80px !important;
-  margin-bottom: 90px;
-  bottom: 0;
+  margin-bottom: 50px;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
   // right: 0;
@@ -457,7 +459,6 @@ $desktop-width: 1024px;
   }
 }
 
-// this is page-level
 #rsvp-container {
   background: $navBlue;
   background: radial-gradient(circle, $navBlue 45%, $navDarkBlue 68%);
@@ -466,6 +467,11 @@ $desktop-width: 1024px;
   }
   #rsvp {
     max-width: 500px !important;
+    // this overrides the bs font for the mui textarea, which is weird
+    div {
+      font-size: 22px;
+      font-family: MrsEavesRoman !important;
+    }
     > span {
       display: inline-block;
       font-size: 22px;
@@ -477,11 +483,13 @@ $desktop-width: 1024px;
 
     label, button, input {
       font-size: 22px !important;
+      color: black;
     }
 
     button {
       width: 100% !important;
       margin-bottom: 6px;
+      z-index: 100;
     }
   }
   @include tablet {
@@ -490,20 +498,50 @@ $desktop-width: 1024px;
 }
 
 
-
-
 #footer {
   background: transparent;
   position: relative;
+  max-width: 500px !important;
+  padding: 24px;
+  text-align: center;
+      // this overrides the bs font for the mui textarea, which is weird
+  div {
+    font-size: 22px;
+    font-family: MrsEavesRoman !important;
+    width: 325px;
+    z-index: 100;
+  }
+
+  label, button, input, span {
+    font-size: 22px !important;
+  }
+
+  button {
+    width: 100%;
+    width: 325px;
+    z-index: 100 !important;
+  }
   //this is the small version lotus
   img {
     background: $navDarkBlue;
-    width: 250px;
+    width: 180px;
     position: absolute;
-    bottom: 0;
-    left: calc(50% - 125px);
+    bottom: -36px;
+    left: calc(50% - 90px);
     box-shadow: $boxShadow;
     border-radius: 50%;
+  }
+
+  @include tablet {
+    img {
+      width: 250px;
+      left: calc(50% - 125px);
+      bottom: -18;
+    }
+
+    div, button {
+      width: 100%;
+    }
   }
 }
 
