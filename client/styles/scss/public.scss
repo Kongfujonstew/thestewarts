@@ -481,6 +481,7 @@ $desktop-width: 1024px;
   }
   #rsvp {
     max-width: 500px !important;
+    text-align: center;
     // this overrides the bs font for the mui textarea, which is weird
     div {
       font-size: 22px;
@@ -508,6 +509,13 @@ $desktop-width: 1024px;
       &:disabled {
         color: grey;
       }
+      &.short {
+        width: 100px !important;
+      }
+    }
+
+    #short-button {
+      width: 100px !important;
     }
 
     .buttons {

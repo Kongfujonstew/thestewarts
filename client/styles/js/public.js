@@ -310,7 +310,8 @@ fieldset {
   #rsvp-container h1 {
     color: white; }
   #rsvp-container #rsvp {
-    max-width: 500px !important; }
+    max-width: 500px !important;
+    text-align: center; }
     #rsvp-container #rsvp div {
       font-size: 22px;
       font-family: MrsEavesRoman !important; }
@@ -330,6 +331,10 @@ fieldset {
       z-index: 100; }
       #rsvp-container #rsvp button:disabled {
         color: grey; }
+      #rsvp-container #rsvp button.short {
+        width: 100px !important; }
+    #rsvp-container #rsvp #short-button {
+      width: 100px !important; }
     #rsvp-container #rsvp .buttons {
       padding-top: 24px;
       display: flex;

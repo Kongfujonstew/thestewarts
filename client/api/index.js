@@ -1,4 +1,5 @@
 import 'whatwg-fetch';
+import glitter from './glitter';
 
 export const sendEmail = message => {
   return fetch('/email', {
@@ -19,3 +20,5 @@ export const sendEmail = message => {
   )
   .catch(() => null);
 }
+
+export const initGlitter = glitter;

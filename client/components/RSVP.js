@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
-import { sendEmail } from '../api';
+import { sendEmail, initGlitter } from '../api';
 
 class RSVP extends React.Component {
   constructor(props) {
@@ -30,6 +30,8 @@ class RSVP extends React.Component {
     if (existingRSVP) {
       this.setState({ ...existingRSVP, hasRSVPd: true });
     }
+
+    this.doGlitter = initGlitter();
   }
 
   getExistingRSVP = () => {
@@ -56,36 +58,49 @@ class RSVP extends React.Component {
     delete message.loading;
     delete message.showExistingRSVP;
     const sendSuccess = await sendEmail(message);
+    this.scroll();
     if (sendSuccess) {
       this.setState({ loading: false, hasRSVPd: true, showExistingRSVP: false });
       this.saveRSVP();
+      if (typeof this.doGlitter === 'function' && message.rsvpyes) {
+        this.doGlitter();
+      }
     } else {
       this.props.enqueueSnackbar('Something went wrong over here! Please try again - or just call!');
       this.setState({ loading: false });
     }
   }
 
+  handleClickUpdate = () => {
+    this.scroll();
+    this.setState({ showExistingRSVP: !this.state.showExistingRSVP })
+  };
+
   saveRSVP = () => {
     const { name, email, rsvpyes, total, food, notes } = this.state;
     if (localStorage) {
       // only set the actual rsvp items!
-      localStorage.setItem('rsvp', JSON.stringify({ name, email, rsvpyes, food, notes }));
+      localStorage.setItem('rsvp', JSON.stringify({ name, email, rsvpyes, total, food, notes }));
     }
   }
 
+  scroll = () => {
+    const el = document.getElementById('rsvp-container');
+    el && el.scrollIntoView();
+  }
+
   renderConfirmation = () => {
-    const { hasRSVPd, rsvpyes, showExistingRSVP } = this.state;
+    const { rsvpyes } = this.state;
     const confirmationText = rsvpyes ? `You RSVP'd! We are so excited to see you.` : `Sorry we'll miss you!`;
-    const handleClickUpdate = () => { this.setState({ showExistingRSVP: !showExistingRSVP })};
 
     return (
-      <div id="rsvp" style={{ textAlign: 'center' }}>
-        <span style={{ marginBottom: '32px', marginTop: '48px' }}>{confirmationText}</span>
-        <span style={{ marginBottom: '16px' }}>Click here to change or update your rsvp:</span>
-        <Button onClick={handleClickUpdate} variant="contained" color="primary">
+      <React.Fragment>
+        <span style={{ marginBottom: '32px', marginTop: '76px' }}>{confirmationText}</span>
+        <span style={{ marginBottom: '225px' }}>Click below to change or update your rsvp:</span>
+        <Button id="short-button" onClick={this.handleClickUpdate} className="short" variant="contained" color="primary">
           update
         </Button>
-      </div>
+      </React.Fragment>
     );
   }
 
@@ -99,8 +114,9 @@ class RSVP extends React.Component {
     const { name, email, rsvpyes, total, food, notes, loading, hasRSVPd, showExistingRSVP } = this.state;
     const isDisabled = loading || !name || !email || !total || isNaN(Number(total));
     const showClearButton = hasRSVPd && showExistingRSVP;
+
     return (
-      <div id="rsvp">
+      <React.Fragment>
         <TextField onChange={this.handleTypeText} name="name" value={name} label="name" variant="outlined" required/>
         <TextField onChange={this.handleTypeText} name="email" value={email} label="email" variant="outlined" required/>
         <TextField onChange={this.handleTypeText} name="total" value={total} type="number" label="total # people in your group" variant="outlined" required/>
@@ -112,19 +128,21 @@ class RSVP extends React.Component {
           <Button onClick={this.handleClickSend} style={{ flexBasis: showClearButton ? '47%' : '100%' }} variant="contained" color="primary" disabled={isDisabled}>{hasRSVPd ? 'update rsvp' : 'send'}</Button>
           { showClearButton && <Button onClick={this.clearExistingForm} variant="contained" color="primary" disabled={loading}>clear</Button>}
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 
   render() {
     const { hasRSVPd, showExistingRSVP } = this.state;
-    // User is inputing for first time, or updating existing rsvp
-    if (!hasRSVPd || (hasRSVPd && showExistingRSVP)) {
-      return this.renderForm();
-    }
+    const shouldRenderForm = !hasRSVPd || (hasRSVPd && showExistingRSVP);
 
-    // user has already submitted and it succeeded
-    return this.renderConfirmation();
+    return (
+      <div id="rsvp">
+        <canvas id="canvas" style={{ position: 'absolute', left: '0', top: '0' }}></canvas>
+        { shouldRenderForm && this.renderForm() }
+        { !shouldRenderForm && this.renderConfirmation() }
+      </div>
+    );
   }
 }
 
