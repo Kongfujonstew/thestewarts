@@ -52,7 +52,7 @@ class Wedding extends React.Component {
         </div>
         <div id="footer-container" style={{ backgroundColor: 'transparent' }}>
           <h1>CONTACT US</h1>
-          <Footer />
+          <Footer {...this.props} />
         </div>
         <MenuButtons thisClass="menu-buttons-2"/>
       </React.Fragment>
