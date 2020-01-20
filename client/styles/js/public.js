@@ -316,7 +316,7 @@ fieldset {
       font-size: 22px;
       font-family: MrsEavesRoman !important; }
     #rsvp-container #rsvp > span {
-      display: inline-block;
+      display: block !important;
       font-size: 22px; }
     #rsvp-container #rsvp > div {
       width: 100%;

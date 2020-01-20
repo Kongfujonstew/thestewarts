@@ -488,7 +488,7 @@ $desktop-width: 1024px;
       font-family: MrsEavesRoman !important;
     }
     > span {
-      display: inline-block;
+      display: block !important;
       font-size: 22px;
     }
     > div {
