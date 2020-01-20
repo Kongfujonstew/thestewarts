@@ -100,7 +100,7 @@ class RSVP extends React.Component {
     return (
       <React.Fragment>
         <span style={{ marginBottom: '32px', marginTop: '76px' }}>{confirmationText}</span>
-        <span style={{ marginBottom: '225px' }}>Click below to change or update your rsvp:</span>
+        <span style={{ marginBottom: '225px', display: 'block !important' }}>Click below to change or update your rsvp:</span>
         <Button id="short-button" onClick={this.handleClickUpdate} className="short" variant="contained" color="primary">
           update
         </Button>
