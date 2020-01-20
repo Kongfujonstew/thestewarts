@@ -45,7 +45,7 @@ class RSVP extends React.Component {
 
   handleTypeText = ({ target, target: { value } }) => {
     this.setState(({ [target.name]: value }));
-    if (target.name === 'total') {
+    if (target.name === 'total' && value.length) {
       this.setState({ rsvpyes: value > 0 })
     }
   }
@@ -55,7 +55,6 @@ class RSVP extends React.Component {
   }
 
   handleClickSend = async() => {
-    console.log('handleClickSend')
     this.setState({ loading: true });
     // send message; delete unnecessary fields used for ui on state
     const message = Object.assign({}, this.state);
