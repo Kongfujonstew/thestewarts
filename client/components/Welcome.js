@@ -16,7 +16,7 @@ class Welcome extends React.Component {
         <h4>July 25, 2020 • SAN FRANCISCO, CA</h4>
         <span>Swedenborgian Church</span>
         <span style={{ marginBottom: '20px' }}>2107 Lyon Street</span>
-        <Button onClick={this.scroll('rsvp-container')} variant="outlined" color="primary">RSVP</Button>
+        <Button onClick={this.scroll('rsvp-container')} variant="outlined" color="primary">rsvp</Button>
         <img id="skyline" src="public/images/skyline.png" />
       </div>
     )

@@ -1,6 +1,10 @@
 export default `#root {
   position: relative; }
 
+[class*="MuiButtonBase"] {
+  text-transform: none !important;
+  font-size: 18px !important; }
+
 .box-shadow {
   box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
@@ -37,7 +41,7 @@ export default `#root {
 .menu-buttons, .menu-buttons-1, .menu-buttons-2 {
   display: flex;
   position: absolute;
-  height: 40px !important;
+  height: 50px !important;
   width: unset !important;
   cursor: pointer; }
   .menu-buttons button, .menu-buttons-1 button, .menu-buttons-2 button {
@@ -156,12 +160,13 @@ export default `#root {
       margin-left: 120px; }
     #about-container #about h2 {
       margin-top: 0;
-      margin-bottom: 48px;
+      margin-bottom: 24px;
       font-size: 28px;
       text-align: center;
-      color: #726442; }
+      color: #726442;
+      white-space: nowrap; }
     #about-container #about p {
-      font-size: 16px;
+      font-size: 14px;
       font-family: MrsEavesRoman;
       position: relative;
       z-index: 100;
@@ -179,7 +184,8 @@ export default `#root {
       #about-container #about .text {
         margin-left: 165px; }
       #about-container #about h2 {
-        font-size: 36px; }
+        font-size: 36px;
+        margin-bottom: 48px; }
       #about-container #about p {
         font-size: 1em; }
       #about-container #about p:first-letter {

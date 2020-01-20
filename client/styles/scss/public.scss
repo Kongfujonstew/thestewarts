@@ -12,6 +12,12 @@
   position: relative;
 }
 
+// MUI overrides
+[class*="MuiButtonBase"] {
+  text-transform: none !important;
+  font-size: 18px !important;
+}
+
 // VARIABLES
 $welcomeBackgroundHeight: 1500px;
 $lotusPNGGrey: #ececec;
@@ -100,7 +106,7 @@ $desktop-width: 1024px;
   position: absolute;
   // these importants are just because this selector (above) includes these divs:
   // #root > div:not(#background-container)
-  height: 40px !important;
+  height: 50px !important;
   button {
     color: $navDarkBlue;
     width: 100px;
@@ -256,14 +262,15 @@ $desktop-width: 1024px;
 
     h2 {
       margin-top: 0;
-      margin-bottom: 48px;
+      margin-bottom: 24px;
       font-size: 28px;
       text-align: center;
       color: $camel;
+      white-space: nowrap;
     }
 
     p {
-      font-size: 16px;
+      font-size: 14px;
       font-family: MrsEavesRoman;
       position: relative;
       z-index: 100;
@@ -290,6 +297,7 @@ $desktop-width: 1024px;
       h2 {
         // back to default
         font-size: 36px;
+        margin-bottom: 48px;
       }
 
       p {
