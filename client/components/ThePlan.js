@@ -2,24 +2,10 @@ import React from 'react';
 
 class ThePlan extends React.Component {
 
-  // The Plan // Enamel or 'title'
-  // Afternoon Friday, July 24, 2020
-  // Welcome BBQ, location TBD
-
-  // Morning Saturday, July 25, 2020
-  // There may be 'optional' activities at this time
-
-  // Afternoon Saturday, July 25, 2020
-  // Wedding Ceremony followed by Cable Car Tours (2 hours)
-
-  // < Cable car image >
-
-  // Evening Saturday, July 25, 2020
-  // Dinner reception in San Francisco
-
   render() {
     return (
       <div id="theplan">
+        <span style={{ position: 'absolute', top: '12px;'}}>further details forthcoming . . .</span>
         <h2 style={{ marginTop: '4px'}}>Afternoon Friday, July 24</h2>
         <h3>WELCOME BBQ</h3>
         <h2>Morning Saturday, July 25</h2>

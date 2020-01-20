@@ -18,8 +18,19 @@ class FAQ extends React.Component {
 
   render() {
     return (
-      <div>
-        content testing from faq . . .
+      <div id="faq">
+        <h3>DRESS CODE</h3>
+        <span>
+          NO dress code.  BUT We'll be OUTSIDE for 2 hours during the cable car ride, and it is very chilly in July.  A JACKET OR HOODIE at minimum is recommended.
+        </span>
+        <h3>HOTEL</h3>
+        <span>
+          We're working on this but will keep you posted ~
+        </span>
+        <h3>CONTACT</h3>
+        <span>
+          Reach out to Jon or Hermann, or send us a note below.
+        </span>
       </div>
     )
   }
