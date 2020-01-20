@@ -5,7 +5,13 @@ class NavButton extends React.Component {
   scroll = () => {
     const { nextId } = this.props;
     const el = document.getElementById(nextId);
-    el && el.scrollIntoView();
+    const isMobile = (window.innerWidth <= 768);
+    // this is bs.  no idea why the polyfill doesn't work
+    if (isMobile) {
+      el && el.scrollIntoView();
+    } else {
+      el && el.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   render() {
