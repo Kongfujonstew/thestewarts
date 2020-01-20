@@ -19,7 +19,7 @@ class Welcome extends React.Component {
         <Button onClick={this.scroll('rsvp-container')} variant="outlined" color="primary">rsvp</Button>
         <img id="skyline" src="public/images/skyline.png" />
       </div>
-    )
+    );
   }
 }
 

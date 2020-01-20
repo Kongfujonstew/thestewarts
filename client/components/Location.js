@@ -47,7 +47,7 @@ class Location extends React.Component {
           className="box-shadow"
         ></iframe>
       </div>
-    )
+    );
   }
 }
 

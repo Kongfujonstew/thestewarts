@@ -16,7 +16,7 @@ class MenuButtons extends React.Component {
       <div className={this.props.thisClass}>
         <Button onClick={this.scroll('about-container')}>our story</Button>
         <Button onClick={this.scroll('rsvp-container')}>rsvp</Button>
-        <Button onClick={this.handleClickRegistry}>resgistry ></Button>
+        <Button onClick={this.handleClickRegistry}>registry ></Button>
       </div>
     );
   }

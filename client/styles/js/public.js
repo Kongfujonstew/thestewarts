@@ -1,5 +1,6 @@
 export default `#root {
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
 
 button {
   text-transform: none !important;
@@ -16,23 +17,26 @@ fieldset {
 .box-shadow {
   box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
-#root > div:not(#background-container) {
+#root > div:not(#background-container):not([class*="menu-buttons"]) {
   height: 100vh;
   padding: 0 24px;
   padding-top: 5vh;
-  width: 100%; }
-  #root > div:not(#background-container) > div {
+  width: 100%;
+  position: relative; }
+  #root > div:not(#background-container):not([class*="menu-buttons"]) > div {
     margin: auto;
     width: 100%;
     height: 60vh; }
     @media (min-width: 768px) {
-      #root > div:not(#background-container) > div {
+      #root > div:not(#background-container):not([class*="menu-buttons"]) > div {
         max-width: 720px; } }
 
 .nav-button {
   height: 80px !important;
   width: 80px !important;
-  margin-top: 3vh !important;
+  position: absolute;
+  left: calc(50% - 40px);
+  bottom: 40px;
   border-radius: 50%;
   background: rgba(192, 192, 192, 0.2) !important;
   text-align: center;
@@ -45,16 +49,23 @@ fieldset {
     color: #0a3b9d; }
   .nav-button:first-of-type {
     background: blue; }
+  @media (min-width: 768px) {
+    .nav-button {
+      height: 60px !important;
+      width: 60px !important;
+      padding-top: 10px;
+      left: calc(50% - 30px); } }
 
 .menu-buttons, .menu-buttons-1, .menu-buttons-2 {
   display: flex;
   position: absolute;
+  z-index: 100;
   height: 50px !important;
   width: unset !important;
   cursor: pointer; }
   .menu-buttons button, .menu-buttons-1 button, .menu-buttons-2 button {
     color: #0a3b9d;
-    width: 100px;
+    width: 95px;
     font-size: 18px !important; }
   @media (min-width: 768px) {
     .menu-buttons, .menu-buttons-1, .menu-buttons-2 {
@@ -214,7 +225,7 @@ fieldset {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 400px;
+    min-height: 460px;
     max-width: 500px !important; }
     #theplan-container #theplan h2 {
       color: #726442;
@@ -312,9 +323,18 @@ fieldset {
       font-size: 22px !important;
       color: black; }
     #rsvp-container #rsvp button {
+      color: white;
       width: 100% !important;
       margin-bottom: 6px;
       z-index: 100; }
+      #rsvp-container #rsvp button:disabled {
+        color: grey; }
+    #rsvp-container #rsvp .buttons {
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between; }
+      #rsvp-container #rsvp .buttons > button {
+        flex-basis: 47%; }
   @media (min-width: 768px) {
     #rsvp-container {
       background: radial-gradient(circle, #b0d0ff 28%, #0a3b9d 68%); } }
@@ -328,13 +348,13 @@ fieldset {
   #footer div {
     font-size: 22px;
     font-family: MrsEavesRoman !important;
-    width: 325px;
+    width: 240px;
     z-index: 100; }
   #footer label, #footer button, #footer input, #footer span {
     font-size: 22px !important; }
   #footer button {
     width: 100%;
-    width: 325px;
+    width: 240px;
     z-index: 100 !important; }
   #footer img {
     background: #0a3b9d;

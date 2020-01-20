@@ -52,13 +52,6 @@ class Footer extends React.Component {
   render() {
     const { sent } = this.state;
 
-    if (sent) return (
-      <div id="footer">
-        <span style={{ marginTop: '18px' }}>Thanks. We'll get back to you asap.</span>
-        <img src="/public/images/lotus.png" />
-      </div>
-    );
-
     return (
       <div id="footer">
         { sent ? this.renderSent() : this.renderNotSent() }

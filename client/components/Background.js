@@ -28,7 +28,7 @@ class Background extends React.Component {
       <div id="background-container">
         <div id="background" style={{ backgroundPositionY: this.state.parallaxOffset }}/>
       </div>
-    )
+    );
   }
 }
 

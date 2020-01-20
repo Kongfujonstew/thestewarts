@@ -10,6 +10,7 @@
 // RESETS - WATCH OUT VERY MINIMAL!!!
 #root {
   position: relative;
+  overflow: hidden;
 }
 
 // MUI overrides
@@ -72,11 +73,12 @@ $desktop-width: 1024px;
 
 
 // MAIN STACKABLE BOXES
-#root > div:not(#background-container) {
+#root > div:not(#background-container):not([class*="menu-buttons"]) {
   height: 100vh;
   padding: 0 24px;
   padding-top: 5vh;
   width: 100%;
+  position: relative;
   > div {
     margin: auto;
     width: 100%;
@@ -91,7 +93,10 @@ $desktop-width: 1024px;
   // abov e #root > has greater specifity
   height: 80px !important;
   width: 80px !important;
-  margin-top: 3vh !important;
+  // margin-top: 3vh !important;
+  position: absolute;
+  left: calc(50% - 40px);
+  bottom: 40px;
   border-radius: 50%;
   background: rgba(192,192,192,0.2) !important;
   text-align: center;
@@ -109,17 +114,25 @@ $desktop-width: 1024px;
     @extend .fade-in;
     background: blue;
   }
+
+  @include tablet {
+    height: 60px !important;
+    width: 60px !important;
+    padding-top: 10px;
+    left: calc(50% - 30px);
+  }
 }
 
 .menu-buttons {
   display: flex;
   position: absolute;
+  z-index: 100;
   // these importants are just because this selector (above) includes these divs:
   // #root > div:not(#background-container)
   height: 50px !important;
   button {
     color: $navDarkBlue;
-    width: 100px;
+    width: 95px;
     font-size: 18px !important;
   }
   @include tablet {
@@ -339,7 +352,7 @@ $desktop-width: 1024px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 400px;
+    min-height: 460px;
     max-width: 500px !important;
 
     h2 {
@@ -487,9 +500,22 @@ $desktop-width: 1024px;
     }
 
     button {
+      color: white;
       width: 100% !important;
       margin-bottom: 6px;
       z-index: 100;
+      &:disabled {
+        color: grey;
+      }
+    }
+
+    .buttons {
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      > button {
+        flex-basis: 47%;
+      }
     }
   }
   @include tablet {
@@ -508,7 +534,7 @@ $desktop-width: 1024px;
   div {
     font-size: 22px;
     font-family: MrsEavesRoman !important;
-    width: 325px;
+    width: 240px;
     z-index: 100;
   }
 
@@ -518,7 +544,7 @@ $desktop-width: 1024px;
 
   button {
     width: 100%;
-    width: 325px;
+    width: 240px;
     z-index: 100 !important;
   }
   //this is the small version lotus

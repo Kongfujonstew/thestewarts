@@ -19,7 +19,7 @@ class ThePlan extends React.Component {
         <img id="logo" src="/public/images/classic-logo.jpg"/>
         <img id="car" src="/public/images/classic-car.jpg"/>
       </div>
-    )
+    );
   }
 }
 

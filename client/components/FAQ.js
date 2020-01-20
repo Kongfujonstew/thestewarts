@@ -32,7 +32,7 @@ class FAQ extends React.Component {
           Reach out to Jon or Hermann, or send us a note below.
         </span>
       </div>
-    )
+    );
   }
 }
 

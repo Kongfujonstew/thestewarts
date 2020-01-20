@@ -80,7 +80,7 @@ class RSVP extends React.Component {
 
     return (
       <div id="rsvp" style={{ textAlign: 'center' }}>
-        <span style={{ marginBottom: '32px' }}>{confirmationText}</span>
+        <span style={{ marginBottom: '32px', marginTop: '48px' }}>{confirmationText}</span>
         <span style={{ marginBottom: '16px' }}>Click here to change or update your rsvp:</span>
         <Button onClick={handleClickUpdate} variant="contained" color="primary">
           update
@@ -98,7 +98,7 @@ class RSVP extends React.Component {
   renderForm = () => {
     const { name, email, rsvpyes, total, food, notes, loading, hasRSVPd, showExistingRSVP } = this.state;
     const isDisabled = loading || !name || !email || !total || isNaN(Number(total));
-
+    const showClearButton = hasRSVPd && showExistingRSVP;
     return (
       <div id="rsvp">
         <TextField onChange={this.handleTypeText} name="name" value={name} label="name" variant="outlined" required/>
@@ -108,8 +108,10 @@ class RSVP extends React.Component {
         <TextField onChange={this.handleTypeText} name="notes" value={notes} label="other notes" variant="outlined" multiline />
         <Checkbox onClick={this.handleClickCheckbox} label="RSVP YES" checked={rsvpyes} color="primary" />
         <span style={{ transform: 'translateY(4px)' }}>{`${rsvpyes ? ' ' : 'not ' } attending ${rsvpyes ? ' - this is good!' : '' }`}</span>
-        <Button onClick={this.handleClickSend} style={{ marginTop: '18px' }} variant="contained" color="primary" disabled={isDisabled}>{hasRSVPd ? 'update rsvp' : 'send'}</Button>
-        { hasRSVPd && showExistingRSVP && <Button onClick={this.clearExistingForm} variant="contained" color="primary" disabled={loading}>clear</Button>}
+        <div className="buttons">
+          <Button onClick={this.handleClickSend} style={{ flexBasis: showClearButton ? '47%' : '100%' }} variant="contained" color="primary" disabled={isDisabled}>{hasRSVPd ? 'update rsvp' : 'send'}</Button>
+          { showClearButton && <Button onClick={this.clearExistingForm} variant="contained" color="primary" disabled={loading}>clear</Button>}
+        </div>
       </div>
     );
   }
