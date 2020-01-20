@@ -45,6 +45,9 @@ class RSVP extends React.Component {
 
   handleTypeText = ({ target, target: { value } }) => {
     this.setState(({ [target.name]: value }));
+    if (target.name === 'total') {
+      this.setState({ rsvpyes: value > 0 })
+    }
   }
 
   handleClickCheckbox = () => {
@@ -52,6 +55,7 @@ class RSVP extends React.Component {
   }
 
   handleClickSend = async() => {
+    console.log('handleClickSend')
     this.setState({ loading: true });
     // send message; delete unnecessary fields used for ui on state
     const message = Object.assign({}, this.state);
@@ -73,7 +77,7 @@ class RSVP extends React.Component {
 
   handleClickUpdate = () => {
     this.scroll();
-    this.setState({ showExistingRSVP: !this.state.showExistingRSVP })
+    this.setState({ showExistingRSVP: true })
   };
 
   saveRSVP = () => {
@@ -123,7 +127,7 @@ class RSVP extends React.Component {
         <TextField onChange={this.handleTypeText} name="food" value={food} label="food preferences" variant="outlined" />
         <TextField onChange={this.handleTypeText} name="notes" value={notes} label="other notes" variant="outlined" multiline />
         <Checkbox onClick={this.handleClickCheckbox} label="RSVP YES" checked={rsvpyes} color="primary" />
-        <span style={{ transform: 'translateY(4px)' }}>{`${rsvpyes ? ' ' : 'not ' } attending ${rsvpyes ? ' - this is good!' : '' }`}</span>
+        <span>{`${rsvpyes ? ' ' : 'not ' } attending ${rsvpyes ? ' - this is good!' : '' }`}</span>
         <div className="buttons">
           <Button onClick={this.handleClickSend} style={{ flexBasis: showClearButton ? '47%' : '100%' }} variant="contained" color="primary" disabled={isDisabled}>{hasRSVPd ? 'update rsvp' : 'send'}</Button>
           { showClearButton && <Button onClick={this.clearExistingForm} variant="contained" color="primary" disabled={loading}>clear</Button>}
