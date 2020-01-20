@@ -46,7 +46,7 @@ class RSVP extends React.Component {
   }
 
   handleClickCheckbox = () => {
-    this.setState(({ rsvpyes: !this.state.rsvpyes }));
+    this.setState(({ rsvpyes: !this.state.rsvpyes, total: !this.state.rsvpyes === false ? '0' : '' }));
   }
 
   handleClickSend = async() => {
@@ -75,31 +75,41 @@ class RSVP extends React.Component {
 
   renderConfirmation = () => {
     const { hasRSVPd, rsvpyes, showExistingRSVP } = this.state;
-    const confirmationText = rsvpyes ? `You RSVP'd! We are so excited to see you` : `Sorry we'll miss you!`;
+    const confirmationText = rsvpyes ? `You RSVP'd! We are so excited to see you.` : `Sorry we'll miss you!`;
     const handleClickUpdate = () => { this.setState({ showExistingRSVP: !showExistingRSVP })};
 
     return (
-      <div id="rsvp">
-        <span>{confirmationText}</span>
+      <div id="rsvp" style={{ textAlign: 'center' }}>
+        <span style={{ marginBottom: '32px' }}>{confirmationText}</span>
+        <span style={{ marginBottom: '16px' }}>Click here to change or update your rsvp:</span>
         <Button onClick={handleClickUpdate} variant="contained" color="primary">
-          Update
+          update
         </Button>
       </div>
     );
   }
 
+  clearExistingForm = () => {
+    const reallyClear = window.confirm(`Are you sure you want to clear this rsvp data? You won't be able to update this current rsvp.`);
+    reallyClear && localStorage && localStorage.clear();
+    reallyClear && this.setState({ ...this.defaultRSVP, hasRSVPd: false });
+  }
+
   renderForm = () => {
     const { name, email, rsvpyes, total, food, notes, loading, hasRSVPd, showExistingRSVP } = this.state;
+    const isDisabled = loading || !name || !email || !total || isNaN(Number(total));
 
     return (
       <div id="rsvp">
-        <Checkbox onClick={this.handleClickCheckbox} label="RSVP YES" checked={rsvpyes} />
-        <TextField onChange={this.handleTypeText} name="name" value={name} label="NAME" variant="outlined" required/>
-        <TextField onChange={this.handleTypeText} name="email" value={email} label="EMAIL" variant="outlined" required/>
-        <TextField onChange={this.handleTypeText} name="total" value={total} label="TOTAL IN PARTY" variant="outlined" required/>
-        <TextField onChange={this.handleTypeText} name="food" value={food} label="FOOD PREFERENCES" variant="outlined" />
-        <TextField onChange={this.handleTypeText} name="notes" value={notes} label="OTHER NOTES" variant="outlined" multiline />
-        <Button onClick={this.handleClickSend} variant="contained" color="primary" disabled={loading}>Send</Button>
+        <TextField onChange={this.handleTypeText} name="name" value={name} label="name" variant="outlined" required/>
+        <TextField onChange={this.handleTypeText} name="email" value={email} label="email" variant="outlined" required/>
+        <TextField onChange={this.handleTypeText} name="total" value={total} label="total # people in your group" variant="outlined" required/>
+        <TextField onChange={this.handleTypeText} name="food" value={food} label="food preferences" variant="outlined" />
+        <TextField onChange={this.handleTypeText} name="notes" value={notes} label="other notes" variant="outlined" multiline />
+        <Checkbox onClick={this.handleClickCheckbox} label="RSVP YES" checked={rsvpyes} color="primary" />
+        <span style={{ transform: 'translateY(4px)' }}>{`${rsvpyes ? ' ' : 'not ' } attending ${rsvpyes ? ' - this is good!' : '' }`}</span>
+        <Button onClick={this.handleClickSend} style={{ marginTop: '18px' }} variant="contained" color="primary" disabled={isDisabled}>{hasRSVPd ? 'update rsvp' : 'send'}</Button>
+        { hasRSVPd && showExistingRSVP && <Button onClick={this.clearExistingForm} variant="contained" color="primary" disabled={loading}>clear</Button>}
       </div>
     );
   }

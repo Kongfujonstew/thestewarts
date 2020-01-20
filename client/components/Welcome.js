@@ -10,7 +10,7 @@ class Welcome extends React.Component {
   render() {
     return (
       <div id="welcome" className="box-shadow fade-in">
-        <h1>Hermann and Jon</h1>
+        <h1>HERMANN AND JON</h1>
         <p style={{ marginBottom: '6px', fontFamily: 'Great Vibes' }}>are</p>
         <h2>Getting Married</h2>
         <h4>July 25, 2020 • SAN FRANCISCO, CA</h4>

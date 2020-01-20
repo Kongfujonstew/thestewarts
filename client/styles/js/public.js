@@ -1,9 +1,17 @@
 export default `#root {
   position: relative; }
 
-[class*="MuiButtonBase"] {
+button {
   text-transform: none !important;
-  font-size: 18px !important; }
+  font-size: 18px !important;
+  border-radius: 0 !important; }
+
+label, input {
+  text-transform: none !important;
+  font-family: MrsEavesRoman !important; }
+
+fieldset {
+  border-radius: 0 !important; }
 
 .box-shadow {
   box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
@@ -73,7 +81,7 @@ export default `#root {
   width: 100%;
   position: fixed;
   z-index: -1000;
-  opacity: .5;
+  opacity: .3;
   background-color: #ececec; }
   #background-container #background {
     height: 1500px;
@@ -193,58 +201,62 @@ export default `#root {
       #about-container #about #hermann {
         width: 200px; } }
 
-#theplan-container #theplan {
-  background: rgba(255, 255, 255, 0.5);
-  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
-  padding: 24px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 400px;
-  max-width: 500px !important; }
-  #theplan-container #theplan h2 {
-    color: #726442;
-    font-size: 22px;
-    margin-bottom: 0; }
-  #theplan-container #theplan h3 {
-    font-size: 18px;
-    margin-top: 0;
-    margin-bottom: 6px; }
-  #theplan-container #theplan span {
-    margin: 0;
-    font-size: 14px; }
-  #theplan-container #theplan #logo, #theplan-container #theplan #car {
-    position: absolute;
-    top: 32vh;
-    width: 120px;
-    height: auto;
-    border-radius: 50%;
-    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
-  #theplan-container #theplan #logo {
-    right: -22px;
-    transform: rotate(10deg); }
-  #theplan-container #theplan #car {
-    left: -18px;
-    transform: rotate(-10deg); }
-  @media (min-width: 768px) {
+#theplan-container {
+  overflow: hidden; }
+  #theplan-container #theplan {
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    padding: 24px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 400px;
+    max-width: 500px !important; }
     #theplan-container #theplan h2 {
       color: #726442;
-      font-size: 30px;
-      margin-bottom: 0;
-      margin-top: 14px; }
-    #theplan-container #theplan h3 {
       font-size: 22px;
+      margin-bottom: 0;
+      z-index: 100; }
+    #theplan-container #theplan h3 {
+      font-size: 24px;
       margin-top: 0;
-      margin-bottom: 8px; }
+      margin-bottom: 6px;
+      z-index: 100; }
+    #theplan-container #theplan span {
+      margin: 0;
+      font-size: 14px; }
+    #theplan-container #theplan #logo, #theplan-container #theplan #car {
+      position: absolute;
+      top: 33vh;
+      width: 120px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
     #theplan-container #theplan #logo {
-      right: -40px; }
+      right: -30px;
+      transform: rotate(10deg); }
     #theplan-container #theplan #car {
-      left: -30px; }
-    #theplan-container #theplan #car, #theplan-container #theplan #logo {
-      top: 34vh;
-      width: 150px; } }
+      left: -30px;
+      transform: rotate(-10deg); }
+    @media (min-width: 768px) {
+      #theplan-container #theplan h2 {
+        color: #726442;
+        font-size: 34px;
+        margin-bottom: 0;
+        margin-top: 14px; }
+      #theplan-container #theplan h3 {
+        font-size: 28px;
+        margin-top: 0;
+        margin-bottom: 8px; }
+      #theplan-container #theplan #logo {
+        right: -40px; }
+      #theplan-container #theplan #car {
+        left: -30px; }
+      #theplan-container #theplan #car, #theplan-container #theplan #logo {
+        top: 34vh;
+        width: 150px; } }
 
 #location-container #location {
   display: flex;
@@ -279,14 +291,32 @@ export default `#root {
       margin-bottom: 16px; } }
 
 #rsvp-container {
-  background: #7088ba;
-  background: radial-gradient(circle, #7088ba 38%, #0a3b9d 96%); }
+  background: #b0d0ff;
+  background: radial-gradient(circle, #b0d0ff 45%, #0a3b9d 68%); }
+  #rsvp-container h1 {
+    color: white; }
+  #rsvp-container #rsvp {
+    max-width: 500px !important; }
+    #rsvp-container #rsvp > span {
+      display: inline-block;
+      font-size: 22px; }
+    #rsvp-container #rsvp > div {
+      width: 100%;
+      margin-bottom: 12px; }
+    #rsvp-container #rsvp label, #rsvp-container #rsvp button, #rsvp-container #rsvp input {
+      font-size: 22px !important; }
+    #rsvp-container #rsvp button {
+      width: 100% !important;
+      margin-bottom: 6px; }
+  @media (min-width: 768px) {
+    #rsvp-container {
+      background: radial-gradient(circle, #b0d0ff 28%, #0a3b9d 68%); } }
 
 #footer {
   background: transparent;
   position: relative; }
   #footer img {
-    background: #7088ba;
+    background: #0a3b9d;
     width: 250px;
     position: absolute;
     bottom: 0;

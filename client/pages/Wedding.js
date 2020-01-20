@@ -19,7 +19,7 @@ class Wedding extends React.Component {
     return (
       <React.Fragment>
         <Background />
-        <img id="tartan" className="fade-in" src="/public/images/tartan.jpg"/>
+        <img id="tartan" src="/public/images/tartan.jpg"/>
         <MenuButtons thisClass="menu-buttons-1"/>
         <div id="welcome-container" style={{ backgroundColor: 'transparent' }}>
           <h1>THE STEWARTS</h1>
@@ -49,7 +49,6 @@ class Wedding extends React.Component {
         <div id="rsvp-container" className="box-shadow" style={{ /* gradient defined in css */ }}>
           <h1>RSVP</h1>
           <Rsvp {...this.props}/>
-          <NavButton nextId="footer-container" />
         </div>
         <div id="footer-container" style={{ backgroundColor: 'transparent' }}>
           <h1>CONTACT US</h1>
