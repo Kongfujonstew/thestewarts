@@ -475,7 +475,8 @@ $desktop-width: 1024px;
 
 #rsvp-container {
   background: $navBlue;
-  background: radial-gradient(circle, $navBlue 49%, $navDarkBlue 68%);
+  background: radial-gradient(circle, $navBlue 42%, $navDarkBlue 88%);
+  min-height: 650px;
   h1 {
     color: white;
   }
