@@ -121,8 +121,13 @@ fieldset {
       top: -150px;
       left: -150px; } }
 
+@media (min-width: 768px) {
+  #welcome-container {
+    min-height: 650px; } }
+
 #welcome {
   height: 500px;
+  min-height: 400px;
   position: relative;
   max-width: 500px !important;
   background: white;
@@ -217,6 +222,9 @@ fieldset {
 
 #theplan-container {
   overflow: hidden; }
+  @media (min-width: 768px) {
+    #theplan-container {
+      min-height: 650px; } }
   #theplan-container #theplan {
     background: rgba(255, 255, 255, 0.6);
     box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -226,7 +234,7 @@ fieldset {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 430px;
+    min-height: 450px;
     max-width: 500px !important; }
     #theplan-container #theplan h2 {
       color: #726442;
@@ -306,7 +314,8 @@ fieldset {
 
 #rsvp-container {
   background: #b0d0ff;
-  background: radial-gradient(circle, #b0d0ff 49%, #0a3b9d 68%); }
+  background: radial-gradient(circle, #b0d0ff 42%, #0a3b9d 88%);
+  min-height: 650px; }
   #rsvp-container h1 {
     color: white; }
   #rsvp-container #rsvp {

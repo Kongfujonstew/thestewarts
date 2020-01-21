@@ -207,8 +207,15 @@ $desktop-width: 1024px;
   }
 }
 
+#welcome-container {
+  // just for large screens, make sure it doesn't get fd on shorter windows
+  @include tablet {
+    min-height: 650px;
+  }
+}
 #welcome {
   height: 500px;
+  min-height: 400px;
   position: relative;
   // narrower than others below
   max-width: 500px !important;
@@ -344,6 +351,10 @@ $desktop-width: 1024px;
 
 #theplan-container {
   overflow: hidden;
+  // just for large screens, make sure it doesn't get fd on shorter windows
+  @include tablet {
+    min-height: 650px;
+  }
   #theplan {
     background: rgba(255,255,255,.6);
     box-shadow: $boxShadow;
@@ -353,7 +364,7 @@ $desktop-width: 1024px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 430px;
+    min-height: 450px;
     max-width: 500px !important;
 
     h2 {
