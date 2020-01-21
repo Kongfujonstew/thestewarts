@@ -126,7 +126,7 @@ class RSVP extends React.Component {
         <TextField onChange={this.handleTypeText} name="food" value={food} label="food preferences" variant="outlined" />
         <TextField onChange={this.handleTypeText} name="notes" value={notes} label="other notes" variant="outlined" multiline />
         <Checkbox onClick={this.handleClickCheckbox} label="RSVP YES" checked={rsvpyes} color="primary" />
-        <span>{`${rsvpyes ? ' ' : 'not ' } attending ${rsvpyes ? ' - this is good!' : '' }`}</span>
+        <div id="please" style={{ display: 'inline !important', fontFamily: 'MrsEavesRoman', fontSize: '22px', width: 'unset', marginBottom: '0' }}>{`${rsvpyes ? ' ' : 'not ' } attending ${rsvpyes ? ' - this is good!' : '' }`}</div>
         <div className="buttons">
           <Button onClick={this.handleClickSend} style={{ flexBasis: showClearButton ? '47%' : '100%' }} variant="contained" color="primary" disabled={isDisabled}>{hasRSVPd ? 'update rsvp' : 'send'}</Button>
           { showClearButton && <Button onClick={this.clearExistingForm} variant="contained" color="primary" disabled={loading}>clear</Button>}

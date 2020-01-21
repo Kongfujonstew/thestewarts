@@ -14,7 +14,7 @@ export default function() {
 
   // Configuration
   var config = {
-    particleNumber: 600,
+    particleNumber: 400,
     maxParticleSize: 7,
     maxSpeed: 40,
     colorVariation: 50
@@ -25,9 +25,10 @@ export default function() {
       bg: {r:12,g:9,b:29},
       matter: [
         {r:158,g:9,b:22}, // Red
-        // {r:13,g:101,b:247}, // Blue
+        {r:13,g:101,b:247}, // Blue
         {r:114,g:100,b:66}, // 'Camel' eg dark gold
-        {r:255,g:255,b:255} // White
+        {r:255,g:255,b:255}, // White
+        {r:255,g:215,b:0} // Gold
       ]
   };
 

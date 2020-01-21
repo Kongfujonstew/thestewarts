@@ -487,7 +487,8 @@ $desktop-width: 1024px;
       font-size: 22px;
       font-family: MrsEavesRoman !important;
     }
-    > span {
+    // stupid but NOT the check box or next span, with text
+    > span:not([label*="RSVP"]) {
       display: block !important;
       font-size: 22px;
     }
@@ -499,6 +500,10 @@ $desktop-width: 1024px;
     label, button, input {
       font-size: 22px !important;
       color: black;
+    }
+
+    #please {
+      display: inline !important;
     }
 
     button {

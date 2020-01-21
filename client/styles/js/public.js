@@ -315,7 +315,7 @@ fieldset {
     #rsvp-container #rsvp div {
       font-size: 22px;
       font-family: MrsEavesRoman !important; }
-    #rsvp-container #rsvp > span {
+    #rsvp-container #rsvp > span:not([label*="RSVP"]) {
       display: block !important;
       font-size: 22px; }
     #rsvp-container #rsvp > div {
@@ -324,6 +324,8 @@ fieldset {
     #rsvp-container #rsvp label, #rsvp-container #rsvp button, #rsvp-container #rsvp input {
       font-size: 22px !important;
       color: black; }
+    #rsvp-container #rsvp #please {
+      display: inline !important; }
     #rsvp-container #rsvp button {
       color: white;
       width: 100% !important;
