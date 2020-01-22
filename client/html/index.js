@@ -10,9 +10,10 @@ export default (html, data, css, app) => `
   <!doctype html>
     <html>
     <head>
-      <link rel="shortcut icon" type="image/x-icon" href="/public/images/favicon.ico" />
+      <link rel="shortcut icon" type="image/x-icon" href="/public/images/lotus.png" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Hermann and Jon</title>
       <style id="jss-server-side">${css}</style>
 
       <link href="https://fonts.googleapis.com/css?family=Baskervville&display=swap" rel="stylesheet">
