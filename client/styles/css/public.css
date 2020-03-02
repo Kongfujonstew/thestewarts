@@ -18,7 +18,7 @@ fieldset {
   box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
 
 #root > div:not(#background-container):not([class*="menu-buttons"]) {
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 24px;
   padding-top: 5vh;
   width: 100%;
@@ -240,6 +240,7 @@ fieldset {
       color: #726442;
       font-size: 22px;
       margin-bottom: 0;
+      margin-top: 36px;
       z-index: 100; }
     #theplan-container #theplan h3 {
       font-size: 24px;
@@ -248,7 +249,8 @@ fieldset {
       z-index: 100; }
     #theplan-container #theplan span {
       margin: 0;
-      font-size: 14px; }
+      font-size: 14px;
+      z-index: 100; }
     #theplan-container #theplan #logo, #theplan-container #theplan #car {
       position: absolute;
       top: 33vh;
@@ -301,9 +303,11 @@ fieldset {
   box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 24px;
   padding-top: 4px;
-  max-width: 500px !important; }
+  max-width: 500px !important;
+  height: unset !important;
+  min-height: 60vh !important; }
   #faq-container #faq h3 {
-    margin-top: 12px;
+    margin-top: 18px;
     margin-bottom: 6px; }
   @media (min-width: 768px) {
     #faq-container #faq span {
@@ -311,6 +315,9 @@ fieldset {
     #faq-container #faq h3 {
       margin-top: 18px;
       margin-bottom: 16px; } }
+  #faq-container #faq a {
+    color: #0a3b9d;
+    text-decoration: none; }
 
 #rsvp-container {
   background: #b0d0ff;

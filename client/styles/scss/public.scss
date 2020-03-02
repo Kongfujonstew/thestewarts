@@ -74,7 +74,7 @@ $desktop-width: 1024px;
 
 // MAIN STACKABLE BOXES
 #root > div:not(#background-container):not([class*="menu-buttons"]) {
-  height: 100vh;
+  min-height: 100vh;
   padding: 0 24px;
   padding-top: 5vh;
   width: 100%;
@@ -371,6 +371,7 @@ $desktop-width: 1024px;
       color: $camel;
       font-size: 22px;
       margin-bottom: 0;
+      margin-top: 36px;
       z-index: 100;
     }
     h3 {
@@ -383,6 +384,7 @@ $desktop-width: 1024px;
     span {
       margin: 0;
       font-size: 14px;
+      z-index: 100;
     }
 
     #logo, #car {
@@ -466,9 +468,12 @@ $desktop-width: 1024px;
     padding: 24px;
     padding-top: 4px;
     max-width: 500px !important;
+    // this overrides the insano height: 60vh set up top
+    height: unset !important;
+    min-height: 60vh !important;
 
     h3 {
-      margin-top: 12px;
+      margin-top: 18px;
       margin-bottom: 6px;
     }
 
@@ -480,6 +485,11 @@ $desktop-width: 1024px;
         margin-top: 18px;
         margin-bottom: 16px;
       }
+    }
+
+    a {
+      color: $navDarkBlue;
+      text-decoration: none;
     }
   }
 }
