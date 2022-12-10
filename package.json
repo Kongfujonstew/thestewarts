@@ -26,7 +26,7 @@
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.4",
     "dotenv": "^7.0.0",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-graphql": "^0.8.0",
     "gmail-send": "^1.2.14",
     "graphql": "^14.2.1",
